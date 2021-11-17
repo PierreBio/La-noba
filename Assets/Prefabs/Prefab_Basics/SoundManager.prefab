@@ -54,14 +54,14 @@ MonoBehaviour:
   - name: noah_theme
     audioClip: {fileID: 8300000, guid: e15ee4dc78128be479742d2248ac2238, type: 3}
     audioSource: {fileID: 0}
-    volume: 0.7
+    volume: 0.8
     pitch: 1
-    loop: 1
+    loop: 0
     spatialBlend: 0
   - name: noah_revelations
     audioClip: {fileID: 8300000, guid: 84b108f1cd67b18469af074f5efd3b67, type: 3}
     audioSource: {fileID: 0}
-    volume: 0.7
+    volume: 0.8
     pitch: 1
-    loop: 1
+    loop: 0
     spatialBlend: 0
