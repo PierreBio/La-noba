@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2774292483174833484}
   - component: {fileID: 2774292483174833489}
-  - component: {fileID: 7836398253632036584}
   - component: {fileID: 2774292483174833488}
   - component: {fileID: 2774292483174833487}
   m_Layer: 5
@@ -52,18 +51,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 0}
---- !u!114 &7836398253632036584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2774292483174833485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ebfc682c125b2a4eade8dd37d921a55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &2774292483174833488
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -212,7 +199,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 1393199628282636124}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
