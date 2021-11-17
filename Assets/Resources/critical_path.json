@@ -343,7 +343,7 @@
         }
       },
       {
-        "text": "//C’est tout de même étrange que tu arrives en combi civile à bord d’un glider, sur une route réservée aux Pèlerinages//\n\n(if: $bIsBrokenAtLeastOnce is \"true\")[ [[6-A - Noah nie]] ]\n(if: $bIsBrokenAtLeastOnce is \"false\")[ [[6-B - Noah avoue]] ]",
+        "text": "//C’est tout de même étrange que tu arrives en combi civile à bord d’un glider, sur une route réservée aux Pèlerinages//\n\n(if: $bIsBrokenAtLeastOnce is \"true\")[ [[6-A - Noah nie]] ]\n(if: $bIsBrokenAtLeastOnce is \"false\")[ [[Noah avoue]] ]",
         "links": [
           {
             "name": "6-A - Noah nie",
@@ -351,8 +351,8 @@
             "pid": "25"
           },
           {
-            "name": "6-B - Noah avoue",
-            "link": "6-B - Noah avoue",
+            "name": "Noah avoue",
+            "link": "Noah avoue",
             "pid": "26"
           }
         ],
@@ -482,7 +482,7 @@
             "pid": "22"
           }
         ],
-        "name": "6-B - Noah avoue",
+        "name": "Noah avoue",
         "pid": "26",
         "position": {
           "x": "906",

@@ -19,13 +19,13 @@ public class ImportTwison : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
 
-            //Rest of your Awake code
             storyNodes = JsonUtility.FromJson<Nodes>(jsonFile.text);
 
             foreach (Node node in ImportTwison._instance.storyNodes.passages)
             {
                 if (node.links != null)
                 {
+                    //PARCOURT TOUTES LES VARIABLES
                     List<int> listIndexVariableDefinitions = HandleString.AllIndexesOf(node.text, "(set: $");
                     List<int> listEndParenthesis = HandleString.AllIndexesOf(node.text, ")");
 
@@ -80,8 +80,6 @@ public class ImportTwison : MonoBehaviour
                                 listItalicTagIndexes[i + 1] + (i/2 * 3)
                                 ) + "</i>";
 
-                            Debug.Log(replacement);
-
                             listItalicTextToReplace.Add(toReplace);
                             listItalicTextReplacement.Add(replacement);
                         }
@@ -127,15 +125,6 @@ public class ImportTwison : MonoBehaviour
                             "<link=" + listLinkClickable[i] + "><b><color=blue>" + listTextClickable[i] + "</color></b></link>"
                             );
                     }
-
-                    //PARCOURT TOUS LES LIENS
-                    /*foreach (Link link in node.links)
-                    {
-                        if (link != null)
-                        {
-                            Debug.Log(link.name);
-                        }
-                    }*/
                 }
             }
         }

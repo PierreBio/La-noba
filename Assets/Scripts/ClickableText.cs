@@ -18,7 +18,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
     {
         storyNodes = ImportTwison._instance.storyNodes.passages;
 
-        currentNode = ImportTwison._instance.storyNodes.passages[17];
+        currentNode = ImportTwison._instance.storyNodes.passages[0];
 
         currentVariables = ImportTwison._instance.variableDictionnary;
 
@@ -37,9 +37,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
             {
                 var linkInfo = text.textInfo.linkInfo[linkIndex];
                 var linkId = linkInfo.GetLinkText();
-                Debug.Log(linkId);
                 linkId = linkInfo.GetLinkID();
-                Debug.Log(linkId);
 
                 changeCurrentNode(linkId);
             }
@@ -61,7 +59,6 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
         Node existingNode = ImportTwison._instance.storyNodes.passages[indexNewNodePid];
         currentNode = DeepCopy.DeepCopyNode(existingNode);
-        Debug.Log(currentNode.pid);
         displayCurrentNode();
     }
 
@@ -116,24 +113,29 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                 currentNode.text = currentNode.text.Replace(listContentVariable[i], "");
             }
         }
-        Debug.Log(currentNode.text);
 
         //GET ALL IFS
         List<int> listIndexIfConditions = HandleString.AllIndexesOf(currentNode.text, "(if: $");
         List<int> listEndifParenthesis = HandleString.AllIndexesOf(currentNode.text, ")");
         List<int> listIndexElseConditions = HandleString.AllIndexesOf(currentNode.text, "(else:)");
 
+        int initalListIndexIfCount = listIndexIfConditions.Count;
+
         if (listIndexIfConditions != null)
         {
             for (var i = 0; i < listIndexIfConditions.Count; i++)
             {
-                if(i < HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
+                if (i < HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
                 {
                     verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, i);
                 }
+
+                if(i!= 0 && i == HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
+                {
+                    verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, i-1);
+                }
             }
         }
-        Debug.Log(currentNode.text);
 
         GetComponent<TMPro.TextMeshProUGUI>().text = currentNode.text;
     }
@@ -156,6 +158,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         string variablePotentialValue = HandleString.getBetween(contentVariable, "is \"", "\")");
 
         string content = HandleString.getBetween(currentNode.text, contentVariable + "[", " ]");
+
         if (currentVariables.ContainsKey(variableName))
         {
             if (currentVariables[variableName] == variablePotentialValue) //ON CHECK SI LA CONDITION EST VERIFIEE ET SI OUI ON DISPLAY LE TEXTE SITUE DANS LE THEN
