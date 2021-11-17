@@ -1,0 +1,45 @@
+using UnityEngine;
+
+public abstract class Singleton<T> : MonoBehaviour where T : Component
+{
+    private static T instance;
+
+    public static T GetInstance()
+    {
+
+        if (instance == null)
+        {
+            instance = FindObjectOfType<T>();
+            if (instance == null)
+            {
+                GameObject obj = new GameObject();
+                obj.name = typeof(T).Name;
+                instance = obj.AddComponent<T>();
+            }
+        }
+        return instance;
+    }
+
+    /* IMPORTANT!!! To use Awake in a derived class you need to do it this way
+     * protected override void Awake()
+     * {
+     *     base.Awake();
+     *     //Your code goes here
+     * }
+     * */
+
+    protected virtual void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this as T;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this as T)
+        {
+            Destroy(gameObject);
+        }
+        else { DontDestroyOnLoad(gameObject); }
+    }
+
+}
