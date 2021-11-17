@@ -22,8 +22,12 @@ public class SoundManager : Singleton<SoundManager>
     {
         try
         {
-            SoundParam sp = Array.Find(sounds, sound => sound.name.Equals(name));
+            if(GetComponent<AudioSource>() != null)
+            {
+                Destroy(GetComponent<AudioSource>());
+            }
 
+            SoundParam sp = Array.Find(sounds, sound => sound.name.Equals(name));
 
             //Si vide, on l'initialise (il va avoir la position de l'objet child)
             if (sp.audioSource == null)
