@@ -1,0 +1,237 @@
+
+
+{
+    "passages": [
+      {
+        "text": "L'inconnue approche [[sa main]] du casque de votre combinaison.",
+        "links": [
+          {
+            "name": "sa main",
+            "link": "sa main",
+            "pid": "2"
+          }
+        ],
+        "name": "Start",
+        "pid": "1",
+        "position": {
+          "x": "924",
+          "y": "436"
+        }
+      },
+      {
+        "text": "//Elle pose sa main sur la visière de votre scaphandre, et sa voix résonne dans toute votre combinaison. C'est une voix rassurante, qui ne laisse percevoir aucune animosité de sa part.//\n\n\"- N’aie pas peur. Je ne te veux aucun mal. Je m’appelle [[Noah]], je cherche simplement à te parler. \n\nPeux-tu [[m’accorder quelques instants]] ?\"\n\n//Bien que vous ne la connaissiez pas, ces paroles vous rassurent.//",
+        "links": [
+          {
+            "name": "Noah",
+            "link": "Noah",
+            "pid": "3"
+          },
+          {
+            "name": "m’accorder quelques instants",
+            "link": "m’accorder quelques instants",
+            "pid": "4"
+          }
+        ],
+        "name": "sa main",
+        "pid": "2",
+        "position": {
+          "x": "913",
+          "y": "584"
+        }
+      },
+      {
+        "text": "//Vous observez [[Noah->sa main]]. Les reflets du soleil sur la visière de sa combinaison vous empêchent de distinguer correctement son visage, mais vous arrivez à deviner les traits d'une femme plus âgée que vous, peut-être d'une quinzaine d'années.\n\nSa combinaison est différente de la vôtre, plus usée, moins bien entretenue et surtout d'un vert contrastant avec le bleu que les membres de l'Association arborent fièrement lors de leurs déplacements.//",
+        "links": [
+          {
+            "name": "Noah",
+            "link": "sa main",
+            "pid": "2"
+          }
+        ],
+        "name": "Noah",
+        "pid": "3",
+        "position": {
+          "x": "795",
+          "y": "731"
+        }
+      },
+      {
+        "text": "//Bien que méfiante, vous acquiescez d'un signe de tête. A votre tour, vous actionnez le ruban se trouvant sur votre torse, et posez votre main sur la combinaison de Noah.//\n\n\"- Que veux-tu ? Et que fais-tu ici ? Cette route est seulement empruntée par les membres de l’Association en temps normal, et ta combinaison m’indique que tu y es clairement étrangère. Je n’ai [[plus assez de nourriture pour la partager->Suivant]], si c’est cela que tu souhaites.\"\n",
+        "links": [
+          {
+            "name": "plus assez de nourriture pour la partager",
+            "link": "Suivant",
+            "pid": "5"
+          }
+        ],
+        "name": "m’accorder quelques instants",
+        "pid": "4",
+        "position": {
+          "x": "990",
+          "y": "742"
+        }
+      },
+      {
+        "text": "//La voix de Noah résonne à nouveau dans votre combinaison. //\n\"- Rassure-toi, je ne veux pas de nourriture. Je t’attendais, je suis restée postée depuis deux jours dans une des [[ruines]] se trouvant non loin d’ici. Je souhaite te parler de la mission qui t’as été confiée par [[l’Association]]. Tu reviens de [[là-bas]], n’est-ce pas ?\" ",
+        "links": [
+          {
+            "name": "ruines",
+            "link": "ruines",
+            "pid": "6"
+          },
+          {
+            "name": "l’Association",
+            "link": "l’Association",
+            "pid": "7"
+          },
+          {
+            "name": "là-bas",
+            "link": "là-bas",
+            "pid": "8"
+          }
+        ],
+        "name": "Suivant",
+        "pid": "5",
+        "position": {
+          "x": "998",
+          "y": "891"
+        }
+      },
+      {
+        "text": "//En regardant autour de vous, vous apercevez au loin ce qui ressemble vaguement à un bâtiment, aux trois quarts effondré. La plupart de ces ruines sont occupées aujourd'hui par des insectes y aillant établi leurs nids. \n\nLa mission de cette [[Noah->Suivant]] est-elle si importante pour qu'elle se risque à se cacher dans un tel endroit ?//",
+        "links": [
+          {
+            "name": "Noah",
+            "link": "Suivant",
+            "pid": "5"
+          }
+        ],
+        "name": "ruines",
+        "pid": "6",
+        "position": {
+          "x": "848",
+          "y": "1041"
+        }
+      },
+      {
+        "text": "\"- Comment sais-tu que je fais partie de l'Association ? Je ne me rappelle pas t y avoir jamais croisée.\"\n[[Suivant 2]] ",
+        "links": [
+          {
+            "name": "Suivant 2",
+            "link": "Suivant 2",
+            "pid": "9"
+          }
+        ],
+        "name": "l’Association",
+        "pid": "7",
+        "position": {
+          "x": "1003",
+          "y": "1039"
+        }
+      },
+      {
+        "text": "\"Jah'Nah ? [[Oui->Suivant 2]], je viens de terminer un voyage. Puisse la personne que j’y ai accompagnée y trouver la paix.\"\n",
+        "links": [
+          {
+            "name": "Oui",
+            "link": "Suivant 2",
+            "pid": "9"
+          }
+        ],
+        "name": "là-bas",
+        "pid": "8",
+        "position": {
+          "x": "1148",
+          "y": "1041"
+        }
+      },
+      {
+        "text": "\"- La couleur de ta combinaison ne m'a pas trompée. Je souhaite te parler de Jah'Nah et de ta mission. [[Prend ce ruban]], et écoute-le avant de retourner à Laïnoba. Tu as encore deux jours de voyage avant d'y arriver, si tu as écouté la cassette d'ici-là, tu sauras comment [[m'y retrouver.]]\"",
+        "links": [
+          {
+            "name": "Prend ce ruban",
+            "link": "Prend ce ruban",
+            "pid": "10"
+          },
+          {
+            "name": "m'y retrouver.",
+            "link": "m'y retrouver.",
+            "pid": "11"
+          }
+        ],
+        "name": "Suivant 2",
+        "pid": "9",
+        "position": {
+          "x": "1079",
+          "y": "1179"
+        }
+      },
+      {
+        "text": "//L'inconnue vous tend un ruban. D'ordinaire, ils sont enroulés sur eux-mêmes et encastrés dans la combinaison de leur propriétaire. Ils servent à discuter lorsque l'on rencontre des gens en dehors de la ville, où l'air est irrespirable pour les Humains. \n\nIl est très rare de voir un ruban en dehors de la combinaison de son proriétaire, car ceux-ci sont uniques et irremplaçables. \n\nCela vous fait vous questionner sur l'origine de l'objet : [[comment est-il arrivé en possession]] de cette étrange personne ?\n\nVous saisissez le ruban, et le rangez dans une des sacoches de votre [[véhicule de transport]].//",
+        "links": [
+          {
+            "name": "comment est-il arrivé en possession",
+            "link": "comment est-il arrivé en possession",
+            "pid": "12"
+          },
+          {
+            "name": "véhicule de transport",
+            "link": "véhicule de transport",
+            "pid": "13"
+          }
+        ],
+        "name": "Prend ce ruban",
+        "pid": "10",
+        "position": {
+          "x": "961",
+          "y": "1328"
+        }
+      },
+      {
+        "text": "//Vous ne comprenez pas tout, mais vous [[acquiescez->Prend ce ruban]]. Effectivement, votre véhicule est plus lent que le glider de votre interlocutrice. Il faut dire qu'il est taillé pour le transport de personnes âgées, et principalement aménagé pour le confort de ces dernières. \n\nCela rend les voyages vers Jah'Nah relativement confortables, bien que très longs.//",
+        "links": [
+          {
+            "name": "acquiescez",
+            "link": "Prend ce ruban",
+            "pid": "10"
+          }
+        ],
+        "name": "m'y retrouver.",
+        "pid": "11",
+        "position": {
+          "x": "1202",
+          "y": "1328"
+        }
+      },
+      {
+        "text": "//Vous vous apprêtez à enregistrer votre question pour la poser à Noah, mais lorsque vous vous retournez, vous ne voyez plus que la traînée de lumière de son glider. Le scintillement bleuté trace la route [[en direction de Laïnoba.->véhicule de transport]]//",
+        "links": [
+          {
+            "name": "en direction de Laïnoba.",
+            "link": "véhicule de transport",
+            "pid": "13"
+          }
+        ],
+        "name": "comment est-il arrivé en possession",
+        "pid": "12",
+        "position": {
+          "x": "887",
+          "y": "1478"
+        }
+      },
+      {
+        "text": "Vous remontez dans votre véhicule et redémarrez le moteur. Qu'est-ce qu'une civile faisait sur le chemin de Jah'Nah ? Vous jetez un oeil aux sacs se balançant sur les côtés de votre véhicule, au rythme lent des cahots de la route. Que peut-il y avoir d'enregistré sur ce ruban ? \n\nExténuée par votre journée, vous profiterez de votre campement du soir pour écouter son contenu.",
+        "name": "véhicule de transport",
+        "pid": "13",
+        "position": {
+          "x": "1105",
+          "y": "1514"
+        }
+      }
+    ],
+    "name": "Laïnoba, la rencontre",
+    "startnode": "1",
+    "creator": "Twine",
+    "creator-version": "2.3.15",
+    "ifid": "479DCACE-4E43-4956-A94D-23B9A2C3C731"
+}

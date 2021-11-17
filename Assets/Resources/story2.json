@@ -1,0 +1,122 @@
+
+
+{
+    "passages": [
+      {
+        "text": "\n\n[[Inspecter A]]\n[[Inspecter B]]\n\nbIsBranched = $bIsBranched",
+        "links": [
+          {
+            "name": "Inspecter A",
+            "link": "Inspecter A",
+            "pid": "2"
+          },
+          {
+            "name": "Inspecter B",
+            "link": "Inspecter B",
+            "pid": "3"
+          }
+        ],
+        "name": "Initial",
+        "pid": "1",
+        "position": {
+          "x": "924",
+          "y": "413"
+        }
+      },
+      {
+        "text": "(set: $bIsBranched to \"false\")\n[[Vous avez débranché B->Initial]]\nbIsBranched = $bIsBranched",
+        "links": [
+          {
+            "name": "Vous avez débranché B",
+            "link": "Initial",
+            "pid": "1"
+          }
+        ],
+        "name": "Inspecter A",
+        "pid": "2",
+        "position": {
+          "x": "675",
+          "y": "597"
+        }
+      },
+      {
+        "text": "(if: $bIsBranched is \"false\")[ gfdgfd [[Brancher B]] gfdhgf (if: $bIsBranched is \"true\")[ Salut ] ]\n[[Visualiser B]]\n\nbIsBranched = $bIsBranched",
+        "links": [
+          {
+            "name": "Brancher B",
+            "link": "Brancher B",
+            "pid": "5"
+          },
+          {
+            "name": "Visualiser B",
+            "link": "Visualiser B",
+            "pid": "4"
+          }
+        ],
+        "name": "Inspecter B",
+        "pid": "3",
+        "position": {
+          "x": "965",
+          "y": "564"
+        }
+      },
+      {
+        "text": "(if: $bIsBranched is \"false\")[ [[Il faudrait rebrancher B->Inspecter B]] ]\n(else:)[ [[RAS->Initial]] ]\n\nbIsBranched = $bIsBranched",
+        "links": [
+          {
+            "name": "Il faudrait rebrancher B",
+            "link": "Inspecter B",
+            "pid": "3"
+          },
+          {
+            "name": "RAS",
+            "link": "Initial",
+            "pid": "1"
+          }
+        ],
+        "name": "Visualiser B",
+        "pid": "4",
+        "position": {
+          "x": "849",
+          "y": "714"
+        }
+      },
+      {
+        "text": "(set: $bIsBranched to \"true\")\n[[B est branché->Initial]]\n\nbIsBranched = $bIsBranched",
+        "links": [
+          {
+            "name": "B est branché",
+            "link": "Initial",
+            "pid": "1"
+          }
+        ],
+        "name": "Brancher B",
+        "pid": "5",
+        "position": {
+          "x": "1070",
+          "y": "708"
+        }
+      },
+      {
+        "text": "(set: $bIsBranched to \"true\")\n\n[[Lancer l'inspection->Initial]]",
+        "links": [
+          {
+            "name": "Lancer l'inspection",
+            "link": "Initial",
+            "pid": "1"
+          }
+        ],
+        "name": "Passage sans titre",
+        "pid": "6",
+        "position": {
+          "x": "913",
+          "y": "247"
+        }
+      }
+    ],
+    "name": "blabla",
+    "startnode": "6",
+    "creator": "Twine",
+    "creator-version": "2.3.15",
+    "ifid": "1D13EE6C-D2B7-4B74-BD70-313AD78B798A"
+  }  
