@@ -18,7 +18,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
     {
         storyNodes = ImportTwison._instance.storyNodes.passages;
 
-        currentNode = ImportTwison._instance.storyNodes.passages[0];
+        currentNode = ImportTwison._instance.storyNodes.passages[15];
 
         currentVariables = ImportTwison._instance.variableDictionnary;
 
@@ -120,18 +120,23 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         List<int> listIndexElseConditions = HandleString.AllIndexesOf(currentNode.text, "(else:)");
 
         int initalListIndexIfCount = listIndexIfConditions.Count;
-
+        Debug.Log("Nombre de if : " + listIndexIfConditions.Count);
         if (listIndexIfConditions != null)
         {
             for (var i = 0; i < listIndexIfConditions.Count; i++)
             {
+                Debug.Log("Index : " + i);
+
                 if (i < HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
                 {
+                    Debug.Log("Index : " + i);
                     verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, i);
                 }
+                Debug.Log("Nombre de if : " + HandleString.AllIndexesOf(currentNode.text, "(if: $").Count);
 
-                if(i!= 0 && i == HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
+                if (i!= 0 && i == HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
                 {
+                    Debug.Log("Index : " + i);
                     verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, i-1);
                 }
             }
@@ -154,10 +159,13 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         }
 
         string contentVariable = currentNode.text.Substring(listIndexIfConditions[index], System.Math.Abs((indexEndifParenthesis + 1) - listIndexIfConditions[index]));
+        Debug.Log("Content variable :" + contentVariable);
+
         string variableName = HandleString.getBetween(contentVariable, "(if: $", " is");
         string variablePotentialValue = HandleString.getBetween(contentVariable, "is \"", "\")");
 
-        string content = HandleString.getBetween(currentNode.text, contentVariable + "[", " ]");
+        string content = getContentOfIf(currentNode.text, HandleString.getBetween(currentNode.text, contentVariable + "[", " ]"));
+        Debug.Log("Content :" + content);
 
         if (currentVariables.ContainsKey(variableName))
         {
@@ -197,5 +205,17 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         }
 
         return 0;
+    }
+
+    private string getContentOfIf(string text, string contentVariable, int occurences = 0)
+    {
+        string result = contentVariable;
+
+        if (contentVariable.IndexOf("(if: $") != -1)
+        {
+            result = contentVariable + getContentOfIf(text, HandleString.getBetween(currentNode.text, contentVariable + " ]", " ]"), occurences + 1);
+        }
+
+        return result;
     }
 }

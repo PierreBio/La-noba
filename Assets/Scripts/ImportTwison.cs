@@ -218,4 +218,22 @@ public static class HandleString
         }
         return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
     }
+
+    public static List<string> SplitAtOccurence(this string input, char separator, int occurence)
+    {
+        var parts = input.Split(separator);
+        var partlist = new List<string>();
+        var result = new List<string>();
+        for (int i = 0; i < parts.Length; i++)
+        {
+            if (partlist.Count == occurence)
+            {
+                result.Add(string.Join(separator.ToString(), partlist));
+                partlist.Clear();
+            }
+            partlist.Add(parts[i]);
+            if (i == parts.Length - 1) result.Add(string.Join(separator.ToString(), partlist)); // if no more parts, add the rest
+        }
+        return result;
+    }
 }

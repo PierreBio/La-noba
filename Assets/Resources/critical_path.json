@@ -3,11 +3,11 @@
 {
     "passages": [
       {
-        "text": "[[Vidéo d'introduction->2 - Le Yak tombe en panne]]\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsPushedAtLeastOnce to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")",
+        "text": "[[Vidéo d'introduction->Le Yak tombe en panne]]\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsPushedAtLeastOnce to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")",
         "links": [
           {
             "name": "Vidéo d'introduction",
-            "link": "2 - Le Yak tombe en panne",
+            "link": "Le Yak tombe en panne",
             "pid": "2"
           }
         ],
@@ -27,7 +27,7 @@
             "pid": "3"
           }
         ],
-        "name": "2 - Le Yak tombe en panne",
+        "name": "Le Yak tombe en panne",
         "pid": "2",
         "position": {
           "x": "410",
