@@ -1,6 +1,7 @@
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,7 +19,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
     {
         storyNodes = ImportTwison._instance.storyNodes.passages;
 
-        currentNode = ImportTwison._instance.storyNodes.passages[15];
+        currentNode = ImportTwison._instance.storyNodes.passages[0];
 
         currentVariables = ImportTwison._instance.variableDictionnary;
 
@@ -64,11 +65,38 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     private void displayCurrentNode()
     {
-        //AVANT LE DISPLAY ON DOIT DISSIMULER CERTAINES VALEURS (LES DECLARATIONS DE CERTAINES VARIABLES) 
+        initNode(currentNode);
 
-        //DURANT LE CHANGEMENT DE NOEUD ON VERIFIE SI ON DOIT CHANGER LA VALEUR DE CERTAINES VARIABLES 
+        //PARCOURT TOUS LES IFS
+        List<int> listIndexIfConditions = HandleString.AllIndexesOf(currentNode.text, "(if: $");
+        List<int> listEndifParenthesis = HandleString.AllIndexesOf(currentNode.text, ")");
+        List<int> listIndexElseConditions = HandleString.AllIndexesOf(currentNode.text, "(else:)");
 
-        //NOTAMMENT POUR EMPÊCHER OU PERMETTRE L'AFFICHAGE DE CERTAINS EMBRANCHEMENTS
+        List<string> listElementsToDelete = new List<string>();
+
+        int initalListIndexIfCount = listIndexIfConditions.Count;
+        if (listIndexIfConditions != null)
+        {
+            for (var i = 0; i < listIndexIfConditions.Count; i++)
+            {
+                if (i < HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
+                {
+                    verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, listElementsToDelete, i);
+                }
+
+                if (i!= 0 && i == HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
+                {
+                    verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, listElementsToDelete, i -1);
+                }
+            }
+        }
+
+        for (var i = 0; i < listElementsToDelete.Count; i++)
+        {
+            currentNode.text = currentNode.text.Replace(listElementsToDelete[i], "");
+        }
+
+        currentNode.text = currentNode.text.Replace(" ]", "");
 
         List<int> listIndexVariableDefinitions = HandleString.AllIndexesOf(currentNode.text, "(set: $");
         List<int> listEndParenthesis = HandleString.AllIndexesOf(currentNode.text, ")");
@@ -90,10 +118,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                 }
 
                 string contentVariable = currentNode.text.Substring(listIndexVariableDefinitions[i], System.Math.Abs((indexEndParenthesis + 1) - listIndexVariableDefinitions[i]));
-
                 string variableName = HandleString.getBetween(contentVariable, "(set: $", " to");
-
-
                 string variableValue = HandleString.getBetween(contentVariable, "to \"", "\")");
 
                 if (currentVariables.ContainsKey(variableName)) //ON ATTRIBUT LA NOUVELLE VALEUR A NOTRE VARIABLE
@@ -114,38 +139,10 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
             }
         }
 
-        //GET ALL IFS
-        List<int> listIndexIfConditions = HandleString.AllIndexesOf(currentNode.text, "(if: $");
-        List<int> listEndifParenthesis = HandleString.AllIndexesOf(currentNode.text, ")");
-        List<int> listIndexElseConditions = HandleString.AllIndexesOf(currentNode.text, "(else:)");
-
-        int initalListIndexIfCount = listIndexIfConditions.Count;
-        Debug.Log("Nombre de if : " + listIndexIfConditions.Count);
-        if (listIndexIfConditions != null)
-        {
-            for (var i = 0; i < listIndexIfConditions.Count; i++)
-            {
-                Debug.Log("Index : " + i);
-
-                if (i < HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
-                {
-                    Debug.Log("Index : " + i);
-                    verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, i);
-                }
-                Debug.Log("Nombre de if : " + HandleString.AllIndexesOf(currentNode.text, "(if: $").Count);
-
-                if (i!= 0 && i == HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
-                {
-                    Debug.Log("Index : " + i);
-                    verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, i-1);
-                }
-            }
-        }
-
         GetComponent<TMPro.TextMeshProUGUI>().text = currentNode.text;
     }
 
-    private int verifyCondition(List<int> listIndexIfConditions, List<int>  listEndifParenthesis, List<int> listIndexElseConditions, int index, int loop = 0)
+    private int verifyCondition(List<int> listIndexIfConditions, List<int>  listEndifParenthesis, List<int> listIndexElseConditions, List<string> listElementsToDelete, int index, int loop = 0)
     {
         int indexEndifParenthesis = 0;
 
@@ -159,13 +156,10 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         }
 
         string contentVariable = currentNode.text.Substring(listIndexIfConditions[index], System.Math.Abs((indexEndifParenthesis + 1) - listIndexIfConditions[index]));
-        Debug.Log("Content variable :" + contentVariable);
-
         string variableName = HandleString.getBetween(contentVariable, "(if: $", " is");
         string variablePotentialValue = HandleString.getBetween(contentVariable, "is \"", "\")");
 
         string content = getContentOfIf(currentNode.text, HandleString.getBetween(currentNode.text, contentVariable + "[", " ]"));
-        Debug.Log("Content :" + content);
 
         if (currentVariables.ContainsKey(variableName))
         {
@@ -173,32 +167,19 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
             {
                 if (content.IndexOf("(if: $") != -1)
                 {
-                    verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, index + 1, loop + 1);
+                    verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, listElementsToDelete, index + 1, loop + 1);
                     listIndexIfConditions.RemoveAt(index + 1);
                 }
 
-                //On réactualise les nouvelles positions
-                contentVariable = currentNode.text.Substring(listIndexIfConditions[index], System.Math.Abs((indexEndifParenthesis + 1) - listIndexIfConditions[index]));
-                variableName = HandleString.getBetween(contentVariable, "(if: $", " is");
-                variablePotentialValue = HandleString.getBetween(contentVariable, "is \"", "\")");
-
-                content = HandleString.getBetween(currentNode.text, contentVariable + "[", " ]");
-
-                int indexForContentToDelete = listIndexIfConditions[index] + contentVariable.Length + 1 + content.Length + 1;
-                currentNode.text = currentNode.text.Remove(indexForContentToDelete, 1);
-                currentNode.text = currentNode.text.Replace(contentVariable + "[", "");
+                listElementsToDelete.Add(contentVariable + "[");
 
                 return loop;
             }
             else
             {
                 string finalContentToDelete = currentNode.text.Substring(listIndexIfConditions[index], contentVariable.Length + 1 + content.Length + 2);
-                currentNode.text = currentNode.text.Replace(finalContentToDelete, "");
 
-                while((currentNode.text.IndexOf("(if: $") > currentNode.text.IndexOf(" ]")) || (currentNode.text.IndexOf("(if: $") == -1 && currentNode.text.IndexOf(" ]") != -1))
-                {
-                    currentNode.text = HandleString.ReplaceFirst(currentNode.text, " ]", "");
-                }
+                listElementsToDelete.Add(finalContentToDelete);
 
                 return loop;
             }
@@ -217,5 +198,80 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         }
 
         return result;
+    }
+
+    private void initNode(Node node)
+    {
+        //PARCOURT TOUS LES STRING ENTRE // POUR METTRE DE L'ITALIQUE
+        List<int> listItalicTagIndexes = HandleString.AllIndexesOf(node.text, "//");
+        List<string> listItalicTextToReplace = new List<string>();
+        List<string> listItalicTextReplacement = new List<string>();
+
+        if (listItalicTagIndexes != null)
+        {
+            for (var i = 0; i < listItalicTagIndexes.Count; i += 2)
+            {
+                string toReplace = HandleString.getBetweenIndexes(
+                    node.text,
+                    listItalicTagIndexes[i],
+                    listItalicTagIndexes[i + 1] + 2
+                    );
+
+                string replacement = "<i>" + HandleString.getBetweenIndexes(
+                    node.text,
+                    listItalicTagIndexes[i] + 2 + (i / 2 * 3),
+                    listItalicTagIndexes[i + 1] + (i / 2 * 3)
+                    ) + "</i>";
+
+                listItalicTextToReplace.Add(toReplace);
+                listItalicTextReplacement.Add(replacement);
+            }
+        }
+
+        for (var i = 0; i < listItalicTextReplacement.Count; i++)
+        {
+            node.text = node.text.Replace(listItalicTextToReplace[i], listItalicTextReplacement[i]);
+        }
+
+        //PARCOURS TOUS LES STRING ENTRE [[ ]] POUR MODIFIER LE FORMAT ET METTRE DE LA COULEUR + UN LIEN
+        List<int> listIndexStart = HandleString.AllIndexesOf(node.text, "[[");
+        List<int> listIndexEnd = HandleString.AllIndexesOf(node.text, "]]");
+
+        List<string> listRawTextClickable = new List<string>();
+        List<string> listLinkClickable = new List<string>();
+        List<string> listTextClickable = new List<string>();
+
+        if (listIndexStart != null)
+        {
+            for (var i = 0; i < listIndexStart.Count; i++)
+            {
+                string rawOccurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i], listIndexEnd[i] + 2);
+                string linkOccurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]);
+                string occurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]);
+
+                if (occurence.IndexOf("->") != -1)
+                {
+                    linkOccurence = HandleString.getAfter(occurence, "->");
+                    occurence = occurence.Substring(0, occurence.IndexOf("->"));
+                }
+
+                listRawTextClickable.Add(rawOccurence);
+                listLinkClickable.Add(linkOccurence);
+                listTextClickable.Add(occurence);
+            }
+        }
+
+        for (var i = 0; i < listRawTextClickable.Count; i++)
+        {
+            node.text = node.text.Replace(
+                listRawTextClickable[i],
+                "<link=" + listLinkClickable[i] + "><b><color=blue>" + listTextClickable[i] + "</color></b></link>"
+                );
+        }
+
+        node.text = node.text.Replace("set:$", "set: $");
+        node.text = node.text.Replace("(if:$", "(if: $");
+        node.text = Regex.Replace(node.text, @"\s+", " ");
+        node.text = node.text.Replace("]", " ]");
     }
 }

@@ -506,7 +506,7 @@
         }
       },
       {
-        "text": "(if: $aIsTwisted is \"true\")[ [[On a réussi à réparer A !->Sortir du vaisseau]] (set: $aIsRepaired to \"true\") ]\n(if: $aIsTwisted is \"false\")[ \n\t(if:$aIsPushedAtLeastOnce is \"true\")[ \n\t[[Vous avez cassé B->Sortir du vaisseau]] (set: $bIsBranched to \"false\") (set: $bIsBrokenAtLeastOnce to \"true\") ] \n\t(if:$aIsPushedAtLeastOnce is \"false\")[ [[Pousser une seconde fois->Pousser]] ] (set:$aIsPushedAtLeastOnce to \"true\") [[Inspecter A]] ]",
+        "text": "(if: $aIsTwisted is \"true\")[ [[On a réussi à réparer A !->Sortir du vaisseau]] (set: $aIsRepaired to \"true\") ]\n(if: $aIsTwisted is \"false\")[ \n\t(if: $aIsPushedAtLeastOnce is \"true\")[ \n\t[[Vous avez cassé B->Sortir du vaisseau]] (set: $bIsBranched to \"false\") (set: $bIsBrokenAtLeastOnce to \"true\") ] \n\t(if: $aIsPushedAtLeastOnce is \"false\")[ [[Pousser une seconde fois->Pousser]] ] (set: $aIsPushedAtLeastOnce to \"true\") [[Inspecter A]] ]",
         "links": [
           {
             "name": "On a réussi à réparer A !",
