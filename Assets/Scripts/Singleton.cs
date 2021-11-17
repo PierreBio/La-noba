@@ -20,14 +20,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
         return instance;
     }
 
-    /* IMPORTANT!!! To use Awake in a derived class you need to do it this way
-     * protected override void Awake()
-     * {
-     *     base.Awake();
-     *     //Your code goes here
-     * }
-     * */
-
     protected virtual void Awake()
     {
         if (instance == null)
