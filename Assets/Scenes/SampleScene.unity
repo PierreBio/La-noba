@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5142f3fa46d39254f8d92df839b50771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFile: {fileID: 4900000, guid: c78b02a7295dfa94ba415ea0971f3544, type: 3}
+  jsonFile: {fileID: 4900000, guid: 50f3cd2ac1fff3e41b29c4d8cad87382, type: 3}
   storyNodes:
     passages: []
 --- !u!4 &720427536
