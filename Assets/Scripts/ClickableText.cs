@@ -11,7 +11,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     private Node[] storyNodes;
 
-    private Node currentNode;
+    public Node currentNode;
 
     private IDictionary<string, string> currentVariables = new Dictionary<string, string>();
 
