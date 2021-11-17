@@ -44,7 +44,7 @@ public class ImportTwison : MonoBehaviour
                                 }
                             }
 
-                            string contentVariable = node.text.Substring(listIndexVariableDefinitions[i], indexEndParenthesis + 1);
+                            string contentVariable = node.text.Substring(listIndexVariableDefinitions[i], System.Math.Abs((indexEndParenthesis + 1) - listIndexVariableDefinitions[i]));
 
                             string variableName = HandleString.getBetween(contentVariable, "(set: $", " to");
                             string variableValue = HandleString.getBetween(contentVariable, "to \"", "\")");
@@ -60,7 +60,9 @@ public class ImportTwison : MonoBehaviour
                     }
 
                     //PARCOURT TOUS LES STRING ENTRE // POUR METTRE DE L'ITALIQUE
-                    /*List<int> listItalicTagIndexes = HandleString.AllIndexesOf(node.text, "//");
+                    List<int> listItalicTagIndexes = HandleString.AllIndexesOf(node.text, "//");
+                    List<string> listItalicTextToReplace = new List<string>();
+                    List<string> listItalicTextReplacement = new List<string>();
 
                     if (listItalicTagIndexes != null)
                     {
@@ -80,9 +82,15 @@ public class ImportTwison : MonoBehaviour
 
                             Debug.Log(replacement);
 
-                            node.text = node.text.Replace(toReplace, replacement);
+                            listItalicTextToReplace.Add(toReplace);
+                            listItalicTextReplacement.Add(replacement);
                         }
-                    }*/
+                    }
+
+                    for (var i = 0; i < listItalicTextReplacement.Count; i++)
+                    {
+                        node.text = node.text.Replace(listItalicTextToReplace[i], listItalicTextReplacement[i]);
+                    }
 
                     //PARCOURS TOUS LES STRING ENTRE [[ ]] POUR MODIFIER LE FORMAT ET METTRE DE LA COULEUR + UN LIEN
                     List<int> listIndexStart = HandleString.AllIndexesOf(node.text, "[[");
@@ -201,7 +209,7 @@ public static class HandleString
             int Start, End;
             Start = strSource.IndexOf(strStart, 0) + strStart.Length;
             End = strSource.IndexOf(strEnd, Start);
-            return strSource.Substring(Start, End - Start);
+            return strSource.Substring(Start, System.Math.Abs(End - Start));
         }
 
         return "";

@@ -18,7 +18,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
     {
         storyNodes = ImportTwison._instance.storyNodes.passages;
 
-        currentNode = ImportTwison._instance.storyNodes.passages[0];
+        currentNode = ImportTwison._instance.storyNodes.passages[17];
 
         currentVariables = ImportTwison._instance.variableDictionnary;
 
@@ -36,7 +36,10 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
             if (linkIndex > -1)
             {
                 var linkInfo = text.textInfo.linkInfo[linkIndex];
-                var linkId = linkInfo.GetLinkID();
+                var linkId = linkInfo.GetLinkText();
+                Debug.Log(linkId);
+                linkId = linkInfo.GetLinkID();
+                Debug.Log(linkId);
 
                 changeCurrentNode(linkId);
             }
@@ -45,30 +48,25 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     private void changeCurrentNode(string newNodeName)
     {
-        int indexNewNodeName = 0;
+        int indexNewNodePid = 0;
 
         foreach(Node node in storyNodes)
         {
             if(node.name == newNodeName)
             {
-                indexNewNodeName = node.pid - 1;
+                indexNewNodePid = node.pid - 1;
                 break;
             }
         }
 
-        //NORMAL COPY DOESNT WORK BECAUSE NODE IS CHANGED BUT NOT REINITIALISED
-        //currentNode = storyNodes[indexNewNodeName];
-
-        //WE HAVE TO MAKE DEEP COPY TO PASS A VARIABLE BY COPY AND NOT BY REFERENCE TO NOT ERASE IT
-        Node existingNode = ImportTwison._instance.storyNodes.passages[indexNewNodeName];
+        Node existingNode = ImportTwison._instance.storyNodes.passages[indexNewNodePid];
         currentNode = DeepCopy.DeepCopyNode(existingNode);
-
+        Debug.Log(currentNode.pid);
         displayCurrentNode();
     }
 
     private void displayCurrentNode()
     {
-        Debug.Log(currentNode.text);
         //AVANT LE DISPLAY ON DOIT DISSIMULER CERTAINES VALEURS (LES DECLARATIONS DE CERTAINES VARIABLES) 
 
         //DURANT LE CHANGEMENT DE NOEUD ON VERIFIE SI ON DOIT CHANGER LA VALEUR DE CERTAINES VARIABLES 
@@ -77,6 +75,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
         List<int> listIndexVariableDefinitions = HandleString.AllIndexesOf(currentNode.text, "(set: $");
         List<int> listEndParenthesis = HandleString.AllIndexesOf(currentNode.text, ")");
+        List<string> listContentVariable = new List<string>();
 
         if (listIndexVariableDefinitions != null)
         {
@@ -93,9 +92,11 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                     }
                 }
 
-                string contentVariable = currentNode.text.Substring(listIndexVariableDefinitions[i], indexEndParenthesis + 1);
+                string contentVariable = currentNode.text.Substring(listIndexVariableDefinitions[i], System.Math.Abs((indexEndParenthesis + 1) - listIndexVariableDefinitions[i]));
 
                 string variableName = HandleString.getBetween(contentVariable, "(set: $", " to");
+
+
                 string variableValue = HandleString.getBetween(contentVariable, "to \"", "\")");
 
                 if (currentVariables.ContainsKey(variableName)) //ON ATTRIBUT LA NOUVELLE VALEUR A NOTRE VARIABLE
@@ -103,10 +104,19 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                     currentVariables[variableName] = variableValue;
                 }
 
-                //ON ENLEVE L'AFFICHAGE DE LA DECLARATION / ASSIGNATION DES VARIABLES
-                currentNode.text = currentNode.text.Replace(contentVariable, "");
+                listContentVariable.Add(contentVariable);
             }
         }
+
+        if (listContentVariable != null)
+        {
+            for (var i = 0; i < listContentVariable.Count; i++)
+            {
+                //ON ENLEVE L'AFFICHAGE DE LA DECLARATION / ASSIGNATION DES VARIABLES
+                currentNode.text = currentNode.text.Replace(listContentVariable[i], "");
+            }
+        }
+        Debug.Log(currentNode.text);
 
         //GET ALL IFS
         List<int> listIndexIfConditions = HandleString.AllIndexesOf(currentNode.text, "(if: $");
@@ -117,14 +127,13 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         {
             for (var i = 0; i < listIndexIfConditions.Count; i++)
             {
-                Debug.Log(i);
-                Debug.Log(currentNode.text);
                 if(i < HandleString.AllIndexesOf(currentNode.text, "(if: $").Count)
                 {
                     verifyCondition(listIndexIfConditions, listEndifParenthesis, listIndexElseConditions, i);
                 }
             }
         }
+        Debug.Log(currentNode.text);
 
         GetComponent<TMPro.TextMeshProUGUI>().text = currentNode.text;
     }
@@ -141,8 +150,6 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                 break;
             }
         }
-        Debug.Log(listIndexIfConditions[index]);
-        Debug.Log(System.Math.Abs((indexEndifParenthesis + 1) - listIndexIfConditions[index]));
 
         string contentVariable = currentNode.text.Substring(listIndexIfConditions[index], System.Math.Abs((indexEndifParenthesis + 1) - listIndexIfConditions[index]));
         string variableName = HandleString.getBetween(contentVariable, "(if: $", " is");
