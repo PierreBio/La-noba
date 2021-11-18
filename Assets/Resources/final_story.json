@@ -307,11 +307,11 @@
       }
     },
     {
-      "text": "//Vous levez la tête des pièces mécaniques dont le reflet vous aveugle, et vous demandez qui peut bien être [[cet inconnue->Qui es-tu ?]] et la \n[[raison de sa présence sur cette route.->Que fais-tu sur cette route ?]]\n\nLes réparations ont l'air bientôt terminées, vous [[espérez que l'étrangère ne vous demande rien en retour de son service.->As-tu besoin de quoi que ce soit en retour ?]] Non pas que vous refuseriez catégoriquement, mais Ben et vous avez besoin de toute la nourriture qu'il vous reste pour effectuer le reste du trajet.//",
+      "text": "//Vous levez la tête des pièces mécaniques dont le reflet vous aveugle, et vous demandez qui peut bien être [[cette inconnue->Qui es tu]] et la [[raison de sa présence sur cette route.->Que fais-tu sur cette route ?]]\n\nLes réparations ont l'air bientôt terminées, vous [[espérez que l'étrangère ne vous demande rien en retour de son service.->As-tu besoin de quoi que ce soit en retour ?]] Non pas que vous refuseriez catégoriquement, mais Ben et vous avez besoin de toute la nourriture qu'il vous reste pour effectuer le reste du trajet.//",
       "links": [
         {
-          "name": "cet inconnue",
-          "link": "Qui es-tu ?",
+          "name": "cette inconnue",
+          "link": "Qui es tu",
           "pid": "19"
         },
         {
@@ -354,7 +354,7 @@
       }
     },
     {
-      "text": "//D'une pression sur le poignet de votre combinaison, vous activez l'enregistrement de votre question, puis posez la main sur le casque de l'étrangère pour lui transmettre. Elle fait de même et bientôt vous entendez sa voix résonner dans votre combinaison.//\n\n\"Je ne vous veux aucun mal, je souhaite seulement vous aider.\" \n\n//Elle se retourne sitôt le message transmis et s'attèle de nouveau à [[réparer votre vaisseau.->Noah vous aide à réparer votre vaisseau]]//",
+      "text": "D'une pression sur le poignet de votre combinaison, vous activez l'enregistrement de votre question, puis posez la main sur le casque de l'étrangère pour lui transmettre. Elle fait de même et bientôt vous entendez sa voix résonner dans votre combinaison.\n\n\"Je ne vous veux aucun mal, je souhaite seulement vous aider.\" \n\n Elle se retourne sitôt le message transmis et s'attèle de nouveau à [[réparer votre vaisseau.->Noah vous aide à réparer votre vaisseau]]",
       "links": [
         {
           "name": "réparer votre vaisseau.",
@@ -362,7 +362,7 @@
           "pid": "17"
         }
       ],
-      "name": "Qui es-tu ?",
+      "name": "Qui es tu",
       "pid": "19",
       "position": {
         "x": "1109",
