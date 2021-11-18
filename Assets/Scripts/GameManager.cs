@@ -29,6 +29,6 @@ public class GameManager : Singleton<GameManager>
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("HichameScene");
     }
 }
