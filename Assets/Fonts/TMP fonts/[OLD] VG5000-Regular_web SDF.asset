@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: VG5000-Regular_web SDF
+  m_Name: '[OLD] VG5000-Regular_web SDF'
   m_EditorClassIdentifier: 
   hashCode: -1523307747
   material: {fileID: -4266289643867384938}
