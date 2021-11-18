@@ -40,6 +40,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                 var linkId = linkInfo.GetLinkText();
                 linkId = linkInfo.GetLinkID();
 
+                triggerEndMenu(linkId);
+
                 changeCurrentNode(linkId);
             }
         }
@@ -300,5 +302,13 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         }
 
         gameObject.AddComponent<TMPro.Examples.TextConsoleSimulator>();
+    }
+
+    private void triggerEndMenu(string link)
+    {
+        if(link == "Ending")
+        {
+            GameManager.GetInstance().GoToEndMenuGame();
+        }
     }
 }

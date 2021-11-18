@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -15,9 +16,18 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
     }
 
+    public void BackToMenuGame()
+    {
+        SceneManager.LoadScene("FirstScene");
+    }
+
+    public void GoToEndMenuGame()
+    {
+        SceneManager.LoadScene("EndScene");
+    }
+
     public void PlayGame()
     {
-        titleScreen.SetActive(false);
-        gameScreen.SetActive(true);
+        SceneManager.LoadScene("SampleScene");
     }
 }
