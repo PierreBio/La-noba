@@ -916,11 +916,11 @@
       }
     },
     {
-      "text": "Laïnoba\n\nUn jeu de :\nPierre Billaud\nHichame Oukdim\nLéo Mirland\n\n[[Retour au menu principal->Jeraï dans son vaisseau avec Ben]]\n\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsPushedAtLeastOnce to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")",
+      "text": "Laïnoba\n\nUn jeu de :\nPierre Billaud\nHichame Oukdim\nLéo Mirland\n\n[[Terminer->Ending]]\n\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsPushedAtLeastOnce to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")",
       "links": [
         {
-          "name": "Retour au menu principal",
-          "link": "Jeraï dans son vaisseau avec Ben",
+          "name": "Terminer",
+          "link": "Ending",
           "pid": "1"
         }
       ],
