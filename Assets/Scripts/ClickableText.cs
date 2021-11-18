@@ -25,6 +25,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     public GameObject bgImg;
 
+    bool hasLaunchedUI = false;
+
     private IDictionary<string, string> currentVariables = new Dictionary<string, string>();
 
     public void Awake()
@@ -75,10 +77,11 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         //Access the Animation clip name
         m_ClipName = m_CurrentClipInfo[0].clip.name;
 
-        if (m_ClipName == LAST_BEGINING_ANIMATION_NAME)
+        if (m_ClipName == LAST_BEGINING_ANIMATION_NAME && !hasLaunchedUI)
         {
             this.displayCurrentNode();
             bgImg.SetActive(true);
+            hasLaunchedUI = true;
         }
     }
 
