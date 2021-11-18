@@ -12,6 +12,7 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] Animator beaconAnimator;
     [SerializeField] Animator noahAnimator;
     [SerializeField] Animator gliderAnimator;
+    [SerializeField] Animator bgAnimator;
 
     const string IS_REPAIRING_YAK = "isRepairingYak";
     const string IS_BEACON_TRIGGERED = "isBeaconTriggered";
@@ -19,9 +20,16 @@ public class AnimationManager : MonoBehaviour
     const string JERAI_IS_FACING_NOAH = "jeraiIsFacingNoah";
     const string JERAI_IS_IN_YAK = "jeraiIsInYak";
 
+    const string BG_START_MOVING = "startMoving";
+
     public void Awake()
     {
         clickableText = FindObjectOfType<ClickableText>();
+    }
+
+    void Start()
+    {
+        bgAnimator.SetBool(BG_START_MOVING, true);
     }
 
     private void Update()
@@ -34,7 +42,6 @@ public class AnimationManager : MonoBehaviour
         if (clickableText != null && clickableText.currentNode != null)
         {
             Debug.Log(clickableText.currentNode.pid);
-            Debug.Log("is beacon triggered " + beaconAnimator.GetBool(IS_BEACON_TRIGGERED));
             switch (clickableText.currentNode.pid)
             {
                 case 3: // Sortir du vaisseau. Jerai repare le vaisseau
