@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
     public void BackToMenuGame()
     {
         SceneManager.LoadScene("FirstScene");
+        SoundManager.GetInstance().Play("main_theme", SoundManager.GetInstance().gameObject);
     }
 
     public void GoToEndMenuGame()
