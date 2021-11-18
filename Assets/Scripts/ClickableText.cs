@@ -261,11 +261,11 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                     listItalicTagIndexes[i + 1] + 2
                     );
 
-                string replacement = "<i>" + HandleString.getBetweenIndexes(
+                string replacement = HandleString.getBetweenIndexes(
                     node.text,
                     listItalicTagIndexes[i] + 2 + (i / 2 * 3),
                     listItalicTagIndexes[i + 1] + (i / 2 * 3)
-                    ) + "</i>";
+                    ) ;
 
                 listItalicTextToReplace.Add(toReplace);
                 listItalicTextReplacement.Add(replacement);
@@ -309,12 +309,13 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         {
             node.text = node.text.Replace(
                 listRawTextClickable[i],
-                "<link=" + listLinkClickable[i] + "><b><color=blue>" + listTextClickable[i] + "</color></b></link>"
+                "<link=" + listLinkClickable[i] + "><b><color=#acc8ff>" + listTextClickable[i] + "</color></b></link>"
                 );
         }
 
         node.text = node.text.Replace("set:$", "set: $");
         node.text = node.text.Replace("(if:$", "(if: $");
+        node.text = node.text.Replace(".", ". ");
         //node.text = Regex.Replace(node.text, @"\s+", " ");
         node.text = node.text.Replace("]", " ]");
     }
