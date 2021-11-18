@@ -13,17 +13,30 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     public Node currentNode;
 
+    public Animator m_Animator;
+
+    private float m_CurrentClipLength;
+
+    private string m_ClipName;
+
+    AnimatorClipInfo[] m_CurrentClipInfo;
+
+    const string LAST_BEGINING_ANIMATION_NAME = "Yak_Stop With Smoke";
+
+    public GameObject bgImg;
+
     private IDictionary<string, string> currentVariables = new Dictionary<string, string>();
 
     public void Awake()
     {
         storyNodes = ImportTwison._instance.storyNodes.passages;
 
-        currentNode = ImportTwison._instance.storyNodes.passages[0];
+        currentNode = ImportTwison._instance.storyNodes.passages[1];
 
         currentVariables = ImportTwison._instance.variableDictionnary;
 
-        this.displayCurrentNode();
+        bgImg.SetActive(false);
+        //this.displayCurrentNode();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -42,6 +55,28 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
                 changeCurrentNode(linkId);
             }
+        }
+    }
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        Debug.Log("display current node :" + m_ClipName == LAST_BEGINING_ANIMATION_NAME);
+        //Fetch the current Animation clip information for the base layer
+        m_CurrentClipInfo = m_Animator.GetCurrentAnimatorClipInfo(0);
+        //Access the current length of the clip
+        m_CurrentClipLength = m_CurrentClipInfo[0].clip.length;
+        //Access the Animation clip name
+        m_ClipName = m_CurrentClipInfo[0].clip.name;
+
+        if (m_ClipName == LAST_BEGINING_ANIMATION_NAME)
+        {
+            this.displayCurrentNode();
+            bgImg.SetActive(true);
         }
     }
 
