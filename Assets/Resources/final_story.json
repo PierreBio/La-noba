@@ -19,7 +19,7 @@
       }
     },
     {
-      "text": "//Le moteur s'est complètement arrêté. C'est étrange, les Yaks sont pourtant extrêmements robustes et le nombre de pannes les concernant se compte sur les doigts d'une main.\n\nVous vous retournez vers votre passager et le rassurez : [[le problème sera vite réglé.->Sortir du vaisseau]]//",
+      "text": "//Le moteur s'est complètement arrêté. C'est étrange, les Yaks sont pourtant extrêmements robustes et le nombre de pannes les concernant se compte sur les doigts d'une main.\n\nVous vous retournez vers votre passager et le rassurez : [[le problème sera vite réglé.->Sortir du vaisseau]]//\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsPushedAtLeastOnce to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")",
       "links": [
         {
           "name": "le problème sera vite réglé.",
@@ -503,7 +503,7 @@
       }
     },
     {
-      "text": "//Vous poussez fermement sur la poignée (if: $aIsTwisted is \"true\")[ ,que vous enfoncez sans effort  dans son emplacement. [[Les réparations ont l'air terminées ici->Sortir du vaisseau]]. (set: $aIsRepaired to \"true\") ](if: $aIsTwisted is \"false\")[ (if:$aIsPushedAtLeastOnce is \"true\")[à nouveau et voyez soudain jaillir un souffle de vapeur provenant de derrière la pompe. Vous avez probablement débranché quelque chose, mais [[quoi ?->Sortir du vaisseau]] (set: $bIsBranched to \"false\") (set: $bIsBrokenAtLeastOnce to \"true\") ] (if:$aIsPushedAtLeastOnce is \"false\")[ et sentez que quelque chose bloque. Peut-être la pièce est-elle simplement capricieuse et vaut-il mieux [[forcer son enclenchement.->Pousser]] Peut-être faut-il aussi [[arrêter->Inspecter A]] et regarder si il y a quelque chose d'autre à faire avant de forcer. ] (set:$aIsPushedAtLeastOnce to \"true\")  ]//",
+      "text": "//Vous poussez fermement sur la poignée (if: $aIsTwisted is \"true\")[ ,que vous enfoncez sans effort  dans son emplacement. [[Les réparations ont l'air terminées ici->Sortir du vaisseau]]. (set: $aIsRepaired to \"true\") ] (if: $aIsTwisted is \"false\")[ (if:$aIsPushedAtLeastOnce is \"true\")[à nouveau et voyez soudain jaillir un souffle de vapeur provenant de derrière la pompe. Vous avez probablement débranché quelque chose, mais [[quoi ?->Sortir du vaisseau]] (set: $bIsBranched to \"false\") (set: $bIsBrokenAtLeastOnce to \"true\") ] (if:$aIsPushedAtLeastOnce is \"false\")[ et sentez que quelque chose bloque. Peut-être la pièce est-elle simplement capricieuse et vaut-il mieux [[forcer son enclenchement.->Pousser]] Peut-être faut-il aussi [[arrêter->Inspecter A]] et regarder si il y a quelque chose d'autre à faire avant de forcer. ] (set:$aIsPushedAtLeastOnce to \"true\")  ]//",
       "links": [
         {
           "name": "Les réparations ont l'air terminées ici",
@@ -582,7 +582,7 @@
       }
     },
     {
-      "text": "//(if: $aIsRepaired is \"true\")[ (if: $bIsBranched is \"true\")[ Vous resserrez les sangles d'un geste ferme mais maîtrisé. Tout a désormais l'air d'être en ordre dans le moteur du véhicule. Vous retournez à l'intérieur du vaisseau et poussez le levier de mise en marche des moteurs.\n\nLa lourde carlingue du Yak décolle et flotte lentement à quelques centimètres du sol. Vous pouvez enfin [[repartir.->Le moteur est réparé]] ] (if: $bIsBranched is \"false\")[ Vous resserrez les sangles d'un geste ferme mais maîtrisé. La système de refroidissement est désormais bien maintenu en place, mais [[le souffle de vapeur->Sortir du vaisseau]] continue de jaillir sans interruption du système de refroidissement.] ]\n(if: $aIsRepaired is \"false\")[ Vous vous apprêtez à resserrer les sangles mais arrêtez votre geste : la [[pompe à réosthèse->Sortir du vaisseau]] est en travers de la course des attaches de maintien. ]//",
+      "text": "//(if: $aIsRepaired is \"true\")[ (if: $bIsBranched is \"true\")[ Vous resserrez les sangles d'un geste ferme mais maîtrisé. Tout a désormais l'air d'être en ordre dans le moteur du véhicule. Vous retournez à l'intérieur du vaisseau et poussez le levier de mise en marche des moteurs.\n\nLa lourde carlingue du Yak décolle et flotte lentement à quelques centimètres du sol. Vous pouvez enfin [[repartir.->Le moteur est réparé]] ] (if: $bIsBranched is \"false\")[ Vous resserrez les sangles d'un geste ferme mais maîtrisé. La système de refroidissement est désormais bien maintenu en place, mais [[le souffle de vapeur->Sortir du vaisseau]] continue de jaillir sans interruption du système de refroidissement.] ]\n (if: $aIsRepaired is \"false\")[ Vous vous apprêtez à resserrer les sangles mais arrêtez votre geste : la [[pompe à réosthèse->Sortir du vaisseau]] est en travers de la course des attaches de maintien. ]//",
       "links": [
         {
           "name": "repartir.",
@@ -916,11 +916,11 @@
       }
     },
     {
-      "text": "Laïnoba\n\nUn jeu de :\nPierre Billaud\nHichame Oukdim\nLéo Mirland\n\n[[Terminer->Ending]]\n\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsPushedAtLeastOnce to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")",
+      "text": "Laïnoba\n\nUn jeu de :\nPierre Billaud\nHichame Oukdim\nLéo Mirland\n\n[[Retour au menu principal->Jeraï dans son vaisseau avec Ben]]\n\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsPushedAtLeastOnce to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")",
       "links": [
         {
-          "name": "Terminer",
-          "link": "Ending",
+          "name": "Retour au menu principal",
+          "link": "Jeraï dans son vaisseau avec Ben",
           "pid": "1"
         }
       ],

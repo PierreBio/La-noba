@@ -1,0 +1,768 @@
+fileFormatVersion: 2
+guid: 7b6b5d66ce9516148afec9bbe164a593
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 983422044048403986
+    second: Yak3 0
+  - first:
+      213: -8535600958051283360
+    second: Yak3 1
+  - first:
+      213: 8995679301474082531
+    second: Yak3 2
+  - first:
+      213: -5353128220709197359
+    second: Yak3 3
+  - first:
+      213: -5929943639312924960
+    second: Yak3 4
+  - first:
+      213: -816212471570473906
+    second: Yak3 5
+  - first:
+      213: -5539006954216291074
+    second: Yak3 6
+  - first:
+      213: -6861538703541295102
+    second: Yak3 7
+  - first:
+      213: 8424563144273483189
+    second: Yak3 8
+  - first:
+      213: 870584949491353122
+    second: Yak3 9
+  - first:
+      213: 5031587888714959490
+    second: Yak3 10
+  - first:
+      213: -5468789201542993687
+    second: Yak3 11
+  - first:
+      213: 2686208776482279637
+    second: Yak3 12
+  - first:
+      213: 6185331273557599758
+    second: Yak3 13
+  - first:
+      213: -8625729159284678295
+    second: Yak3 14
+  - first:
+      213: -704520106186560420
+    second: Yak3 15
+  - first:
+      213: 415762593817453849
+    second: Yak3 16
+  - first:
+      213: 5145714736925966451
+    second: Yak3 17
+  - first:
+      213: 1206750851143115723
+    second: Yak3 18
+  - first:
+      213: 2639491115804226325
+    second: Yak3 19
+  - first:
+      213: 7977610245858167440
+    second: Yak3 20
+  - first:
+      213: -7032946573477333539
+    second: Yak3 21
+  - first:
+      213: -5083318061736797787
+    second: Yak3 22
+  - first:
+      213: -5758200485859308944
+    second: Yak3 23
+  - first:
+      213: 4068810036325723332
+    second: Yak3 24
+  - first:
+      213: -752757079827862730
+    second: Yak3 25
+  - first:
+      213: 2166316063544474189
+    second: Yak3 26
+  - first:
+      213: -7259351220721021349
+    second: Yak3 27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 480
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Yak3 0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21e2bcf7321d5ad00800000000000000
+      internalID: 983422044048403986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e8ed6f6247b8980800000000000000
+      internalID: -8535600958051283360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ee52bdd9a217dc70800000000000000
+      internalID: 8995679301474082531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d9628fce3ed5b5b0800000000000000
+      internalID: -5353128220709197359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 4
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ee7aa0adab94bda0800000000000000
+      internalID: -5929943639312924960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 5
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4c5cc2e41b3ca4f0800000000000000
+      internalID: -816212471570473906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 130
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef40585a58e7123b0800000000000000
+      internalID: -5539006954216291074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 130
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 208a3d237eae6c0a0800000000000000
+      internalID: -6861538703541295102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 130
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b5d4426b8f0ae470800000000000000
+      internalID: 8424563144273483189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 130
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226cb352660f41c00800000000000000
+      internalID: 870584949491353122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 130
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28a430bb68ac3d540800000000000000
+      internalID: 5031587888714959490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 65
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8a9823235fa14b0800000000000000
+      internalID: -5468789201542993687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 65
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d053ca66a4574520800000000000000
+      internalID: 2686208776482279637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 65
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06e382a506b6d550800000000000000
+      internalID: 6185331273557599758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 65
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 961ab1cd7014b4880800000000000000
+      internalID: -8625729159284678295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5c21a532ba0936f0800000000000000
+      internalID: -704520106186560420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 16
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 65
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 915626350e515c500800000000000000
+      internalID: 415762593817453849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37007f14a40496740800000000000000
+      internalID: 5145714736925966451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 18
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc329c6618d3fb010800000000000000
+      internalID: 1206750851143115723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 19
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5137f496f2b51a420800000000000000
+      internalID: 2639491115804226325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a84ec504a26be60800000000000000
+      internalID: 7977610245858167440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 21
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd535938a54f56e90800000000000000
+      internalID: -7032946573477333539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 195
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a9d9d9c72d6479b0800000000000000
+      internalID: -5083318061736797787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 130
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07acfd69a23c610b0800000000000000
+      internalID: -5758200485859308944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 24
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cc2db9ab21577830800000000000000
+      internalID: 4068810036325723332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 25
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63b23b69c6bad85f0800000000000000
+      internalID: -752757079827862730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 26
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4a7ace6bfc401e10800000000000000
+      internalID: 2166316063544474189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yak3 27
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 65
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5e0025c68a914b90800000000000000
+      internalID: -7259351220721021349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
