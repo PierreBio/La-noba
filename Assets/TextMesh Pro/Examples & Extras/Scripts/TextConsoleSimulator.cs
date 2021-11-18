@@ -37,6 +37,8 @@ namespace TMPro.Examples
         // Event received when the text object has changed.
         void ON_TEXT_CHANGED(Object obj)
         {
+            m_TextComponent = gameObject.GetComponent<TMP_Text>();
+
             hasTextChanged = true;
         }
 
@@ -49,16 +51,14 @@ namespace TMPro.Examples
         {
             textComponent.ForceMeshUpdate();
 
-            TMP_TextInfo textInfo = textComponent.textInfo;
-
-            int totalVisibleCharacters = textInfo.characterCount; // Get # of Visible Character in text object
+            int totalVisibleCharacters = m_TextComponent.textInfo.characterCount; // Get # of Visible Character in text object
             int visibleCount = 0;
 
             while (true)
             {
                 if (hasTextChanged)
                 {
-                    totalVisibleCharacters = textInfo.characterCount; // Update visible character count.
+                    totalVisibleCharacters = m_TextComponent.textInfo.characterCount; // Update visible character count.
                     hasTextChanged = false; 
                 }
 

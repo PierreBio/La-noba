@@ -142,6 +142,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         triggerMusic();
 
         GetComponent<TMPro.TextMeshProUGUI>().text = currentNode.text;
+
+        triggerTyping();
     }
 
     private int verifyCondition(List<int> listIndexIfConditions, List<int>  listEndifParenthesis, List<int> listIndexElseConditions, List<string> listElementsToDelete, int index, int loop = 0)
@@ -273,7 +275,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
         node.text = node.text.Replace("set:$", "set: $");
         node.text = node.text.Replace("(if:$", "(if: $");
-        node.text = Regex.Replace(node.text, @"\s+", " ");
+        //node.text = Regex.Replace(node.text, @"\s+", " ");
         node.text = node.text.Replace("]", " ]");
     }
 
@@ -288,5 +290,15 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         {
             SoundManager.GetInstance().Play("noah_revelations", SoundManager.GetInstance().gameObject);
         }
+    }
+
+    private void triggerTyping()
+    {
+        if(gameObject.GetComponent< TMPro.Examples.TextConsoleSimulator>())
+        {
+            Destroy(gameObject.GetComponent<TMPro.Examples.TextConsoleSimulator>());
+        }
+
+        gameObject.AddComponent<TMPro.Examples.TextConsoleSimulator>();
     }
 }
