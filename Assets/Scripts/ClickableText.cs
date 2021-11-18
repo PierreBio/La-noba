@@ -139,6 +139,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
             }
         }
 
+        triggerMusic();
+
         GetComponent<TMPro.TextMeshProUGUI>().text = currentNode.text;
     }
 
@@ -273,5 +275,18 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         node.text = node.text.Replace("(if:$", "(if: $");
         node.text = Regex.Replace(node.text, @"\s+", " ");
         node.text = node.text.Replace("]", " ]");
+    }
+
+    private void triggerMusic()
+    {
+        if(currentNode.name == "Noah nous barre la route" || currentNode.name == "Noah arrive en aide providentielle")
+        {
+            SoundManager.GetInstance().Play("noah_theme", SoundManager.GetInstance().gameObject);
+        }
+
+        if (currentNode.name == "voix fantomatique")
+        {
+            SoundManager.GetInstance().Play("noah_revelations", SoundManager.GetInstance().gameObject);
+        }
     }
 }
