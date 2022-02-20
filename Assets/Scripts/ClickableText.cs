@@ -335,7 +335,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     private void triggerTyping()
     {
-        if(gameObject.GetComponent< TMPro.Examples.TextConsoleSimulator>())
+        if(gameObject.GetComponent<TMPro.Examples.TextConsoleSimulator>())
         {
             Destroy(gameObject.GetComponent<TMPro.Examples.TextConsoleSimulator>());
         }
