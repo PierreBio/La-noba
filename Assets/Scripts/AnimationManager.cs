@@ -12,6 +12,7 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] Animator beaconAnimator;
     [SerializeField] Animator noahAnimator;
     [SerializeField] Animator gliderAnimator;
+    [SerializeField] Animator bgAnimator;
 
     const string IS_REPAIRING_YAK = "isRepairingYak";
     const string IS_BEACON_TRIGGERED = "isBeaconTriggered";
@@ -19,9 +20,20 @@ public class AnimationManager : MonoBehaviour
     const string JERAI_IS_FACING_NOAH = "jeraiIsFacingNoah";
     const string JERAI_IS_IN_YAK = "jeraiIsInYak";
 
+    const string BG_START_MOVING = "startMoving";
+
+    const string YAK_IS_REPAIRED = "yakIsRepaired";
+
+    const string YAK_IS_MOVING = "yakIsMoving";
+
     public void Awake()
     {
         clickableText = FindObjectOfType<ClickableText>();
+    }
+
+    void Start()
+    {
+        bgAnimator.SetBool(BG_START_MOVING, true);
     }
 
     private void Update()
@@ -34,7 +46,6 @@ public class AnimationManager : MonoBehaviour
         if (clickableText != null && clickableText.currentNode != null)
         {
             Debug.Log(clickableText.currentNode.pid);
-            Debug.Log("is beacon triggered " + beaconAnimator.GetBool(IS_BEACON_TRIGGERED));
             switch (clickableText.currentNode.pid)
             {
                 case 3: // Sortir du vaisseau. Jerai repare le vaisseau
@@ -47,6 +58,8 @@ public class AnimationManager : MonoBehaviour
                     gliderAnimator.SetBool(NOAH_ARRIVED, false);
                     noahAnimator.SetBool(NOAH_ARRIVED, false);
                     beaconAnimator.SetBool(IS_BEACON_TRIGGERED, false);
+                    yakAnimator.SetBool(YAK_IS_MOVING, true);
+                    yakAnimator.SetBool(YAK_IS_REPAIRED, false);
                     break;
                 case 7: //Allumer un beacon. Jerai allume un beacon
                     if (!beaconAnimator.GetBool(IS_BEACON_TRIGGERED))
@@ -59,6 +72,10 @@ public class AnimationManager : MonoBehaviour
                 case 100: // @TODO Jerai discute avec Noah. Jerai en face de Noah
                     jeraiAnimator.SetBool(IS_REPAIRING_YAK, false);
                     jeraiAnimator.SetBool(JERAI_IS_FACING_NOAH, true);
+                break;
+                case 34: // le vaisseau est réparer. On enlève la fumée
+                case 17:
+                    yakAnimator.SetBool(YAK_IS_REPAIRED, true);
                 break;
                 case 99: // @TODO Noah disparait de l'écran
                     gliderAnimator.SetBool(NOAH_ARRIVED, false);

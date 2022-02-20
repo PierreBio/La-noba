@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yak_Idle_With_Glow
+  m_Name: yak_is_moving
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -41,9 +41,9 @@ AnimationClip:
       value: {fileID: -6346840088241380473, guid: 4d35f903069610942b84a7424d54a892, type: 3}
     - time: 0.3
       value: {fileID: -6528747389521375591, guid: 4d35f903069610942b84a7424d54a892, type: 3}
-    - time: 0.45000002
+    - time: 0.45
       value: {fileID: 5551952317667239953, guid: 4d35f903069610942b84a7424d54a892, type: 3}
-    - time: 0.5833334
+    - time: 0.5833333
       value: {fileID: 5551952317667239953, guid: 4d35f903069610942b84a7424d54a892, type: 3}
     - time: 0.73333335
       value: {fileID: -3805166853745765888, guid: 4d35f903069610942b84a7424d54a892, type: 3}
@@ -116,7 +116,7 @@ AnimationClip:
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
-  m_WrapMode: 2
+  m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
