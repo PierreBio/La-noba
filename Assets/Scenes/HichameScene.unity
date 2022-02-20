@@ -543,6 +543,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4069419836454981270, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 4069419836454981270, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: TextPopup_Prefab_01
+      value: 
+      objectReference: {fileID: 22450954, guid: b06f0e6c1dfa4356ac918da1bb32c603, type: 3}
     - target: {fileID: 6141714073461228246, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_IsActive
       value: 1
