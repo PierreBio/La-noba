@@ -22,9 +22,9 @@ public class SoundManager : Singleton<SoundManager>
     {
         try
         {
-            if(GetComponent<AudioSource>() != null)
+            if(sourceObject.GetComponent<AudioSource>() != null)
             {
-                Destroy(GetComponent<AudioSource>());
+                Destroy(sourceObject.GetComponent<AudioSource>());
             }
 
             SoundParam sp = Array.Find(sounds, sound => sound.name.Equals(name));

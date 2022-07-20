@@ -196,6 +196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2416349295318790843, guid: b8b3854539e72a44fbe2447d6b7647ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2941587370997991902, guid: b8b3854539e72a44fbe2447d6b7647ba, type: 3}
       propertyPath: m_Name
       value: TitleScreen
@@ -406,6 +410,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: mouse_over_link
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.data[4].name
+      value: mouse_out_link
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.data[3].pitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.data[4].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.data[3].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.data[3].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 468f1d37da027b747b9e64d7506ba485, type: 3}
+    - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
+      propertyPath: sounds.Array.data[4].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 625545c5570673f45b9afca99c48b318, type: 3}
     - target: {fileID: 1527734102230164777, guid: f94ea7e6da7f58642bf948e009af6efa, type: 3}
       propertyPath: sounds.Array.data[0].spatialBlend
       value: 0

@@ -67,7 +67,9 @@ namespace TMPro.Examples
                 // Clear previous word selection.
                 if (m_selectedWord != -1 && (linkIndex == -1 || linkIndex != m_selectedWord))
                 {
-                    for(int j = 0; j < m_TextMeshPro.textInfo.linkInfo.Length; j++)
+                    SoundManager.GetInstance().Play("mouse_out_link", GameManager.GetInstance().gameObject);
+
+                    for (int j = 0; j < m_TextMeshPro.textInfo.linkInfo.Length; j++)
                     {
                         TMP_LinkInfo linkInfo = m_TextMeshPro.textInfo.linkInfo[j];
 
@@ -102,6 +104,8 @@ namespace TMPro.Examples
 
                 if (linkIndex != -1 && linkIndex != m_selectedWord && !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
                 {
+                    SoundManager.GetInstance().Play("mouse_over_link", GameManager.GetInstance().gameObject);
+
                     m_selectedWord = linkIndex;
 
                     TMP_LinkInfo linkInfo = m_TextMeshPro.textInfo.linkInfo[linkIndex];
