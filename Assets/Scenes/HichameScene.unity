@@ -619,22 +619,101 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255479755124022652, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 255479755124022652, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 255479755124022652, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 576
+      objectReference: {fileID: 0}
+    - target: {fileID: 255479755124022652, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 255479755124022652, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 440
+      objectReference: {fileID: 0}
+    - target: {fileID: 255479755124022652, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833484, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833484, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833484, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833484, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 810
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833484, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 440
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833484, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_text
+      value: "Vous enfilez votre derma et passez le sas. La porte s'ouvre rapidement,
+        et malgr\xE9 l'\xE9pais isolant de votre combinaison, vous sentez imm\xE9diatement
+        la chaleur s\xE8che et \xE9crasante du soleil.\r\n\r\n\xC0 l'arri\xE8re du
+        v\xE9hicule, une fum\xE9e dense s'\xE9chappe d'un fin interstice non loin
+        des r\xE9acteurs. Vous vous en approchez et poussez la surface lisse de la
+        carrosserie. La trappe contenant le c\u0153ur du vaisseau s'ouvre lentement.\r\n\r\nAu
+        premier coup d'\u0153il, vous ne parvenez pas \xE0 identifier la source du
+        probl\xE8me : la pompe \xE0 r\xE9osth\xE8se a l'air bien en place, les tuyaux
+        de refroidissement et les sangles de maintien \xE9galement.\r\n\r\nEst-il
+        bien sage de tenter d'arranger la situation seule ou vaut-il mieux <color=#EF6078>tenter
+        d'alerter quelqu'un</color> en esp\xE9rant que l'on per\xE7oive votre appel
+        \xE0 l'aide ?"
+      objectReference: {fileID: 0}
     - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_fontSize
-      value: 24
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_margin.w
+      value: 0.7550658
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_margin.y
+      value: -0.9223327
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_margin.z
+      value: 0.22601315
       objectReference: {fileID: 0}
     - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 8cb555edd9e180c448265ce5237de206, type: 2}
     - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_lineSpacing
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_fontSizeBase
-      value: 24
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1731501135500153237, guid: 8cb555edd9e180c448265ce5237de206, type: 2}
+      objectReference: {fileID: -8508463839778185635, guid: 8cb555edd9e180c448265ce5237de206, type: 2}
     - target: {fileID: 2774292483174833489, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: bgImg
       value: 
@@ -747,6 +826,22 @@ PrefabInstance:
       propertyPath: TextPopup_Prefab_01
       value: 
       objectReference: {fileID: 22450954, guid: b06f0e6c1dfa4356ac918da1bb32c603, type: 3}
+    - target: {fileID: 4519218298108482766, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519218298108482766, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_Color.b
+      value: 0.28627452
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519218298108482766, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519218298108482766, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_Color.r
+      value: 0.26666668
+      objectReference: {fileID: 0}
     - target: {fileID: 6141714073461228246, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_IsActive
       value: 1
