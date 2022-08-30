@@ -619,6 +619,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8cb555edd9e180c448265ce5237de206, type: 2}
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774292483174833487, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1731501135500153237, guid: 8cb555edd9e180c448265ce5237de206, type: 2}
     - target: {fileID: 2774292483174833489, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: bgImg
       value: 
