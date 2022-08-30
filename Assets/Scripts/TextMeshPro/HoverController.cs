@@ -11,7 +11,9 @@ namespace TMPro.Examples
         private TextMeshProUGUI m_TextMeshPro;
         private Canvas m_Canvas;
         private Camera m_Camera;
-        private Color32 m_ColorLink;
+        public Color32 m_ColorLink;
+        public Color32 m_ColorHoveredLink;
+
 
         // Flags
         private bool isHoveringObject;
@@ -21,8 +23,6 @@ namespace TMPro.Examples
 
         void Awake()
         {
-            m_ColorLink = new Color32(172, 200, 255, 255); //Has to be same color that the one used in ClickableText.cs
-
             m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
 
             m_Canvas = gameObject.GetComponentInParent<Canvas>();
@@ -122,7 +122,7 @@ namespace TMPro.Examples
                         int vertexIndex = cInfo.vertexIndex;
 
                         Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                        Color32 c = m_ColorLink.Tint(0.75f);
+                        Color32 c = m_ColorHoveredLink;
 
                         vertexColors[vertexIndex + 0] = c;
                         vertexColors[vertexIndex + 1] = c;
