@@ -196,10 +196,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2416349295318790843, guid: b8b3854539e72a44fbe2447d6b7647ba, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2941587370997991902, guid: b8b3854539e72a44fbe2447d6b7647ba, type: 3}
       propertyPath: m_Name
       value: TitleScreen
