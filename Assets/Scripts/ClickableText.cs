@@ -309,7 +309,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         {
             node.text = node.text.Replace(
                 listRawTextClickable[i],
-                "<link=" + listLinkClickable[i] + "><b><color=#acc8ff>" + listTextClickable[i] + "</color></b></link>"
+                "<link=" + listLinkClickable[i] + "><color=#EF6078>" + listTextClickable[i] + "</color></link>"
                 );
         }
 
