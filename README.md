@@ -15,7 +15,7 @@ Text is in french only.
 
 Itch.io link : https://lebioman.itch.io/lainoba
 
-#Synopsis
+**Synopsis**
 
 Terre, 10.000 ans après notre ère, région d’Aïch.
 
