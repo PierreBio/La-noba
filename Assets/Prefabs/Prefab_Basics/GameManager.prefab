@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleScreen: {fileID: 0}
+  gameScreen: {fileID: 0}
+  m_nbAdditionalCharactersToShow: 2

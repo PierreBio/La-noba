@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,30 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject gameScreen;
 
+    [SerializeField]
+    private int m_nbAdditionalCharactersToShow; 
+    
+    public int TypingCharactersToShowPerFrame
+    { get => m_nbAdditionalCharactersToShow;
+        set
+        {
+            m_nbAdditionalCharactersToShow = value;
+            ChangeCharactersDisplaySpeed(m_nbAdditionalCharactersToShow);
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    public event Action<int> onChangeCharactersDisplaySpeed;
+    public void ChangeCharactersDisplaySpeed(int value)
+    {
+        if (onChangeCharactersDisplaySpeed != null)
+        {
+            onChangeCharactersDisplaySpeed(value);
+        }
     }
 
     public void BackToMenuGame()
@@ -31,4 +53,10 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene("HichameScene");
     }
+
+    private void OnValidate()
+    {
+        ChangeCharactersDisplaySpeed(TypingCharactersToShowPerFrame);
+    }
+
 }
