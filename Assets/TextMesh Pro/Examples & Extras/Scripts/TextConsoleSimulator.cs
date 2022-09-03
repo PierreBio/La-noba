@@ -78,12 +78,6 @@ namespace TMPro.Examples
                     hasTextChanged = false; 
                 }
 
-                //if (visibleCount > totalVisibleCharacters)
-                //{
-                //    yield return new WaitForSeconds(1.0f);
-                //    visibleCount = 0;
-                //}
-
                 textComponent.maxVisibleCharacters = visibleCount > totalVisibleCharacters ? totalVisibleCharacters : visibleCount; // How many characters should TextMeshPro display?
 
                 visibleCount += m_nbAdditionalCharactersToShow;
