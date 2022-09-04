@@ -97,6 +97,11 @@ namespace TMPro.Examples
 
         int SetMaxVisibleCharactersToDisplay(TMP_Text _textComponent, int _totalVisibleCharacters)
         {
+            if (GameManager.GetInstance().DisplayAllCharactersInstant)
+            {
+                return m_nbAdditionalCharactersToShow;
+            }
+
             for (int i = 0; i < m_nbAdditionalCharactersToShow; i++)
             {
                 int possibleIndex = _textComponent.maxVisibleCharacters + i > 0 && _textComponent.maxVisibleCharacters <= _totalVisibleCharacters ? _textComponent.maxVisibleCharacters + i : 0;
@@ -122,7 +127,7 @@ namespace TMPro.Examples
         {
             int currentIndex = textComponent.maxVisibleCharacters - 1 > 0 ? textComponent.maxVisibleCharacters - 1 : 0;
             bool lastVisibleCharacterIsDot = textComponent.textInfo.characterInfo[currentIndex].character == '.' && m_lastDotIndex != textComponent.maxVisibleCharacters;
-            return lastVisibleCharacterIsDot;
+            return lastVisibleCharacterIsDot && GameManager.GetInstance().DisplayAllCharactersInstant == false;
         }
     }
 }

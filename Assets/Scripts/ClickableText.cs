@@ -104,6 +104,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     private void displayCurrentNode()
     {
+        GameManager.GetInstance().SetBackTextDisplaySpeed();
+
         initNode(currentNode);
 
         //PARCOURT TOUS LES IFS

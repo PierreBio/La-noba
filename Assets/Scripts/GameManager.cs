@@ -15,7 +15,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private int m_nbAdditionalCharactersToShow;
 
-    private int m_currentNbAdditionalCharactersToShow; 
+    private int m_currentNbAdditionalCharactersToShow;
+
+    private int m_nbAllCharactersDisplayed = 10000;
+
+    public bool DisplayAllCharactersInstant
+    {
+        get => m_currentNbAdditionalCharactersToShow == m_nbAllCharactersDisplayed;
+    }
     
     public int CurrentTypingCharactersToShowPerFrame
     { 
@@ -78,6 +85,20 @@ public class GameManager : Singleton<GameManager>
     private void OnValidate()
     {
         //ChangeCharactersDisplaySpeed(TypingCharactersToShowPerFrame);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
+        {
+            CurrentTypingCharactersToShowPerFrame = m_nbAllCharactersDisplayed;
+        }
+    }
+
+    public void SetBackTextDisplaySpeed()
+    {
+        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
+        StopCoroutine("StopTextDisplayForSeconds");
     }
 
 }
