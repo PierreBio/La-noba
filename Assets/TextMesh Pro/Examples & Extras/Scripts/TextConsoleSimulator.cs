@@ -23,7 +23,7 @@ namespace TMPro.Examples
         void Start()
         {
             m_lastDotIndex = 0;
-            m_nbAdditionalCharactersToShow = GameManager.GetInstance().TypingCharactersToShowPerFrame;
+            m_nbAdditionalCharactersToShow = GameManager.GetInstance().CurrentTypingCharactersToShowPerFrame;
 
             GameManager.GetInstance().onChangeCharactersDisplaySpeed += SetNbAdditionalCharactersToShow;
             StartCoroutine(RevealCharacters(m_TextComponent));

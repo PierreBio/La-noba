@@ -13,21 +13,28 @@ public class GameManager : Singleton<GameManager>
     private GameObject gameScreen;
 
     [SerializeField]
-    private int m_nbAdditionalCharactersToShow; 
+    private int m_nbAdditionalCharactersToShow;
+
+    private int m_currentNbAdditionalCharactersToShow; 
     
-    public int TypingCharactersToShowPerFrame
+    public int CurrentTypingCharactersToShowPerFrame
     { 
-        get => m_nbAdditionalCharactersToShow;
+        get => m_currentNbAdditionalCharactersToShow;
         set
         {
-            m_nbAdditionalCharactersToShow = value;
-            ChangeCharactersDisplaySpeed(m_nbAdditionalCharactersToShow);
+            m_currentNbAdditionalCharactersToShow = value;
+            ChangeCharactersDisplaySpeed(m_currentNbAdditionalCharactersToShow);
         }
     }
 
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    private void Start()
+    {
+        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
     }
 
     public event Action<int> onChangeCharactersDisplaySpeed;
@@ -40,17 +47,16 @@ public class GameManager : Singleton<GameManager>
     }
     public IEnumerator StopTextDisplayForSeconds(float _secondsStopped)
     {
-        if (TypingCharactersToShowPerFrame == 0)
+        if (CurrentTypingCharactersToShowPerFrame == 0)
         {
             yield break;
         }
 
-        int previousTypingCharacterSpeed = m_nbAdditionalCharactersToShow;
-        TypingCharactersToShowPerFrame = 0;
+        CurrentTypingCharactersToShowPerFrame = 0;
 
         yield return new WaitForSeconds(_secondsStopped);
 
-        TypingCharactersToShowPerFrame = previousTypingCharacterSpeed;
+        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
     }
 
     public void BackToMenuGame()
