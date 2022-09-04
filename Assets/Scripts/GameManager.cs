@@ -16,7 +16,8 @@ public class GameManager : Singleton<GameManager>
     private int m_nbAdditionalCharactersToShow; 
     
     public int TypingCharactersToShowPerFrame
-    { get => m_nbAdditionalCharactersToShow;
+    { 
+        get => m_nbAdditionalCharactersToShow;
         set
         {
             m_nbAdditionalCharactersToShow = value;
@@ -37,6 +38,20 @@ public class GameManager : Singleton<GameManager>
             onChangeCharactersDisplaySpeed(value);
         }
     }
+    public IEnumerator StopTextDisplayForSeconds(float _secondsStopped)
+    {
+        if (TypingCharactersToShowPerFrame == 0)
+        {
+            yield break;
+        }
+
+        int previousTypingCharacterSpeed = m_nbAdditionalCharactersToShow;
+        TypingCharactersToShowPerFrame = 0;
+
+        yield return new WaitForSeconds(_secondsStopped);
+
+        TypingCharactersToShowPerFrame = previousTypingCharacterSpeed;
+    }
 
     public void BackToMenuGame()
     {
@@ -56,7 +71,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnValidate()
     {
-        ChangeCharactersDisplaySpeed(TypingCharactersToShowPerFrame);
+        //ChangeCharactersDisplaySpeed(TypingCharactersToShowPerFrame);
     }
 
 }

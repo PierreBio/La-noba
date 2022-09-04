@@ -8,6 +8,8 @@ namespace TMPro.Examples
     {
 
         private int m_nbAdditionalCharactersToShow;
+        private int m_lastDotIndex;
+
 
         private TMP_Text m_TextComponent;
         private bool hasTextChanged;
@@ -20,6 +22,7 @@ namespace TMPro.Examples
 
         void Start()
         {
+            m_lastDotIndex = 0;
             m_nbAdditionalCharactersToShow = GameManager.GetInstance().TypingCharactersToShowPerFrame;
 
             GameManager.GetInstance().onChangeCharactersDisplaySpeed += SetNbAdditionalCharactersToShow;
@@ -29,7 +32,6 @@ namespace TMPro.Examples
         void SetNbAdditionalCharactersToShow(int value)
         {
             m_nbAdditionalCharactersToShow = value;
-            Debug.Log("Passed Here : " + value);
         }
 
 
@@ -75,15 +77,53 @@ namespace TMPro.Examples
                 if (hasTextChanged)
                 {
                     totalVisibleCharacters = m_TextComponent.textInfo.characterCount; // Update visible character count.
-                    hasTextChanged = false; 
+                    hasTextChanged = false;
                 }
 
                 textComponent.maxVisibleCharacters = visibleCount > totalVisibleCharacters ? totalVisibleCharacters : visibleCount; // How many characters should TextMeshPro display?
 
-                visibleCount += m_nbAdditionalCharactersToShow;
+                if (StopSentenceOrParagraph(textComponent))
+                {
+                    m_lastDotIndex = textComponent.maxVisibleCharacters;
+                    StartCoroutine(GameManager.GetInstance().StopTextDisplayForSeconds(.5f));
+                }
+
+                visibleCount += SetMaxVisibleCharactersToDisplay(textComponent, totalVisibleCharacters);
 
                 yield return null;
             }
+        }
+
+
+        int SetMaxVisibleCharactersToDisplay(TMP_Text _textComponent, int _totalVisibleCharacters)
+        {
+            for (int i = 0; i < m_nbAdditionalCharactersToShow; i++)
+            {
+                int possibleIndex = _textComponent.maxVisibleCharacters + i > 0 && _textComponent.maxVisibleCharacters <= _totalVisibleCharacters ? _textComponent.maxVisibleCharacters + i : 0;
+
+                bool lastVisibleCharacterIsDot = _textComponent.textInfo.characterInfo[possibleIndex].character == '.';
+                
+                if (lastVisibleCharacterIsDot)
+                {
+                    return i + 1;
+                }
+            }
+
+            return m_nbAdditionalCharactersToShow;
+        }
+
+
+        /// <summary>
+        /// @TODO : Make stop sentence for any speed depending on m_nbAdditionalCharactersToShow
+        /// </summary>
+        /// <param name="textComponent"></param>
+        /// <returns></returns>
+        private bool StopSentenceOrParagraph(TMP_Text textComponent)
+        {
+
+            int currentIndex = textComponent.maxVisibleCharacters - 1 > 0 ? textComponent.maxVisibleCharacters - 1 : 0;
+            bool lastVisibleCharacterIsDot = textComponent.textInfo.characterInfo[currentIndex].character == '.' && m_lastDotIndex != textComponent.maxVisibleCharacters;
+            return lastVisibleCharacterIsDot;
         }
     }
 }
