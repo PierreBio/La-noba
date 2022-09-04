@@ -120,7 +120,6 @@ namespace TMPro.Examples
         /// <returns></returns>
         private bool StopSentenceOrParagraph(TMP_Text textComponent)
         {
-
             int currentIndex = textComponent.maxVisibleCharacters - 1 > 0 ? textComponent.maxVisibleCharacters - 1 : 0;
             bool lastVisibleCharacterIsDot = textComponent.textInfo.characterInfo[currentIndex].character == '.' && m_lastDotIndex != textComponent.maxVisibleCharacters;
             return lastVisibleCharacterIsDot;
