@@ -68,6 +68,7 @@ namespace TMPro.Examples
                 if (m_selectedWord != -1 && (linkIndex == -1 || linkIndex != m_selectedWord))
                 {
                     SoundManager.GetInstance().Play("mouse_out_link", GameManager.GetInstance().gameObject);
+                    GameManager.GetInstance().GetComponent<CursorScript>().setCursor(CursorScript.CursorType.ARROW);
 
                     for (int j = 0; j < m_TextMeshPro.textInfo.linkInfo.Length; j++)
                     {
@@ -105,6 +106,7 @@ namespace TMPro.Examples
                 if (linkIndex != -1 && linkIndex != m_selectedWord && !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
                 {
                     SoundManager.GetInstance().Play("mouse_over_link", GameManager.GetInstance().gameObject);
+                    GameManager.GetInstance().GetComponent<CursorScript>().setCursor(CursorScript.CursorType.HOVER);
 
                     m_selectedWord = linkIndex;
 
