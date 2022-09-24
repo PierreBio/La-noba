@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &1182527191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2813637374143260038, guid: b8b3854539e72a44fbe2447d6b7647ba, type: 3}
+  m_PrefabInstance: {fileID: 1422377585}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becccbfe09467db42848b49f1f0e705f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1310944418
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +392,10 @@ PrefabInstance:
       propertyPath: titleScreen
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2055673235191437205, guid: 07bb94d6146de87438881da45231a4ab, type: 3}
+      propertyPath: _titleScreenAnimationMgr
+      value: 
+      objectReference: {fileID: 1182527191}
     - target: {fileID: 2055673235191437205, guid: 07bb94d6146de87438881da45231a4ab, type: 3}
       propertyPath: m_nbAdditionalCharactersToShow
       value: 2
