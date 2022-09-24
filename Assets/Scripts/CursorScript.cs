@@ -21,7 +21,7 @@ public class CursorScript : MonoBehaviour
 
         //Sets the cursor to the Crosshair sprite with given offset 
         //and automatic switching to hardware default if necessary
-        Cursor.SetCursor(cursorArrow, cursorOffset, CursorMode.Auto);
+        Cursor.SetCursor(cursorArrow, cursorOffset, CursorMode.ForceSoftware);
     }
 
     public void setCursor(CursorType _type)
@@ -29,10 +29,10 @@ public class CursorScript : MonoBehaviour
         switch (_type)
         {
             case CursorType.ARROW:
-                Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
                 break;
             case CursorType.HOVER:
-                Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.ForceSoftware);
                 break;
             default:
                 break;
