@@ -69,7 +69,6 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     void Update()
     {
-        Debug.Log("display current node :" + m_ClipName == LAST_BEGINING_ANIMATION_NAME);
         //Fetch the current Animation clip information for the base layer
         m_CurrentClipInfo = m_Animator.GetCurrentAnimatorClipInfo(0);
         //Access the current length of the clip
@@ -105,6 +104,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     private void displayCurrentNode()
     {
+        GameManager.GetInstance().SetBackTextDisplaySpeed();
+
         initNode(currentNode);
 
         //PARCOURT TOUS LES IFS

@@ -6,6 +6,11 @@ namespace TMPro.Examples
 {
     public class TextConsoleSimulator : MonoBehaviour
     {
+
+        private int m_nbAdditionalCharactersToShow;
+        private int m_lastDotIndex;
+
+
         private TMP_Text m_TextComponent;
         private bool hasTextChanged;
 
@@ -17,8 +22,16 @@ namespace TMPro.Examples
 
         void Start()
         {
+            m_lastDotIndex = 0;
+            m_nbAdditionalCharactersToShow = GameManager.GetInstance().CurrentTypingCharactersToShowPerFrame;
+
+            GameManager.GetInstance().onChangeCharactersDisplaySpeed += SetNbAdditionalCharactersToShow;
             StartCoroutine(RevealCharacters(m_TextComponent));
-            //StartCoroutine(RevealWords(m_TextComponent));
+        }
+
+        void SetNbAdditionalCharactersToShow(int value)
+        {
+            m_nbAdditionalCharactersToShow = value;
         }
 
 
@@ -31,6 +44,11 @@ namespace TMPro.Examples
         void OnDisable()
         {
             TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(ON_TEXT_CHANGED);
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.GetInstance().onChangeCharactersDisplaySpeed -= SetNbAdditionalCharactersToShow;
         }
 
 
@@ -59,63 +77,57 @@ namespace TMPro.Examples
                 if (hasTextChanged)
                 {
                     totalVisibleCharacters = m_TextComponent.textInfo.characterCount; // Update visible character count.
-                    hasTextChanged = false; 
+                    hasTextChanged = false;
                 }
 
-                if (visibleCount > totalVisibleCharacters)
+                textComponent.maxVisibleCharacters = visibleCount > totalVisibleCharacters ? totalVisibleCharacters : visibleCount; // How many characters should TextMeshPro display?
+
+                if (StopSentenceOrParagraph(textComponent))
                 {
-                    yield return new WaitForSeconds(1.0f);
-                    visibleCount = 0;
+                    m_lastDotIndex = textComponent.maxVisibleCharacters;
+                    StartCoroutine(GameManager.GetInstance().StopTextDisplayForSeconds(.5f));
                 }
 
-                textComponent.maxVisibleCharacters = visibleCount; // How many characters should TextMeshPro display?
-
-                visibleCount += 1;
+                visibleCount += SetMaxVisibleCharactersToDisplay(textComponent, totalVisibleCharacters);
 
                 yield return null;
             }
         }
 
 
-        /// <summary>
-        /// Method revealing the text one word at a time.
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator RevealWords(TMP_Text textComponent)
+        int SetMaxVisibleCharactersToDisplay(TMP_Text _textComponent, int _totalVisibleCharacters)
         {
-            textComponent.ForceMeshUpdate();
-
-            int totalWordCount = textComponent.textInfo.wordCount;
-            int totalVisibleCharacters = textComponent.textInfo.characterCount; // Get # of Visible Character in text object
-            int counter = 0;
-            int currentWord = 0;
-            int visibleCount = 0;
-
-            while (true)
+            if (GameManager.GetInstance().DisplayAllCharactersInstant)
             {
-                currentWord = counter % (totalWordCount + 1);
-
-                // Get last character index for the current word.
-                if (currentWord == 0) // Display no words.
-                    visibleCount = 0;
-                else if (currentWord < totalWordCount) // Display all other words with the exception of the last one.
-                    visibleCount = textComponent.textInfo.wordInfo[currentWord - 1].lastCharacterIndex + 1;
-                else if (currentWord == totalWordCount) // Display last word and all remaining characters.
-                    visibleCount = totalVisibleCharacters;
-
-                textComponent.maxVisibleCharacters = visibleCount; // How many characters should TextMeshPro display?
-
-                // Once the last character has been revealed, wait 1.0 second and start over.
-                if (visibleCount >= totalVisibleCharacters)
-                {
-                    yield return new WaitForSeconds(1.0f);
-                }
-
-                counter += 1;
-
-                yield return new WaitForSeconds(0.1f);
+                return m_nbAdditionalCharactersToShow;
             }
+
+            for (int i = 0; i < m_nbAdditionalCharactersToShow; i++)
+            {
+                int possibleIndex = _textComponent.maxVisibleCharacters + i > 0 && _textComponent.maxVisibleCharacters <= _totalVisibleCharacters ? _textComponent.maxVisibleCharacters + i : 0;
+
+                bool lastVisibleCharacterIsDot = _textComponent.textInfo.characterInfo[possibleIndex].character == '.';
+                
+                if (lastVisibleCharacterIsDot)
+                {
+                    return i + 1;
+                }
+            }
+
+            return m_nbAdditionalCharactersToShow;
         }
 
+
+        /// <summary>
+        /// @TODO : Make stop sentence for any speed depending on m_nbAdditionalCharactersToShow
+        /// </summary>
+        /// <param name="textComponent"></param>
+        /// <returns></returns>
+        private bool StopSentenceOrParagraph(TMP_Text textComponent)
+        {
+            int currentIndex = textComponent.maxVisibleCharacters - 1 > 0 ? textComponent.maxVisibleCharacters - 1 : 0;
+            bool lastVisibleCharacterIsDot = textComponent.textInfo.characterInfo[currentIndex].character == '.' && m_lastDotIndex != textComponent.maxVisibleCharacters;
+            return lastVisibleCharacterIsDot && GameManager.GetInstance().DisplayAllCharactersInstant == false;
+        }
     }
 }

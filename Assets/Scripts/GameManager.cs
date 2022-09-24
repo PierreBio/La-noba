@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,58 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject gameScreen;
 
+    [SerializeField]
+    private int m_nbAdditionalCharactersToShow;
+
+    private int m_currentNbAdditionalCharactersToShow;
+
+    private int m_nbAllCharactersDisplayed = 10000;
+
+    public bool DisplayAllCharactersInstant
+    {
+        get => m_currentNbAdditionalCharactersToShow == m_nbAllCharactersDisplayed;
+    }
+    
+    public int CurrentTypingCharactersToShowPerFrame
+    { 
+        get => m_currentNbAdditionalCharactersToShow;
+        set
+        {
+            m_currentNbAdditionalCharactersToShow = value;
+            ChangeCharactersDisplaySpeed(m_currentNbAdditionalCharactersToShow);
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    private void Start()
+    {
+        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
+    }
+
+    public event Action<int> onChangeCharactersDisplaySpeed;
+    public void ChangeCharactersDisplaySpeed(int value)
+    {
+        if (onChangeCharactersDisplaySpeed != null)
+        {
+            onChangeCharactersDisplaySpeed(value);
+        }
+    }
+    public IEnumerator StopTextDisplayForSeconds(float _secondsStopped)
+    {
+        if (CurrentTypingCharactersToShowPerFrame == 0)
+        {
+            yield break;
+        }
+
+        CurrentTypingCharactersToShowPerFrame = 0;
+
+        yield return new WaitForSeconds(_secondsStopped);
+
+        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
     }
 
     public void BackToMenuGame()
@@ -31,4 +81,24 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene("HichameScene");
     }
+
+    private void OnValidate()
+    {
+        //ChangeCharactersDisplaySpeed(TypingCharactersToShowPerFrame);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
+        {
+            CurrentTypingCharactersToShowPerFrame = m_nbAllCharactersDisplayed;
+        }
+    }
+
+    public void SetBackTextDisplaySpeed()
+    {
+        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
+        StopCoroutine("StopTextDisplayForSeconds");
+    }
+
 }
