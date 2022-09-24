@@ -7,10 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField]
-    private GameObject titleScreen;
-
-    [SerializeField]
-    private GameObject gameScreen;
+    private TitleScreenAnimationManager _titleScreenAnimationMgr;
 
     [SerializeField]
     private int m_nbAdditionalCharactersToShow;
@@ -78,6 +75,14 @@ public class GameManager : Singleton<GameManager>
     }
 
     public void PlayGame()
+    {
+        _titleScreenAnimationMgr.ChangeAnimationState("titlescreen_fadeout");
+        float startGameDelay = _titleScreenAnimationMgr.GetCurrentAnimationDuration();
+
+        Invoke("LoadGameScene", startGameDelay);
+    }
+
+    void LoadGameScene()
     {
         SceneManager.LoadScene("HichameScene");
     }

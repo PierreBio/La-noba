@@ -608,6 +608,8 @@ GameObject:
   - component: {fileID: 2941587370997991901}
   - component: {fileID: 2941587370997991900}
   - component: {fileID: 2941587370997991903}
+  - component: {fileID: 2702479623870081066}
+  - component: {fileID: 2813637374143260038}
   m_Layer: 5
   m_Name: TitleScreen
   m_TagString: Untagged
@@ -698,6 +700,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!95 &2702479623870081066
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941587370997991902}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d64f8880f8b806448b2c6a2977fcf33a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2813637374143260038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941587370997991902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becccbfe09467db42848b49f1f0e705f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2941587371108610105
 GameObject:
   m_ObjectHideFlags: 0
