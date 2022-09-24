@@ -45,7 +45,6 @@ public class AnimationManager : MonoBehaviour
     {
         if (clickableText != null && clickableText.currentNode != null)
         {
-            Debug.Log(clickableText.currentNode.pid);
             switch (clickableText.currentNode.pid)
             {
                 case 3: // Sortir du vaisseau. Jerai repare le vaisseau

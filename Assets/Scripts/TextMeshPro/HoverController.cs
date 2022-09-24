@@ -1,31 +1,26 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace TMPro.Examples
 {
     public class HoverController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        private TextMeshProUGUI m_TextMeshPro;
+        [Header("Components for HoverController")]
+        private TMP_MeshInfo[] m_cachedMeshInfoVertexData;
         private Canvas m_Canvas;
         private Camera m_Camera;
         public Color32 m_ColorLink;
         public Color32 m_ColorHoveredLink;
+        private TextMeshProUGUI m_TextMeshPro;
 
-
-        // Flags
-        private bool isHoveringObject;
+        [Header("Variables describing current state")]
+        private bool m_isHoveringObject;
         private int m_selectedWord = -1;
 
-        private TMP_MeshInfo[] m_cachedMeshInfoVertexData;
-
-        void Awake()
+        private void Awake()
         {
-            m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
-
             m_Canvas = gameObject.GetComponentInParent<Canvas>();
+            m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
 
             // Get a reference to the camera if Canvas Render Mode is not ScreenSpace Overlay.
             if (m_Canvas.renderMode == RenderMode.ScreenSpaceOverlay)
@@ -35,20 +30,20 @@ namespace TMPro.Examples
         }
 
 
-        void OnEnable()
+        private void OnEnable()
         {
             // Subscribe to event fired when text object has been regenerated.
             TMPro_EventManager.TEXT_CHANGED_EVENT.Add(ON_TEXT_CHANGED);
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             // UnSubscribe to event fired when text object has been regenerated.
             TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(ON_TEXT_CHANGED);
         }
 
 
-        void ON_TEXT_CHANGED(Object obj)
+        private void ON_TEXT_CHANGED(Object obj)
         {
             if (obj == m_TextMeshPro)
             {
@@ -57,9 +52,9 @@ namespace TMPro.Examples
             }
         }
 
-        void LateUpdate()
+        private void LateUpdate()
         {
-            if (isHoveringObject)
+            if (m_isHoveringObject)
             {
                 //Check if Mouse intersects any words and if so assign a random color to that word.
                 int linkIndex = TMP_TextUtilities.FindIntersectingLink(m_TextMeshPro, Input.mousePosition, m_Camera);
@@ -70,33 +65,30 @@ namespace TMPro.Examples
                     SoundManager.GetInstance().Play("mouse_out_link", GameManager.GetInstance().gameObject);
                     GameManager.GetInstance().GetComponent<CursorScript>().setCursor(CursorScript.CursorType.ARROW);
 
-                    for (int j = 0; j < m_TextMeshPro.textInfo.linkInfo.Length; j++)
+                    TMP_LinkInfo linkInfo = m_TextMeshPro.textInfo.linkInfo[m_selectedWord];
+
+                    // Iterate through each of the characters of the word.
+                    for (int i = 0; i < linkInfo.linkTextLength; i++)
                     {
-                        TMP_LinkInfo linkInfo = m_TextMeshPro.textInfo.linkInfo[j];
+                        int characterIndex = linkInfo.linkTextfirstCharacterIndex + i;
 
-                        // Iterate through each of the characters of the word.
-                        for (int i = 0; i < linkInfo.linkTextLength; i++)
-                        {
-                            int characterIndex = linkInfo.linkTextfirstCharacterIndex + i;
+                        TMP_CharacterInfo cInfo = m_TextMeshPro.textInfo.characterInfo[characterIndex];
 
-                            TMP_CharacterInfo cInfo = m_TextMeshPro.textInfo.characterInfo[characterIndex];
+                        if (!cInfo.isVisible) continue; // Skip invisible characters.
 
-                            if (!cInfo.isVisible) continue; // Skip invisible characters.
+                        int meshIndex = m_TextMeshPro.textInfo.characterInfo[characterIndex].materialReferenceIndex;
+                        int vertexIndex = cInfo.vertexIndex;
 
-                            int meshIndex = m_TextMeshPro.textInfo.characterInfo[characterIndex].materialReferenceIndex;
-                            int vertexIndex = cInfo.vertexIndex;
+                        // Get a reference to the vertex color
+                        Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
+                        Color32 c = m_ColorLink;
 
-                            // Get a reference to the vertex color
-                            Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                            Color32 c = m_ColorLink;
-
-                            vertexColors[vertexIndex + 0] = c;
-                            vertexColors[vertexIndex + 1] = c;
-                            vertexColors[vertexIndex + 2] = c;
-                            vertexColors[vertexIndex + 3] = c;
-                        }
+                        vertexColors[vertexIndex + 0] = c;
+                        vertexColors[vertexIndex + 1] = c;
+                        vertexColors[vertexIndex + 2] = c;
+                        vertexColors[vertexIndex + 3] = c;
                     }
-
+                    
                     // Update Geometry
                     m_TextMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
 
@@ -141,12 +133,12 @@ namespace TMPro.Examples
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            isHoveringObject = true;
+            m_isHoveringObject = true;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            isHoveringObject = false;
+            m_isHoveringObject = false;
         }
     }
 }
