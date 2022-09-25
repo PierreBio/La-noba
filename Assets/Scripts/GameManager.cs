@@ -21,7 +21,11 @@ public class GameManager : Singleton<GameManager>
     {
         get => m_currentNbAdditionalCharactersToShow == m_nbAllCharactersDisplayed;
     }
-    
+
+    const string TITLE_SCENE = "FirstScene";
+    const string GAME_SCENE = "HichameScene";
+
+
     public int CurrentTypingCharactersToShowPerFrame
     { 
         get => m_currentNbAdditionalCharactersToShow;
@@ -69,9 +73,8 @@ public class GameManager : Singleton<GameManager>
 
     public void BackToMenuGame()
     {
-        SceneManager.LoadScene("FirstScene");
+        SceneManager.LoadScene(TITLE_SCENE);
         SoundManager.GetInstance().Play("main_theme", SoundManager.GetInstance().gameObject);
-
     }
 
     public void GoToEndMenuGame()
@@ -89,7 +92,7 @@ public class GameManager : Singleton<GameManager>
 
     void LoadGameScene()
     {
-        SceneManager.LoadScene("HichameScene");
+        SceneManager.LoadScene(GAME_SCENE);
     }
 
     private void OnValidate()
