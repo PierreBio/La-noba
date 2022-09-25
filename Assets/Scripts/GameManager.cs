@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,11 +35,14 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
+        _titleScreenAnimationMgr = FindObjectOfType<TitleScreenAnimationManager>();
     }
 
     private void Start()
     {
         CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
+        SceneManager.activeSceneChanged += SetCurrentTitleScreenAnimationManager;
+        EditorSceneManager.activeSceneChangedInEditMode += SetCurrentTitleScreenAnimationManager; // FOR EDITOR DEBUGGING
     }
 
     public event Action<int> onChangeCharactersDisplaySpeed;
@@ -67,6 +71,7 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene("FirstScene");
         SoundManager.GetInstance().Play("main_theme", SoundManager.GetInstance().gameObject);
+
     }
 
     public void GoToEndMenuGame()
@@ -104,6 +109,11 @@ public class GameManager : Singleton<GameManager>
     {
         CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
         StopCoroutine("StopTextDisplayForSeconds");
+    }
+
+    public void SetCurrentTitleScreenAnimationManager(Scene current, Scene next)
+    {
+        _titleScreenAnimationMgr = FindObjectOfType<TitleScreenAnimationManager>();
     }
 
 }
