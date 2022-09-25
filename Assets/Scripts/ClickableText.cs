@@ -348,7 +348,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
     {
         if(link == "Ending")
         {
-            GameManager.GetInstance().BackToMenuGame();
+            GameManager.GetInstance().TriggerBackToTitleMenu();
         }
     }
 }

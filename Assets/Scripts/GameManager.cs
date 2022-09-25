@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private TitleScreenAnimationManager _titleScreenAnimationMgr;
 
+    private TransitionAnimationManager _transitionAnimationMgr;
+
     [SerializeField]
     private int m_nbAdditionalCharactersToShow;
 
@@ -117,6 +119,23 @@ public class GameManager : Singleton<GameManager>
     public void SetCurrentTitleScreenAnimationManager(Scene current, Scene next)
     {
         _titleScreenAnimationMgr = FindObjectOfType<TitleScreenAnimationManager>();
+
+        if (next.name == TITLE_SCENE && _titleScreenAnimationMgr != null)
+        {
+            _titleScreenAnimationMgr.ChangeAnimationState("titlescreen_fadein");
+        }
+
+        if (next.name == GAME_SCENE)
+        {
+            _transitionAnimationMgr = FindObjectOfType<TransitionAnimationManager>();
+        }
     }
 
+    public void TriggerBackToTitleMenu()
+    {
+        _transitionAnimationMgr.ChangeAnimationState("game_fadeout");
+        float animationTime = _transitionAnimationMgr.GetCurrentAnimationDuration();
+
+        Invoke("BackToMenuGame", animationTime);
+    }
 }
