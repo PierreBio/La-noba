@@ -29,6 +29,7 @@ public class AnimationManager : MonoBehaviour
     const string YAK_STOPPED_JERAI_BEACON = "sprites_jerai_alerts_beacon_start";
     const string YAK_REPAIRED_GOBACK = "sprites_jerai_goback_start";
     const string NOAH_ARRIVES_REPAIR = "sprites_yak_stopped_noah_appears_start";
+    const string NOAH_REPAIR_YAK = "sprites_yak_stopped_noah_repair_start";
 
     public void Awake()
     {
@@ -58,9 +59,18 @@ public class AnimationManager : MonoBehaviour
                 case 10: // Noah arrive après appel à l'aide
                     ChangeAnimationState(NOAH_ARRIVES_REPAIR);
                     break;
+                case 23:
 
-                case 18: // Moteur est réparé avec Noah
                     break;
+
+                case 14: // Noah aide Jerai à réparer le Yak
+                    break;
+
+                case 18: // Moteur en cours de réparation par Noah
+                    ChangeAnimationState(NOAH_REPAIR_YAK);
+                    break;
+
+
                 case 100: // @TODO Jerai discute avec Noah. Jerai en face de Noah
 
                     break;
