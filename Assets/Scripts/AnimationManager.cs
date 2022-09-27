@@ -22,6 +22,10 @@ public class AnimationManager : MonoBehaviour
 
     const string YAK_IS_MOVING = "yakIsMoving";
 
+
+    // NEW
+    const string YAK_STOPPED_WITH_SMOKE = "sprites_yak_stopped_with_smoke";
+
     public void Awake()
     {
         _clickableText = FindObjectOfType<ClickableText>();
@@ -39,7 +43,7 @@ public class AnimationManager : MonoBehaviour
             switch (_clickableText.currentNode.pid)
             {
                 case 3: // Sortir du vaisseau. Jerai repare le vaisseau
-                    
+                    ChangeAnimationState(YAK_STOPPED_WITH_SMOKE);
                     break;
                 case 27: //Le vaisseau repart. Jerai monte dans le vaisseau
                     
@@ -74,6 +78,7 @@ public class AnimationManager : MonoBehaviour
         _animator.Play(newState);
         _currentState = newState;
     }
+
     public float GetCurrentAnimationDuration()
     {
         return _animator.GetCurrentAnimatorStateInfo(0).length;

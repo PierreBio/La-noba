@@ -806,8 +806,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7401156905286404795, guid: 9d84f9a9089c0614886532b5ab446033, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d84f9a9089c0614886532b5ab446033, type: 3}
+--- !u!95 &1892440927200524113 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1892440927027772858, guid: 9d84f9a9089c0614886532b5ab446033, type: 3}
+  m_PrefabInstance: {fileID: 1892440927200524112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2774292485141591521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -822,7 +831,7 @@ PrefabInstance:
     - target: {fileID: 2774292483174833489, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_Animator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1892440927200524113}
     - target: {fileID: 2774292484024968214, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_Name
       value: DialogBox
