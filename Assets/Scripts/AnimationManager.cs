@@ -26,6 +26,9 @@ public class AnimationManager : MonoBehaviour
     // NEW
     const string YAK_STOPPED_WITH_SMOKE = "sprites_yak_stopped_with_smoke";
     const string YAK_STOPPED_JERAI_APPEARS = "sprites_yak_stopped_jerai_appears";
+    const string YAK_STOPPED_JERAI_BEACON = "sprites_jerai_alerts_beacon_start";
+    const string YAK_REPAIRED_GOBACK = "sprites_jerai_goback_start";
+    const string NOAH_ARRIVES_REPAIR = "sprites_yak_stopped_noah_appears_start";
 
     public void Awake()
     {
@@ -46,14 +49,17 @@ public class AnimationManager : MonoBehaviour
                 case 3: // Sortir du vaisseau. Jerai repare le vaisseau
                     ChangeAnimationState(YAK_STOPPED_JERAI_APPEARS);
                     break;
-                case 27: //Le vaisseau repart. Jerai monte dans le vaisseau
-
+                case 32: //Le vaisseau repart. Jerai monte dans le vaisseau. Before 27
+                    ChangeAnimationState(YAK_REPAIRED_GOBACK);
                     break;
                 case 7: //Allumer un beacon. Jerai allume un beacon
-
+                    ChangeAnimationState(YAK_STOPPED_JERAI_BEACON);
                     break;
-                case 10: // Noah arrive
+                case 10: // Noah arrive après appel à l'aide
+                    ChangeAnimationState(NOAH_ARRIVES_REPAIR);
+                    break;
 
+                case 18: // Moteur est réparé avec Noah
                     break;
                 case 100: // @TODO Jerai discute avec Noah. Jerai en face de Noah
 

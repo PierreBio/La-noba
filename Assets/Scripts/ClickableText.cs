@@ -100,6 +100,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         Node existingNode = ImportTwison._instance.storyNodes.passages[indexNewNodePid];
         currentNode = DeepCopy.DeepCopyNode(existingNode);
         displayCurrentNode();
+
+        Debug.Log("Current Log PID : " + currentNode.pid);
     }
 
     private void displayCurrentNode()
