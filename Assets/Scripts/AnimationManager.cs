@@ -30,6 +30,8 @@ public class AnimationManager : MonoBehaviour
     const string YAK_REPAIRED_GOBACK = "sprites_jerai_goback_start";
     const string NOAH_ARRIVES_REPAIR = "sprites_yak_stopped_noah_appears_start";
     const string NOAH_REPAIR_YAK = "sprites_yak_stopped_noah_repair_start";
+    const string NOAH_REPAIRED_YAK_AND_LEAVE = "sprites_yak_stopped_noah_repaired_and_leave_start";
+    const string NOAH_REPAIRED_TRAVEL_TO_JAHNAH = "sprites_yak_stopped_travel_to_jahnah_start";
 
     public void Awake()
     {
@@ -59,8 +61,12 @@ public class AnimationManager : MonoBehaviour
                 case 10: // Noah arrive après appel à l'aide
                     ChangeAnimationState(NOAH_ARRIVES_REPAIR);
                     break;
-                case 23:
-
+                case 24: // Noah fuit après avoir donné la cassette et réparé le yak
+                case 23: // Noah fuit après avoir donné la cassette et réparé le yak
+                    ChangeAnimationState(NOAH_REPAIRED_YAK_AND_LEAVE);
+                    break;
+                case 27: // Jerai retourne dans son yak après avoir reçu la cassette et Noah a réparé le yak
+                    ChangeAnimationState(NOAH_REPAIRED_TRAVEL_TO_JAHNAH);
                     break;
 
                 case 14: // Noah aide Jerai à réparer le Yak
