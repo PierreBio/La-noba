@@ -19,6 +19,10 @@ public class GameManager : Singleton<GameManager>
 
     private int m_nbAllCharactersDisplayed = 10000;
 
+    [SerializeField] float m_stopClickChoiceCooldown; // in seconds
+
+    public bool m_changeNodeEnable;
+
     public bool DisplayAllCharactersInstant
     {
         get => m_currentNbAdditionalCharactersToShow == m_nbAllCharactersDisplayed;
@@ -46,6 +50,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        m_changeNodeEnable = true;
         CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
         SceneManager.activeSceneChanged += SetCurrentTitleScreenAnimationManager;
         EditorSceneManager.activeSceneChangedInEditMode += SetCurrentTitleScreenAnimationManager; // FOR EDITOR DEBUGGING
@@ -106,7 +111,14 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
         {
-            CurrentTypingCharactersToShowPerFrame = m_nbAllCharactersDisplayed;
+            if (CurrentTypingCharactersToShowPerFrame != m_nbAllCharactersDisplayed)
+            {
+                SwitchChangeNodeEnable();
+                Invoke("SwitchChangeNodeEnable", m_stopClickChoiceCooldown);
+                Debug.Log(m_changeNodeEnable);
+            }
+
+            CurrentTypingCharactersToShowPerFrame = m_nbAllCharactersDisplayed;               
         }
     }
 
@@ -137,5 +149,10 @@ public class GameManager : Singleton<GameManager>
         float animationTime = _transitionAnimationMgr.GetCurrentAnimationDuration();
 
         Invoke("BackToMenuGame", animationTime);
+    }
+
+    private void SwitchChangeNodeEnable()
+    {
+        m_changeNodeEnable = !m_changeNodeEnable;
     }
 }

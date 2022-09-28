@@ -45,7 +45,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
     {
         var text = gameObject.GetComponent<TextMeshProUGUI>();
 
-        if(eventData.button == PointerEventData.InputButton.Left)
+        if(eventData.button == PointerEventData.InputButton.Left && GameManager.GetInstance().m_changeNodeEnable)
         {
             int linkIndex = TMP_TextUtilities.FindIntersectingLink(text, Input.mousePosition, m_Camera);
 
