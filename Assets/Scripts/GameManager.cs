@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 #endif
 
+using TMPro.Examples;
+
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField]
@@ -117,7 +119,12 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
         {
-            if (CurrentTypingCharactersToShowPerFrame != m_nbAllCharactersDisplayed)
+            TextConsoleSimulator txtConsoleSim = FindObjectOfType<TextConsoleSimulator>();
+
+            bool allCharactersAreDisplayed = txtConsoleSim != null && txtConsoleSim.AllCharactersAreDisplayed() == false;
+            bool canCancelChangeChoice = CurrentTypingCharactersToShowPerFrame != m_nbAllCharactersDisplayed && allCharactersAreDisplayed;
+
+            if (canCancelChangeChoice)
             {
                 SwitchChangeNodeEnable();
                 Invoke("SwitchChangeNodeEnable", m_stopClickChoiceCooldown);

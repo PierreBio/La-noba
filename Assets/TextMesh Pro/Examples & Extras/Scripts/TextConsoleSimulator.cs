@@ -46,6 +46,10 @@ namespace TMPro.Examples
             m_TextComponent.text = m_TextComponent.text.Trim();
         }
 
+        public bool AllCharactersAreDisplayed()
+        {
+            return visibleCount >= m_TextComponent.textInfo.characterCount; 
+        }
 
         void OnEnable()
         {
