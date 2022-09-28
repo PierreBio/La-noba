@@ -348,9 +348,10 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     private void triggerEndMenu(string link)
     {
-        if(link == "Ending")
+        if(link == "Jeraï dans son vaisseau avec Ben")
         {
             GameManager.GetInstance().TriggerBackToTitleMenu();
+            GameManager.GetInstance().CurrentTypingCharactersToShowPerFrame = 0;
         }
     }
 }
