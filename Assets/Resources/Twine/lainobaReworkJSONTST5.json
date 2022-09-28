@@ -331,7 +331,7 @@
       }
     },
     {
-      "text": "//Les réparations finies, vous enregistrez vos questions et posez la paume de votre main sur la visière étincelante de la personne qui vient de vous aider. Vous appuyez sur le bouton de votre poignet pour lancer la lecture, et attendez une réponse.(if: $bIsBrokenAtLeastOnce is \"false\")[(if: $lookedAtEngine is \"true\")[[Vous soupconnez un sabotage de votre Yak.->Noah avoue]] ](if: $bIsBrokenAtLeastOnce is \"true\")[ [[Vous soupconnez un sabotage de votre Yak.->Noah nie]] ](if:$lookedAtEngine is \"false\")[ [[Vous soupconnez un sabotage de votre Yak.->Noah nie]] ]//",
+      "text": "//Les réparations finies, vous enregistrez vos questions et posez la paume de votre main sur la visière étincelante de la personne qui vient de vous aider. Vous appuyez sur le bouton de votre poignet pour lancer la lecture, et attendez une réponse.(if: $bIsBrokenAtLeastOnce is \"false\")[(if: $lookedAtEngine is \"true\")[ [[Vous soupçonnez un sabotage de votre Yak.->Noah avoue]] ] ](if: $bIsBrokenAtLeastOnce is \"true\")[ [[Vous soupçonnez un sabotage de votre Yak.->Noah nie]] ](if:$lookedAtEngine is \"false\")[ [[Vous soupçonnez un sabotage de votre Yak.->Noah nie]] ]//",
       "links": [
         {
           "name": "Vous soupconnez un sabotage de votre Yak.",
