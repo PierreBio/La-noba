@@ -21,7 +21,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     AnimatorClipInfo[] m_CurrentClipInfo;
 
-    const string LAST_BEGINING_ANIMATION_NAME = "Yak_Stop With Smoke";
+    const string YAK_STOPPED_WITH_SMOKE = "sprites_yak_stopped_with_smoke";
 
     public GameObject bgImg;
 
@@ -76,7 +76,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         //Access the Animation clip name
         m_ClipName = m_CurrentClipInfo[0].clip.name;
 
-        if (m_ClipName == LAST_BEGINING_ANIMATION_NAME && !hasLaunchedUI)
+        if (m_ClipName == YAK_STOPPED_WITH_SMOKE && !hasLaunchedUI)
         {
             this.displayCurrentNode();
             bgImg.SetActive(true);
@@ -100,6 +100,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         Node existingNode = ImportTwison._instance.storyNodes.passages[indexNewNodePid];
         currentNode = DeepCopy.DeepCopyNode(existingNode);
         displayCurrentNode();
+
+        Debug.Log("Current Log PID : " + currentNode.pid);
     }
 
     private void displayCurrentNode()

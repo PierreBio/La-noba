@@ -5,35 +5,36 @@ using UnityEngine;
 
 public class AnimationManager : MonoBehaviour
 {
-    ClickableText clickableText;
+    ClickableText _clickableText;
 
-    [SerializeField] Animator yakAnimator;
-    [SerializeField] Animator jeraiAnimator;
-    [SerializeField] Animator beaconAnimator;
-    [SerializeField] Animator noahAnimator;
-    [SerializeField] Animator gliderAnimator;
-    [SerializeField] Animator bgAnimator;
+    [SerializeField] Animator _animator;
+    string _currentState;
 
-    const string IS_REPAIRING_YAK = "isRepairingYak";
-    const string IS_BEACON_TRIGGERED = "isBeaconTriggered";
-    const string NOAH_ARRIVED = "noahHasArrived";
-    const string JERAI_IS_FACING_NOAH = "jeraiIsFacingNoah";
-    const string JERAI_IS_IN_YAK = "jeraiIsInYak";
+    bool _yakRepairedAlone;
 
-    const string BG_START_MOVING = "startMoving";
+    // NEW
+    const string YAK_STOPPED_WITH_SMOKE = "sprites_yak_stopped_with_smoke";
+    const string YAK_STOPPED_JERAI_APPEARS = "sprites_yak_stopped_jerai_appears";
+    const string YAK_STOPPED_JERAI_BEACON = "sprites_jerai_alerts_beacon_start";
+    const string YAK_REPAIRED_GOBACK = "sprites_jerai_goback_start";
+    const string NOAH_ARRIVES_REPAIR = "sprites_yak_stopped_noah_appears_start";
+    const string NOAH_REPAIR_YAK = "sprites_yak_stopped_noah_repair_start";
+    const string NOAH_REPAIRED_YAK_AND_LEAVE = "sprites_yak_stopped_noah_repaired_and_leave_start";
+    const string NOAH_REPAIRED_TRAVEL_TO_JAHNAH = "sprites_yak_stopped_travel_to_jahnah_start";
+    const string YAK_REPAIRED_NOAH_CHASE = "sprites_yak_repaired_noah_chase_yak_start";
+    const string YAK_REPAIRED_JERAI_STOPS_YAK = "sprites_yak_repaired_jerai_stops_yak_start";
+    const string YAK_REPAIRED_JERAI_MEET_NOAH = "sprites_yak_repaired_jerai_meet_noah_start";
+    const string YAK_REPAIRED_NOAH_LEAVES = "sprites_yak_repaired_noah_leaves_start";
+    const string YAK_REPAIRED_TRAVEL_TO_JAHNAH = "sprites_yak_repaired_yak_travels_to_jahnah_start";
 
-    const string YAK_IS_REPAIRED = "yakIsRepaired";
-
-    const string YAK_IS_MOVING = "yakIsMoving";
+    public void Start()
+    {
+        _yakRepairedAlone = false;
+    }
 
     public void Awake()
     {
-        clickableText = FindObjectOfType<ClickableText>();
-    }
-
-    void Start()
-    {
-        bgAnimator.SetBool(BG_START_MOVING, true);
+        _clickableText = FindObjectOfType<ClickableText>();
     }
 
     private void Update()
@@ -43,44 +44,76 @@ public class AnimationManager : MonoBehaviour
 
     private void updateAnimations()
     {
-        if (clickableText != null && clickableText.currentNode != null)
+        if (_clickableText != null && _clickableText.currentNode != null)
         {
-            switch (clickableText.currentNode.pid)
+            switch (_clickableText.currentNode.pid)
             {
                 case 3: // Sortir du vaisseau. Jerai repare le vaisseau
-                    jeraiAnimator.SetBool(IS_REPAIRING_YAK, true);
-                    jeraiAnimator.SetBool(JERAI_IS_IN_YAK, false);
+                    ChangeAnimationState(YAK_STOPPED_JERAI_APPEARS);
                     break;
-                case 27: //Le vaisseau repart. Jerai monte dans le vaisseau
-                    jeraiAnimator.SetBool(IS_REPAIRING_YAK, false);
-                    jeraiAnimator.SetBool(JERAI_IS_IN_YAK, true);
-                    gliderAnimator.SetBool(NOAH_ARRIVED, false);
-                    noahAnimator.SetBool(NOAH_ARRIVED, false);
-                    beaconAnimator.SetBool(IS_BEACON_TRIGGERED, false);
-                    yakAnimator.SetBool(YAK_IS_MOVING, true);
-                    yakAnimator.SetBool(YAK_IS_REPAIRED, false);
+                case 32: //Le vaisseau repart. Jerai monte dans le vaisseau. Before 27
+                    _yakRepairedAlone = true;
+                    ChangeAnimationState(YAK_REPAIRED_GOBACK);
                     break;
                 case 7: //Allumer un beacon. Jerai allume un beacon
-                    if (!beaconAnimator.GetBool(IS_BEACON_TRIGGERED))
-                        beaconAnimator.SetBool(IS_BEACON_TRIGGERED, true);
+                    _yakRepairedAlone = false;
+                    ChangeAnimationState(YAK_STOPPED_JERAI_BEACON);
                     break;
-                case 10: // Noah arrive
-                    gliderAnimator.SetBool(NOAH_ARRIVED, true);
-                    noahAnimator.SetBool(NOAH_ARRIVED, true);
-                break;
-                case 100: // @TODO Jerai discute avec Noah. Jerai en face de Noah
-                    jeraiAnimator.SetBool(IS_REPAIRING_YAK, false);
-                    jeraiAnimator.SetBool(JERAI_IS_FACING_NOAH, true);
-                break;
-                case 34: // le vaisseau est réparer. On enlève la fumée
-                case 17:
-                    yakAnimator.SetBool(YAK_IS_REPAIRED, true);
-                break;
-                case 99: // @TODO Noah disparait de l'écran
-                    gliderAnimator.SetBool(NOAH_ARRIVED, false);
-                    noahAnimator.SetBool(NOAH_ARRIVED, false);
-                break;
+                case 10: // Noah arrive après appel à l'aide
+                    ChangeAnimationState(NOAH_ARRIVES_REPAIR);
+                    break;
+                case 24: // Noah fuit après avoir donné la cassette et réparé le yak
+                case 23: // Noah fuit après avoir donné la cassette et réparé le yak
+                    if (_yakRepairedAlone)
+                    {
+                        ChangeAnimationState(YAK_REPAIRED_NOAH_LEAVES);
+                    }
+                    else
+                    {
+                        ChangeAnimationState(NOAH_REPAIRED_YAK_AND_LEAVE);
+                    }
+                    break;
+                case 27: // Jerai retourne dans son yak après avoir reçu la cassette et Noah a réparé le yak
+                    if (_yakRepairedAlone)
+                    {
+                        ChangeAnimationState(YAK_REPAIRED_TRAVEL_TO_JAHNAH);
+                    }
+                    else
+                    {
+                        ChangeAnimationState(NOAH_REPAIRED_TRAVEL_TO_JAHNAH);
+                    }
+                    break;
+                case 43: // Noah approche le yak en glider
+                    ChangeAnimationState(YAK_REPAIRED_NOAH_CHASE);
+                    break;
+                case 44: // Jerai Stop le yak avant de descendre parler à Noah
+                    ChangeAnimationState(YAK_REPAIRED_JERAI_STOPS_YAK);
+                    break;
+                case 47: // Jerai sort du yak après que Noah l'arrete
+                    ChangeAnimationState(YAK_REPAIRED_JERAI_MEET_NOAH);
+                    break;
+                case 14: // Noah aide Jerai à réparer le Yak
+                    break;
+                case 18: // Moteur en cours de réparation par Noah
+                    ChangeAnimationState(NOAH_REPAIR_YAK);
+                    break;
             }
         }
+    }
+
+    public void ChangeAnimationState(string newState)
+    {
+        if (newState == _currentState)
+        {
+            return;
+        }
+
+        _animator.Play(newState);
+        _currentState = newState;
+    }
+
+    public float GetCurrentAnimationDuration()
+    {
+        return _animator.GetCurrentAnimatorStateInfo(0).length;
     }
 }
