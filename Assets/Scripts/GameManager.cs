@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
 
 public class GameManager : Singleton<GameManager>
 {
@@ -52,8 +55,11 @@ public class GameManager : Singleton<GameManager>
     {
         m_changeNodeEnable = true;
         CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
-        SceneManager.activeSceneChanged += SetCurrentTitleScreenAnimationManager;
+#if UNITY_EDITOR
         EditorSceneManager.activeSceneChangedInEditMode += SetCurrentTitleScreenAnimationManager; // FOR EDITOR DEBUGGING
+#else
+        SceneManager.activeSceneChanged += SetCurrentTitleScreenAnimationManager;
+#endif
     }
 
     public event Action<int> onChangeCharactersDisplaySpeed;
