@@ -57,14 +57,10 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
                 triggerEndMenu(linkId);
 
+                GetComponent<TMPro.TextMeshProUGUI>().maxVisibleCharacters = 0;
                 changeCurrentNode(linkId);
             }
         }
-    }
-
-    void Start()
-    {
-
     }
 
     void Update()
@@ -182,6 +178,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
         triggerMusic();
 
+        GetComponent<TMPro.TextMeshProUGUI>().maxVisibleCharacters = 0;
         GetComponent<TMPro.TextMeshProUGUI>().text = currentNode.text;
 
         triggerTyping();
