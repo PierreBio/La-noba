@@ -95,6 +95,7 @@ public class AnimationManager : MonoBehaviour
                 case 14: // Noah aide Jerai à réparer le Yak
                     break;
                 case 18: // Moteur en cours de réparation par Noah
+                case 17: // Moteur en cours de réparation par Noah
                     ChangeAnimationState(NOAH_REPAIR_YAK);
                     break;
             }
