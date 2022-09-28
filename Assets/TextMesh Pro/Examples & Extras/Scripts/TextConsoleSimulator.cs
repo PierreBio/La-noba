@@ -10,6 +10,7 @@ namespace TMPro.Examples
         private int m_nbAdditionalCharactersToShow;
         private int m_lastDotIndex;
 
+        private int visibleCount;
 
         private TMP_Text m_TextComponent;
         private bool hasTextChanged;
@@ -24,6 +25,7 @@ namespace TMPro.Examples
         {
             m_lastDotIndex = 0;
             m_nbAdditionalCharactersToShow = GameManager.GetInstance().CurrentTypingCharactersToShowPerFrame;
+            visibleCount = 0;
 
             GameManager.GetInstance().onChangeCharactersDisplaySpeed += SetNbAdditionalCharactersToShow;
             StartCoroutine(RevealCharacters(m_TextComponent));
@@ -32,6 +34,16 @@ namespace TMPro.Examples
         void SetNbAdditionalCharactersToShow(int value)
         {
             m_nbAdditionalCharactersToShow = value;
+        }
+
+        private void LateUpdate()
+        {
+            if (m_TextComponent.maxVisibleCharacters > visibleCount)
+            {
+                m_TextComponent.maxVisibleCharacters = visibleCount;
+            }
+
+            m_TextComponent.text = m_TextComponent.text.Trim();
         }
 
 
@@ -70,7 +82,7 @@ namespace TMPro.Examples
             textComponent.ForceMeshUpdate();
 
             int totalVisibleCharacters = m_TextComponent.textInfo.characterCount; // Get # of Visible Character in text object
-            int visibleCount = 0;
+            visibleCount = 0;
 
             while (true)
             {
