@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1dd6c5c49745874092fd899a42cdea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleScreen: {fileID: 0}
-  gameScreen: {fileID: 0}
+  _titleScreenAnimationMgr: {fileID: 0}
+  m_nbAdditionalCharactersToShow: 1
+  m_stopClickChoiceCooldown: 0.1
+  m_changeNodeEnable: 1
 --- !u!114 &8591412035484568441
 MonoBehaviour:
   m_ObjectHideFlags: 0
