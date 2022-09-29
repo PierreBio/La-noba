@@ -297,8 +297,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
             for (var i = 0; i < listIndexStart.Count; i++)
             {
                 string rawOccurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i], listIndexEnd[i] + 2);
-                string linkOccurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]).Replace("[", "").Replace("]", "");
-                string occurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]).Replace("[", "").Replace("]", "");
+                string linkOccurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]);
+                string occurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]);
 
                 if (occurence.IndexOf("->") != -1)
                 {

@@ -1,7 +1,7 @@
 {
   "passages": [
     {
-      "text": "[[Vidéo d'introduction->Le Yak tombe en panne]]\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")\n(set: $lookedAtEngine to \"false\")\n(set: $triedToPushA to \"false\")\n(set: $cIsRepaired to \"false\")\n(set: $repairedSomething to \"false\")\n(set: $lookedAtBInDetails to \"false\")\n(set: $learnedNoahsName to \"false\")",
+      "text": "\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")\n(set: $lookedAtEngine to \"false\")\n(set: $triedToPushA to \"false\")\n(set: $cIsRepaired to \"false\")\n(set: $repairedSomething to \"false\")\n(set: $lookedAtBInDetails to \"false\")\n(set: $learnedNoahsName to \"false\")",
       "links": [
         {
           "name": "Vidéo d'introduction",
@@ -501,7 +501,7 @@
       }
     },
     {
-      "text": "//Vous poussez fermement sur la poignée (if: $aIsTwisted is \"true\")[, que vous enfoncez sans effort  dans son emplacement. [[Les réparations ont l'air terminées ici->Sortir du vaisseau]]. (set: $aIsRepaired to \"true\")(set: $repairedSomething to \"true\")](if: $aIsTwisted is \"false\")[mais sentez que quelque chose bloque. Peut-être la pièce est-elle simplement capricieuse et faut-il [[forcer son enclenchement.->Forcer]] Peut-être vaut-il mieux aussi arrêter et [[regarder si il y a quelque chose d'autre à faire->Inspecter A]] avant de forcer davantage.]//",
+      "text": "//Vous poussez fermement sur la poignée (if: $aIsTwisted is \"true\")[, que vous enfoncez sans effort  dans son emplacement. [[Les réparations ont l'air terminées ici->Sortir du vaisseau]]. (set: $aIsRepaired to \"true\")(set: $repairedSomething to \"true\")] (if: $aIsTwisted is \"false\")[mais sentez que quelque chose bloque. Peut-être la pièce est-elle simplement capricieuse et faut-il [[forcer son enclenchement.->Forcer]] Peut-être vaut-il mieux aussi arrêter et [[regarder si il y a quelque chose d'autre à faire->Inspecter A]] avant de forcer davantage.]//",
       "links": [
         {
           "name": "Les réparations ont l'air terminées ici",
@@ -527,7 +527,7 @@
       }
     },
     {
-      "text": "//Vous tournez la poignée sur elle-même, et un petit claquement se fait entendre. La pompe est bien en position, et [[vous pouvez désormais pousser dessus->Pousser]] sans risques.(set: $aIsTwisted  to \"true\")//",
+      "text": "//Vous tournez la poignée sur elle-même, et un petit claquement se fait entendre. La pompe est bien en position, et [[vous pouvez désormais pousser dessus->Pousser]] sans risques.(set: $aIsTwisted to \"true\")//",
       "links": [
         {
           "name": "vous pouvez désormais pousser dessus",
