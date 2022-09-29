@@ -1,7 +1,7 @@
 {
   "passages": [
     {
-      "text": "\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")\n(set: $lookedAtEngine to \"false\")\n(set: $triedToPushA to \"false\")\n(set: $cIsRepaired to \"false\")\n(set: $repairedSomething to \"false\")\n(set: $lookedAtBInDetails to \"false\")\n(set: $learnedNoahsName to \"false\")",
+      "text": "[[Vidéo d'introduction->Le Yak tombe en panne]]\n(set: $bIsBrokenAtLeastOnce to \"false\")\n(set: $bIsBranched to \"true\")\n(set: $aIsTwisted to \"false\")\n(set: $aIsRepaired to \"false\")\n(set: $enteredFocusRoadNod to \"false\")\n(set: $focusedOnRoadOneTime to \"false\")\n(set: $focusedOnRoadTwoTimes to \"false\")\n(set: $lookedAtEngine to \"false\")\n(set: $triedToPushA to \"false\")\n(set: $cIsRepaired to \"false\")\n(set: $repairedSomething to \"false\")\n(set: $lookedAtBInDetails to \"false\")\n(set: $learnedNoahsName to \"false\")",
       "links": [
         {
           "name": "Vidéo d'introduction",
@@ -33,7 +33,7 @@
       }
     },
     {
-      "text": "//(if: $lookedAtEngine is \"false\")[Vous enfilez votre derma et passez le sas. La porte s'ouvre rapidement, et malgré l'épais isolant de votre combinaison, vous sentez immédiatement la chaleur sèche et écrasante du soleil. \n\nÀ l'arrière du véhicule, une fumée dense s'échappe d'un fin interstice non loin des réacteurs. Vous vous en approchez et poussez la surface lisse de la carrosserie. La trappe contenant le cœur du vaisseau s'ouvre lentement. \n\nAu premier coup d'œil, vous ne parvenez pas à identifier la source du problème : la [[pompe à réosthèse->Inspecter A]] a l'air bien en place, les [[tuyaux de refroidissement->Inspecter B]] et les [[sangles de maintien->Inspecter C]] également.] (if: $lookedAtEngine is \"true\")[(if: $repairedSomething is \"false\")[Vous ne parvenez pas à identifier immédiatement la source du problème : ](if: $repairedSomething is \"true\")[Restent ](if: $aIsTwisted is \"false\")[la [[pompe à réosthèse->Inspecter A]], ]les [[tuyaux de refroidissement->Inspecter B]](if: $cIsRepaired is \"false\")[ et les [[sangles de maintien->Inspecter C]] ](if: $repairedSomething is \"false\")[ont l'air bien en place].]\n\nEst-il bien sage de tenter d'arranger la situation seul ou vaut-il mieux [[tenter d'alerter quelqu'un->Allumer un beacon]] en espérant que l'on perçoive votre appel à l'aide ?// ",
+      "text": "//(if: $lookedAtEngine is \"false\")[ Vous enfilez votre derma et passez le sas. La porte s'ouvre rapidement, et malgré l'épais isolant de votre combinaison, vous sentez immédiatement la chaleur sèche et écrasante du soleil. \n\nÀ l'arrière du véhicule, une fumée dense s'échappe d'un fin interstice non loin des réacteurs. Vous vous en approchez et poussez la surface lisse de la carrosserie. La trappe contenant le cœur du vaisseau s'ouvre lentement. \n\nAu premier coup d'œil, vous ne parvenez pas à identifier la source du problème : la [[pompe à réosthèse->Inspecter A]] a l'air bien en place, les [[tuyaux de refroidissement->Inspecter B]] et les [[sangles de maintien->Inspecter C]] également. ] (if: $lookedAtEngine is \"true\")[(if: $repairedSomething is \"false\")[Vous ne parvenez pas à identifier immédiatement la source du problème : ](if: $repairedSomething is \"true\")[Restent ](if: $aIsTwisted is \"false\")[la [[pompe à réosthèse->Inspecter A]], ]les [[tuyaux de refroidissement->Inspecter B]](if: $cIsRepaired is \"false\")[ et les [[sangles de maintien->Inspecter C]] ](if: $repairedSomething is \"false\")[ont l'air bien en place].](if: $aIsRepaired is \"true\")[(if: $cIsRepaired is \"true\")[Le cœur semble enfin réparé, vous refermez la trappe contenant la mécanique du Yak [[et retournez dans le véhicule->Le moteur est réparé]].] ]\n\nEst-il bien sage de tenter d'arranger la situation seul ou vaut-il mieux [[tenter d'alerter quelqu'un->Allumer un beacon]] en espérant que l'on perçoive votre appel à l'aide ?// ",
       "links": [
         {
           "name": "pompe à réosthèse",
@@ -64,6 +64,11 @@
           "name": "sangles de maintien",
           "link": "Inspecter C",
           "pid": "6"
+        },
+        {
+          "name": "et retournez dans le véhicule",
+          "link": "Le moteur est réparé",
+          "pid": "32"
         },
         {
           "name": "tenter d'alerter quelqu'un",
@@ -74,15 +79,15 @@
       "name": "Sortir du vaisseau",
       "pid": "3",
       "position": {
-        "x": "397",
-        "y": "753"
+        "x": "425",
+        "y": "776"
       }
     },
     {
-      "text": "//(if: $triedToPushA is \"false\")[La pompe à réosthèse est légèrement sortie et vous constatez un léger jeu lorsque vous vous en saisissez par la poignée. \n\nEn tentant de [[pousser->Pousser]] légèrement dessus, vous sentez une légère résistance, alors que le jeu est bien plus important lorsque vous la [[tournez->Tourner]] sur elle-même.](if: $triedToPushA is \"true\")[La poignée résiste lorsque vous tentez de la pousser, mais vous sentez un jeu important lorsque vous la [[tournez->Tourner]] sur elle-même. Vous commencez à vous demander si l'Association vous tiendrait rigueur d'un [[coup de pied->Forcer]] dans la poignée de la pompe.]\n\nVous [[balayez du regard les autres éléments->Sortir du vaisseau]] du moteur pour tenter d'identifier d'autres problèmes.(set: $lookedAtEngine to \"true\")//",
+      "text": "//(if: $triedToPushA is \"false\")[La pompe à réosthèse est légèrement sortie et vous constatez un léger jeu lorsque vous vous en saisissez par la poignée. \n\nEn tentant de [[[pousser->Pousser]] ] légèrement dessus, vous sentez une légère résistance, alors que le jeu est bien plus important lorsque vous la [[tournez->Tourner]] sur elle-même.]\n\nVous [[balayez du regard les autres éléments->Sortir du vaisseau]] du moteur pour tenter d'identifier d'autres problèmes.(set: $lookedAtEngine to \"true\")//",
       "links": [
         {
-          "name": "pousser",
+          "name": "[pousser",
           "link": "Pousser",
           "pid": "26"
         },
@@ -90,16 +95,6 @@
           "name": "tournez",
           "link": "Tourner",
           "pid": "27"
-        },
-        {
-          "name": "tournez",
-          "link": "Tourner",
-          "pid": "27"
-        },
-        {
-          "name": "coup de pied",
-          "link": "Forcer",
-          "pid": "42"
         },
         {
           "name": "balayez du regard les autres éléments",
@@ -115,7 +110,7 @@
       }
     },
     {
-      "text": "//(if: $bIsBranched is \"false\")[À travers la vapeur qui jaillit du moteur, vous apercevez le bout du tuyau qui se tord dans tous les sens. Vous le [[saisissez et le rebranchez->Brancher]] dans son connecteur.](if: $bIsBranched is \"true\")[Il n'y a pas l'air d'y avoir un quelconque problème avec le système de refroidissement, mais vous préférez vous en [[assurer.->Inspecter B en détail]]]//",
+      "text": "//(if: $bIsBranched is \"false\")[ À travers la vapeur qui jaillit du moteur, vous apercevez le bout du tuyau qui se tord dans tous les sens. Vous le [[saisissez et le rebranchez->Brancher]] dans son connecteur. ](if: $bIsBranched is \"true\")[ Il n'y a pas l'air d'y avoir un quelconque problème avec le système de refroidissement, mais vous préférez vous en [[assurer.->Inspecter B en détail]] ]//",
       "links": [
         {
           "name": "saisissez et le rebranchez",
@@ -331,7 +326,7 @@
       }
     },
     {
-      "text": "//Les réparations finies, vous enregistrez vos questions et posez la paume de votre main sur la visière étincelante de la personne qui vient de vous aider. Vous appuyez sur le bouton de votre poignet pour lancer la lecture, et attendez une réponse.(if: $bIsBrokenAtLeastOnce is \"false\")[(if: $lookedAtEngine is \"true\")[ [[Vous soupçonnez un sabotage de votre Yak.->Noah avoue]] ] ] (if: $bIsBrokenAtLeastOnce is \"true\")[ [[Vous soupçonnez un sabotage de votre Yak.->Noah nie]] ] (if:$lookedAtEngine is \"false\")[ [[Vous soupçonnez un sabotage de votre Yak.->Noah nie]] ]//",
+      "text": "//Les réparations finies, vous enregistrez vos questions et posez la paume de votre main sur la visière étincelante de la personne qui vient de vous aider. Vous appuyez sur le bouton de votre poignet pour lancer la lecture, et attendez une réponse.(if: $bIsBrokenAtLeastOnce is \"false\")[(if: $lookedAtEngine is \"true\")[[Vous soupconnez un sabotage de votre Yak.->Noah avoue]] ](if: $bIsBrokenAtLeastOnce is \"true\")[ [[Vous soupconnez un sabotage de votre Yak.->Noah nie]] ](if:$lookedAtEngine is \"false\")[ [[Vous soupconnez un sabotage de votre Yak.->Noah nie]] ]//",
       "links": [
         {
           "name": "Vous soupconnez un sabotage de votre Yak.",
@@ -469,8 +464,8 @@
       "name": "Noah nie",
       "pid": "23",
       "position": {
-        "x": "975",
-        "y": "2103"
+        "x": "1048",
+        "y": "2140"
       }
     },
     {
@@ -506,7 +501,7 @@
       }
     },
     {
-      "text": "//Vous poussez fermement sur la poignée (if: $aIsTwisted is \"true\")[, que vous enfoncez sans effort  dans son emplacement. [[Les réparations ont l'air terminées ici->Sortir du vaisseau]]. (set: $aIsRepaired to \"true\")(set: $repairedSomething to \"true\")](if: $aIsTwisted is \"false\")[mais sentez que quelque chose bloque. Peut-être la pièce est-elle simplement capricieuse et faut-il [[forcer son enclenchement.->Forcer]] Peut-être vaut-il mieux aussi arrêter et [[regarder si il y a quelque chose d'autre à faire->Inspecter A]] avant de forcer davantage.(set: $triedToPushA to \"true\")]//",
+      "text": "//Vous poussez fermement sur la poignée (if: $aIsTwisted is \"true\")[, que vous enfoncez sans effort  dans son emplacement. [[Les réparations ont l'air terminées ici->Sortir du vaisseau]]. (set: $aIsRepaired to \"true\")(set: $repairedSomething to \"true\")](if: $aIsTwisted is \"false\")[mais sentez que quelque chose bloque. Peut-être la pièce est-elle simplement capricieuse et faut-il [[forcer son enclenchement.->Forcer]] Peut-être vaut-il mieux aussi arrêter et [[regarder si il y a quelque chose d'autre à faire->Inspecter A]] avant de forcer davantage.]//",
       "links": [
         {
           "name": "Les réparations ont l'air terminées ici",
@@ -527,12 +522,12 @@
       "name": "Pousser",
       "pid": "26",
       "position": {
-        "x": "138",
-        "y": "1114"
+        "x": "122",
+        "y": "1123"
       }
     },
     {
-      "text": "//Vous tournez la poignée sur elle-même, et un petit claquement se fait entendre. La pompe est bien en position, et [[vous pouvez désormais pousser dessus->Pousser]] sans risques.//\n(set: $aIsTwisted  to \"true\")",
+      "text": "//Vous tournez la poignée sur elle-même, et un petit claquement se fait entendre. La pompe est bien en position, et [[vous pouvez désormais pousser dessus->Pousser]] sans risques.(set: $aIsTwisted  to \"true\")//",
       "links": [
         {
           "name": "vous pouvez désormais pousser dessus",
@@ -575,12 +570,12 @@
       "name": "Inspecter B en détail",
       "pid": "29",
       "position": {
-        "x": "534",
+        "x": "524",
         "y": "1173"
       }
     },
     {
-      "text": "//(if: $aIsRepaired is \"true\")[ (if: $bIsBranched is \"true\")[ Vous resserrez les sangles d'un geste ferme mais maîtrisé. Tout a désormais l'air d'être en ordre dans le moteur du véhicule. Vous retournez à l'intérieur du vaisseau et poussez le levier de mise en marche des moteurs.\n\nLa lourde carlingue du Yak décolle et flotte lentement à quelques centimètres du sol. Vous pouvez enfin [[repartir.->Le moteur est réparé]] ] (if: $bIsBranched is \"false\")[ Vous resserrez les sangles d'un geste ferme mais maîtrisé. La système de refroidissement est désormais bien maintenu en place, mais [[le souffle de vapeur->Sortir du vaisseau]] continue de jaillir sans interruption du système de refroidissement.(set: $repairedSomething to \"true\")(set: $cIsRepaired to \"true\") ] ] (if: $aIsRepaired is \"false\")[ Vous vous apprêtez à resserrer les sangles mais arrêtez votre geste : la [[pompe à réosthèse->Sortir du vaisseau]] est en travers de la course des attaches de maintien. ]//",
+      "text": "//(if: $aIsRepaired is \"true\")[ (if: $bIsBranched is \"true\")[ Vous resserrez les sangles d'un geste ferme mais maîtrisé. Tout a désormais l'air d'être en ordre dans le moteur du véhicule. Vous retournez à l'intérieur du vaisseau et poussez le levier de mise en marche des moteurs.\n\nLa lourde carlingue du Yak décolle et flotte lentement à quelques centimètres du sol. Vous pouvez enfin [[repartir.->Le moteur est réparé]] ] (if: $bIsBranched is \"false\")[ Vous resserrez les sangles d'un geste ferme mais maîtrisé. La système de refroidissement est désormais bien maintenu en place, mais [[le souffle de vapeur->Sortir du vaisseau]] continue de jaillir sans interruption du système de refroidissement.(set: $repairedSomething to \"true\")(set: $cIsRepaired to \"true\")] ](if: $aIsRepaired is \"false\")[ Vous vous apprêtez à resserrer les sangles mais arrêtez votre geste : la [[pompe à réosthèse->Sortir du vaisseau]] est en travers de la course des attaches de maintien. ]//",
       "links": [
         {
           "name": "repartir.",
@@ -638,8 +633,8 @@
       "name": "Le moteur est réparé",
       "pid": "32",
       "position": {
-        "x": "489",
-        "y": "1399"
+        "x": "637",
+        "y": "1393"
       }
     },
     {
@@ -792,15 +787,10 @@
       }
     },
     {
-      "text": "//(if: $triedToPushA is \"false\")[Vous poussez fermement sur la poignée à nouveau et voyez soudain jaillir un souffle de vapeur provenant de derrière la pompe. Vous avez probablement débranché quelque chose, mais [[quoi ?->Sortir du vaisseau]] ](if: $triedToPushA is \"true\")[Vous prenez votre élan et projetez votre pied de toutes vos forces vers la pauvre poignée de la pompe, qui ne bouge pas d'un pouce et fait dévier votre coup droit dans les entrailles du coeur. Vous sentez une chaleur brûlante monter rapidement le long de votre jambe alors qu'un hissement terrible se fait entendre. De la vapeur bleutée s'échappe sous haute pression de l'engin. Il va maintenant falloir [[trouver ce que vous avez vous-même cassé.->Sortir du vaisseau]] ]//\n(set: $bIsBranched to \"false\")\n(set: $bIsBrokenAtLeastOnce to \"true\")",
+      "text": "//[Vous poussez fermement sur la poignée à nouveau et voyez soudain jaillir un souffle de vapeur provenant de derrière la pompe. Vous avez probablement débranché quelque chose, mais [[quoi ?->Sortir du vaisseau]]]//\n(set: $bIsBranched to \"false\")\n(set: $bIsBrokenAtLeastOnce to \"true\")",
       "links": [
         {
           "name": "quoi ?",
-          "link": "Sortir du vaisseau",
-          "pid": "3"
-        },
-        {
-          "name": "trouver ce que vous avez vous-même cassé.",
           "link": "Sortir du vaisseau",
           "pid": "3"
         }
@@ -808,14 +798,14 @@
       "name": "Forcer",
       "pid": "42",
       "position": {
-        "x": "299",
-        "y": "1116"
+        "x": "270",
+        "y": "1112"
       }
     }
   ],
-  "name": "Lainoba_Review_LeoJSON_Cleaned",
+  "name": "Copie de Lainoba_Review_LeoJSON_CleanedPressStart",
   "startnode": "1",
   "creator": "Twine",
   "creator-version": "2.3.15",
-  "ifid": "E2C25659-EA70-40A3-83EE-5CDFCFC099E1"
+  "ifid": "E973E8F8-C60A-455C-B23D-24AA6D369A90"
 }

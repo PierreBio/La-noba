@@ -58,6 +58,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                 triggerEndMenu(linkId);
 
                 changeCurrentNode(linkId);
+                changeCurrentNode(linkId);
             }
         }
     }
@@ -100,8 +101,6 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         Node existingNode = ImportTwison._instance.storyNodes.passages[indexNewNodePid];
         currentNode = DeepCopy.DeepCopyNode(existingNode);
         displayCurrentNode();
-
-        Debug.Log("Current Log PID : " + currentNode.pid);
     }
 
     private void displayCurrentNode()
@@ -184,6 +183,9 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
         triggerMusic();
 
+        currentNode.text = currentNode.text.Replace("]", "").Trim();
+        currentNode.text = currentNode.text.Replace("[", "").Trim();
+
         GetComponent<TMPro.TextMeshProUGUI>().text = currentNode.text;
 
         triggerTyping();
@@ -254,7 +256,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
         List<string> listItalicTextToReplace = new List<string>();
         List<string> listItalicTextReplacement = new List<string>();
 
-        if (listItalicTagIndexes != null)
+        if (listItalicTagIndexes != null && listItalicTagIndexes.Count > 1)
         {
             for (var i = 0; i < listItalicTagIndexes.Count; i += 2)
             {
@@ -264,11 +266,13 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                     listItalicTagIndexes[i + 1] + 2
                     );
 
+                int lastReplacementIndex = listItalicTagIndexes[i + 1];// > node.text.Length ? node.text.Length - 1 : listItalicTagIndexes[i + 1] - 1;
+
                 string replacement = HandleString.getBetweenIndexes(
                     node.text,
-                    listItalicTagIndexes[i] + 2 + (i / 2 * 3),
-                    listItalicTagIndexes[i + 1] + (i / 2 * 3)
-                    ) ;
+                    listItalicTagIndexes[i] + 2,
+                    lastReplacementIndex
+                    );
 
                 listItalicTextToReplace.Add(toReplace);
                 listItalicTextReplacement.Add(replacement);
@@ -293,8 +297,8 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
             for (var i = 0; i < listIndexStart.Count; i++)
             {
                 string rawOccurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i], listIndexEnd[i] + 2);
-                string linkOccurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]);
-                string occurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]);
+                string linkOccurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]).Replace("[", "").Replace("]", "");
+                string occurence = HandleString.getBetweenIndexes(node.text, listIndexStart[i] + 2, listIndexEnd[i]).Replace("[", "").Replace("]", "");
 
                 if (occurence.IndexOf("->") != -1)
                 {
