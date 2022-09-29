@@ -128,7 +128,6 @@ public class GameManager : Singleton<GameManager>
             {
                 SwitchChangeNodeEnable();
                 Invoke("SwitchChangeNodeEnable", m_stopClickChoiceCooldown);
-                Debug.Log(m_changeNodeEnable);
             }
 
             CurrentTypingCharactersToShowPerFrame = m_nbAllCharactersDisplayed;               
@@ -137,8 +136,8 @@ public class GameManager : Singleton<GameManager>
 
     public void SetBackTextDisplaySpeed()
     {
-        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
         StopCoroutine("StopTextDisplayForSeconds");
+        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
     }
 
     public void SetCurrentTitleScreenAnimationManager(Scene current, Scene next)
