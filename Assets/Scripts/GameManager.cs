@@ -107,6 +107,7 @@ public class GameManager : Singleton<GameManager>
 
     void LoadGameScene()
     {
+        GetComponent<CursorScript>().setCursorArrow();
         SceneManager.LoadScene(GAME_SCENE);
     }
 
