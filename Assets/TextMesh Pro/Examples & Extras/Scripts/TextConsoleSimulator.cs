@@ -46,6 +46,10 @@ namespace TMPro.Examples
             m_TextComponent.text = m_TextComponent.text.Trim();
         }
 
+        public bool AllCharactersAreDisplayed()
+        {
+            return visibleCount >= m_TextComponent.textInfo.characterCount; 
+        }
 
         void OnEnable()
         {
@@ -94,7 +98,7 @@ namespace TMPro.Examples
 
                 textComponent.maxVisibleCharacters = visibleCount > totalVisibleCharacters ? totalVisibleCharacters : visibleCount; // How many characters should TextMeshPro display?
 
-                if (StopSentenceOrParagraph(textComponent))
+                if (StopSentenceOrParagraph(textComponent) && textComponent.maxVisibleCharacters < totalVisibleCharacters)
                 {
                     m_lastDotIndex = textComponent.maxVisibleCharacters;
                     StartCoroutine(GameManager.GetInstance().StopTextDisplayForSeconds(.5f));

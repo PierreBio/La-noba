@@ -928,6 +928,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 917309451, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -8.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 917309451, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 917309452, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_text
+      value: "Story and ambiance prototype - La\xEFnoba"
+      objectReference: {fileID: 0}
+    - target: {fileID: 917309452, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 917309452, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_margin.x
+      value: -317.59634
+      objectReference: {fileID: 0}
+    - target: {fileID: 917309452, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 2774292483174833489, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1030,22 +1054,6 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
---- !u!1 &2774292485141591522 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2774292484024968214, guid: d4d6e9792a9a6654893c8d4e1c70fafc, type: 3}
-  m_PrefabInstance: {fileID: 2774292485141591521}
-  m_PrefabAsset: {fileID: 0}
---- !u!210 &2774292485141591523
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2774292485141591522}
-  m_Enabled: 1
-  m_SortingLayerID: -2115999073
-  m_SortingLayer: 3
-  m_SortingOrder: 0
 --- !u!1001 &5198427444653733559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1097,10 +1105,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5198427444025683128, guid: dbe3823bd8fecb3479156215932e3033, type: 3}
-      propertyPath: jsonFile
-      value: 
-      objectReference: {fileID: 4900000, guid: 073683efa9a3b674583fa625d1913f28, type: 3}
     - target: {fileID: 5198427444025683129, guid: dbe3823bd8fecb3479156215932e3033, type: 3}
       propertyPath: m_Name
       value: TwineImport

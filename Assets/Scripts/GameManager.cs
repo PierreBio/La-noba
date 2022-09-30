@@ -1,9 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
+
+using TMPro.Examples;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -52,8 +57,11 @@ public class GameManager : Singleton<GameManager>
     {
         m_changeNodeEnable = true;
         CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
-        SceneManager.activeSceneChanged += SetCurrentTitleScreenAnimationManager;
+#if UNITY_EDITOR
         EditorSceneManager.activeSceneChangedInEditMode += SetCurrentTitleScreenAnimationManager; // FOR EDITOR DEBUGGING
+#else
+        SceneManager.activeSceneChanged += SetCurrentTitleScreenAnimationManager;
+#endif
     }
 
     public event Action<int> onChangeCharactersDisplaySpeed;
@@ -99,6 +107,7 @@ public class GameManager : Singleton<GameManager>
 
     void LoadGameScene()
     {
+        GetComponent<CursorScript>().setCursorArrow();
         SceneManager.LoadScene(GAME_SCENE);
     }
 
@@ -111,11 +120,15 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
         {
-            if (CurrentTypingCharactersToShowPerFrame != m_nbAllCharactersDisplayed)
+            TextConsoleSimulator txtConsoleSim = FindObjectOfType<TextConsoleSimulator>();
+
+            bool allCharactersAreDisplayed = txtConsoleSim != null && txtConsoleSim.AllCharactersAreDisplayed() == false;
+            bool canCancelChangeChoice = CurrentTypingCharactersToShowPerFrame != m_nbAllCharactersDisplayed && allCharactersAreDisplayed;
+
+            if (canCancelChangeChoice)
             {
                 SwitchChangeNodeEnable();
                 Invoke("SwitchChangeNodeEnable", m_stopClickChoiceCooldown);
-                Debug.Log(m_changeNodeEnable);
             }
 
             CurrentTypingCharactersToShowPerFrame = m_nbAllCharactersDisplayed;               
@@ -124,8 +137,8 @@ public class GameManager : Singleton<GameManager>
 
     public void SetBackTextDisplaySpeed()
     {
-        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
         StopCoroutine("StopTextDisplayForSeconds");
+        CurrentTypingCharactersToShowPerFrame = m_nbAdditionalCharactersToShow;
     }
 
     public void SetCurrentTitleScreenAnimationManager(Scene current, Scene next)

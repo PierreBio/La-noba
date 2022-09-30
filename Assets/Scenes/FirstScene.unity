@@ -595,10 +595,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5198427444025683128, guid: dbe3823bd8fecb3479156215932e3033, type: 3}
-      propertyPath: jsonFile
-      value: 
-      objectReference: {fileID: 4900000, guid: 54eb55ff61fdd5940949ea1a785501c4, type: 3}
     - target: {fileID: 5198427444025683129, guid: dbe3823bd8fecb3479156215932e3033, type: 3}
       propertyPath: m_Name
       value: TwineImport

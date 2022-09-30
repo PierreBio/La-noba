@@ -1,0 +1,191 @@
+<html>
+  <head>
+    <title>Copie de Lainoba_Review_LeoJSON_CleanedPressStart</title>
+    <script type="text/javascript">
+      /**
+       * Twison - Twine 2 JSON Export Story Format
+       *
+       * Copyright (c) 2015 Em Walker
+       * https://lazerwalker.com
+       *
+       * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+       * associated documentation files (the "Software"), to deal in the Software without restriction,
+       * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+       * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+       * subject to the following conditions:
+       *
+       * The above copyright notice and this permission notice shall be included in all copies or substantial
+       * portions of the Software.
+       *
+       * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+       * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+       * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+       * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+       * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+       */
+      var Twison={extractLinksFromText:function(t){var n=t.match(/\[\[.+?\]\]/g);return n?n.map(function(t){var n=t.match(/\[\[(.*?)\-\&gt;(.*?)\]\]/);return n?{name:n[1],link:n[2]}:(t=t.substring(2,t.length-2),{name:t,link:t})}):null},extractPropsFromText:function(t){var n,r={},e=!1;const a=/\{\{((\s|\S)+?)\}\}((\s|\S)+?)\{\{\/\1\}\}/gm;for(;null!==(n=a.exec(t));){const o=n[1],s=n[3].replace(/(\r\n|\n|\r)/gm,""),i=this.extractPropsFromText(s);r[o]=null!==i?i:s,e=!0}return e?r:null},convertPassage:function(t){var n={text:t.innerHTML},r=Twison.extractLinksFromText(n.text);r&&(n.links=r);const e=Twison.extractPropsFromText(n.text);if(e&&(n.props=e),["name","pid","position","tags"].forEach(function(r){var e=t.attributes[r].value;e&&(n[r]=e)}),n.position){var a=n.position.split(",");n.position={x:a[0],y:a[1]}}return n.tags&&(n.tags=n.tags.split(" ")),n},convertStory:function(t){var n=t.getElementsByTagName("tw-passagedata"),r=Array.prototype.slice.call(n).map(Twison.convertPassage),e={passages:r};["name","startnode","creator","creator-version","ifid"].forEach(function(n){var r=t.attributes[n].value;r&&(e[n]=r)});var a={};return e.passages.forEach(function(t){a[t.name]=t.pid}),e.passages.forEach(function(t){t.links&&t.links.forEach(function(t){t.pid=a[t.link],t.pid||(t.broken=!0)})}),e},convert:function(){var t=document.getElementsByTagName("tw-storydata")[0],n=JSON.stringify(Twison.convertStory(t),null,2);document.getElementById("output").innerHTML=n}};window.Twison=Twison;
+    </script>
+  </head>
+  <body>
+    <pre id="output"></pre>
+    <div id="storyData" style="display: none;">
+      <tw-storydata name="Copie de Lainoba_Review_LeoJSON_CleanedPressStart" startnode="1" creator="Twine" creator-version="2.3.15" ifid="E973E8F8-C60A-455C-B23D-24AA6D369A90" zoom="1" format="Twison" format-version="0.0.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Jeraï dans son vaisseau avec Ben" tags="" position="418,427" size="100,100">[[Vidéo d&#39;introduction-&gt;Le Yak tombe en panne]]
+(set: $bIsBrokenAtLeastOnce to &quot;false&quot;)
+(set: $bIsBranched to &quot;true&quot;)
+(set: $aIsTwisted to &quot;false&quot;)
+(set: $aIsRepaired to &quot;false&quot;)
+(set: $enteredFocusRoadNod to &quot;false&quot;)
+(set: $focusedOnRoadOneTime to &quot;false&quot;)
+(set: $focusedOnRoadTwoTimes to &quot;false&quot;)
+(set: $lookedAtEngine to &quot;false&quot;)
+(set: $triedToPushA to &quot;false&quot;)
+(set: $cIsRepaired to &quot;false&quot;)
+(set: $repairedSomething to &quot;false&quot;)
+(set: $lookedAtBInDetails to &quot;false&quot;)
+(set: $learnedNoahsName to &quot;false&quot;)</tw-passagedata><tw-passagedata pid="2" name="Le Yak tombe en panne" tags="" position="411,582" size="100,100">//Le moteur s&#39;est complètement arrêté. C&#39;est étrange, les Yaks sont pourtant extrêmements robustes et le nombre de pannes les concernant se compte sur les doigts d&#39;une main.
+
+Vous vous retournez vers votre passager et le rassurez : [[le problème sera vite réglé.-&gt;Sortir du vaisseau]]//</tw-passagedata><tw-passagedata pid="3" name="Sortir du vaisseau" tags="" position="425,776" size="100,100">//(if: $lookedAtEngine is &quot;false&quot;)[Vous enfilez votre derma et passez le sas. La porte s&#39;ouvre rapidement, et malgré l&#39;épais isolant de votre combinaison, vous sentez immédiatement la chaleur sèche et écrasante du soleil. 
+
+À l&#39;arrière du véhicule, une fumée dense s&#39;échappe d&#39;un fin interstice non loin des réacteurs. Vous vous en approchez et poussez la surface lisse de la carrosserie. La trappe contenant le cœur du vaisseau s&#39;ouvre lentement. 
+
+Au premier coup d&#39;œil, vous ne parvenez pas à identifier la source du problème : la [[pompe à réosthèse-&gt;Inspecter A]] a l&#39;air bien en place, les [[tuyaux de refroidissement-&gt;Inspecter B]] et les [[sangles de maintien-&gt;Inspecter C]] également.] (if: $lookedAtEngine is &quot;true&quot;)[(if: $repairedSomething is &quot;false&quot;)[Vous ne parvenez pas à identifier immédiatement la source du problème : ](if: $repairedSomething is &quot;true&quot;)[Restent ](if: $aIsTwisted is &quot;false&quot;)[la [[pompe à réosthèse-&gt;Inspecter A]], ]les [[tuyaux de refroidissement-&gt;Inspecter B]](if: $cIsRepaired is &quot;false&quot;)[ et les [[sangles de maintien-&gt;Inspecter C]] ](if: $repairedSomething is &quot;false&quot;)[ont l&#39;air bien en place].](if: $aIsRepaired is &quot;true&quot;)[(if: $cIsRepaired is &quot;true&quot;)[Le cœur semble enfin réparé, vous refermez la trappe contenant la mécanique du Yak [[et retournez dans le véhicule-&gt;Le moteur est réparé]].]]
+
+Est-il bien sage de tenter d&#39;arranger la situation seul ou vaut-il mieux [[tenter d&#39;alerter quelqu&#39;un-&gt;Allumer un beacon]] en espérant que l&#39;on perçoive votre appel à l&#39;aide ?// </tw-passagedata><tw-passagedata pid="4" name="Inspecter A" tags="" position="162,775" size="100,100">//(if: $triedToPushA is &quot;false&quot;)[La pompe à réosthèse est légèrement sortie et vous constatez un léger jeu lorsque vous vous en saisissez par la poignée. 
+
+En tentant de [[[pousser-&gt;Pousser]] ] légèrement dessus, vous sentez une légère résistance, alors que le jeu est bien plus important lorsque vous la [[tournez-&gt;Tourner]] sur elle-même.]
+
+Vous [[balayez du regard les autres éléments-&gt;Sortir du vaisseau]] du moteur pour tenter d&#39;identifier d&#39;autres problèmes.(set: $lookedAtEngine to &quot;true&quot;)//</tw-passagedata><tw-passagedata pid="5" name="Inspecter B" tags="" position="414,998" size="100,100">//(if: $bIsBranched is &quot;false&quot;)[ À travers la vapeur qui jaillit du moteur, vous apercevez le bout du tuyau qui se tord dans tous les sens. Vous le [[saisissez et le rebranchez-&gt;Brancher]] dans son connecteur. ](if: $bIsBranched is &quot;true&quot;)[ Il n&#39;y a pas l&#39;air d&#39;y avoir un quelconque problème avec le système de refroidissement, mais vous préférez vous en [[assurer.-&gt;Inspecter B en détail]] ]//</tw-passagedata><tw-passagedata pid="6" name="Inspecter C" tags="" position="629,833" size="100,100">//Bien qu&#39;un peu lâches, les sangles de maitien du réservoir semblent le tenir correctement en place. Vous hésitez : vaut-il mieux [[les resserrer d&#39;un geste ferme-&gt;Tirer doucement]] ou 
+[[tirer aussi fort que possible-&gt;Tirer très fort]] dessus ?
+
+Vous [[balayez du regard les autres éléments-&gt;Sortir du vaisseau]] du moteur pour tenter d&#39;identifier d&#39;autres problèmes.//</tw-passagedata><tw-passagedata pid="7" name="Allumer un beacon" tags="" position="772,782" size="100,100">//Vous détachez une balise du flanc du Yak et la posez sur le sol. Instantanément en jaillit un faisceau de lumière s&#39;élevant à plusieurs dizaines de mètres dans le ciel. Il n&#39;y a maintenant plus qu&#39;à attendre le prochain Yak qui croisera votre chemin.
+
+Seul à l&#39;extérieur, vous ne pouvez vous empêcher d&#39;être désolé pour votre passager qui a contemplé ce dernier voyage toute sa vie. 
+
+Vous êtes vite arraché à vos considérations par la dûreté de votre environnement. La chaleur tord [[l&#39;horizon lointain-&gt;Regarder l&#39;horizon]], faisant danser les immenses montagnes d&#39;Aïch. [[Le vent souffle-&gt;On active le micro extérieur de la derma]] comme à son habitude, rendu silencieux par votre épais casque, rasant le sol et en détachant des nappes de poussière irrégulièrement.//</tw-passagedata><tw-passagedata pid="8" name="Regarder l&#39;horizon" tags="" position="850,992" size="100,100">//Vous scrutez l&#39;horizon, tentant de fixer le décor qui semble s&#39;évaporer sous vos yeux. Alors qu&#39;une bourrasque arrache au sol un filet de poussière, vous apercevez au loin [[un nuage bien plus conséquent-&gt;Noah arrive en aide providentielle]] que l&#39;accoutumée. Il semble se rapprocher de votre position.//</tw-passagedata><tw-passagedata pid="9" name="On active le micro extérieur de la derma" tags="" position="1028,998" size="100,100">//Vous allumez le micro externe de votre derma en espérant ne pas être tombée en panne à proximité d&#39;une ruine.
+
+Le bruit du vent, silencieux il y a quelques secondes, remplit d&#39;un coup tout l&#39;espace de votre casque, vous déstabilisant un court instant. 
+
+Une fois l&#39;effet de surprise passé, vous vous concentrez sur l&#39;analyse du vacarme qui vous agresse les oreilles. Pas de grincements. Au moins, c&#39;est une bonne nouvelle. Un [[vrombissement ténu-&gt;Noah arrive en aide providentielle]] attire cependant votre attention.//</tw-passagedata><tw-passagedata pid="10" name="Noah arrive en aide providentielle" tags="" position="900,1196" size="100,100">//Vous discernez un petit glider qui s&#39;approche à très grande vitesse, avant de s&#39;arrêter net près de votre véhicule. La pilote en descend et s&#39;approche de vous.
+
+Par réflexe, vous [[effectuez un pas en arrière.-&gt;Communiquer de la méfiance]] Vous ne vous attendiez pas à voir un glider par ici, mais votre situation est peut-être suffisamment préocuppante pour [[remettre les questions à plus tard.-&gt;Toute aide est la bienvenue]]//</tw-passagedata><tw-passagedata pid="11" name="Communiquer de la méfiance" tags="" position="863,1433" size="100,100">//Vous reculez instinctivement pour augmenter la distance entre vous. [[Elle n&#39;est sûrement pas de l&#39;Association-&gt;Elle n&#39;est pas de l&#39;Association]], et [[cette aide providentielle vous paraît très suspecte.-&gt;Aide est providentielle]]//</tw-passagedata><tw-passagedata pid="12" name="Toute aide est la bienvenue" tags="" position="1074,1326" size="100,100">//L&#39;étrangère est déjà en train d&#39;inspecter la source de la fumée s&#39;échappant de votre moteur. Vous le rejoignez, et estimez que bien que cette intervention soit étrange, elle ne peut être que la bienvenue. Dans le silence de vos casques, vous vous affairez à [[réparer le moteur de votre véhicule.-&gt;Noah vous aide à réparer votre vaisseau]]//</tw-passagedata><tw-passagedata pid="13" name="Elle n&#39;est pas de l&#39;Association" tags="" position="675,1701" size="100,100">//L&#39;Association ne communique que très rarement avec ses membres à l&#39;extérieur de Laïnoba. Que fait-elle donc ici ?
+
+Perdue dans vos pensées, vous observez de nouveau sa combinaison et vous rendez compte que vous n&#39;aviez pas relevé un détail important. Sur l&#39;épaule droite de sa derma se trouve l&#39;écusson des civils de Laïnoba. 
+
+Les seuls civils censés emprunter la route de Jah&#39;Nah sont les Anciens, et ils sont toujours accompagnés d&#39;un membre de l&#39;Association. [[Quelque chose cloche.-&gt;Communiquer de la méfiance]]// </tw-passagedata><tw-passagedata pid="14" name="Aide est providentielle" tags="" position="893,1603" size="100,100">//Bien que de nombreuses questions occupent votre esprit, vous décidez de les garder pour plus tard : vous n&#39;avez pas le luxe de refuser une aide potentielle, aussi providentielle soit-elle. 
+
+Vous vous attelez à [[réparer votre moteur-&gt;Méfiance envers Noah]], tout en gardant une certaine méfiance.//</tw-passagedata><tw-passagedata pid="15" name="Noah vous aide à réparer votre vaisseau" tags="" position="1271,1445" size="100,100">//Vous levez la tête des pièces mécaniques dont le reflet vous aveugle, et vous demandez qui peut bien être [[cet inconnue-&gt;Qui es-tu ?]] et la 
+[[raison de sa présence sur cette route.-&gt;Que fais-tu sur cette route ?]]
+
+Les réparations ont l&#39;air bientôt terminées, vous [[espérez que l&#39;étrangère ne vous demande rien en retour de son service.-&gt;As-tu besoin de quoi que ce soit en retour ?]] Non pas que vous refuseriez catégoriquement, mais Ben et vous avez besoin de toute la nourriture qu&#39;il vous reste pour effectuer le reste du trajet.//</tw-passagedata><tw-passagedata pid="16" name="Méfiance envers Noah" tags="" position="809,1841" size="100,100">//Les réparations finies, vous enregistrez vos questions et posez la paume de votre main sur la visière étincelante de la personne qui vient de vous aider. Vous appuyez sur le bouton de votre poignet pour lancer la lecture, et attendez une réponse.(if: $bIsBrokenAtLeastOnce is &quot;false&quot;)[(if: $lookedAtEngine is &quot;true&quot;)[[Vous soupconnez un sabotage de votre Yak.-&gt;Noah avoue]] ](if: $bIsBrokenAtLeastOnce is &quot;true&quot;)[ [[Vous soupconnez un sabotage de votre Yak.-&gt;Noah nie]] ](if:$lookedAtEngine is &quot;false&quot;)[ [[Vous soupconnez un sabotage de votre Yak.-&gt;Noah nie]] ]//</tw-passagedata><tw-passagedata pid="17" name="Qui es-tu ?" tags="" position="1014,1526" size="100,100">//D&#39;une pression sur le poignet de votre combinaison, vous activez l&#39;enregistrement de votre question, puis posez la main sur le casque de l&#39;étrangère pour lui transmettre. Elle fait de même et bientôt vous entendez sa voix résonner dans votre combinaison.//
+
+&quot;Je ne vous veux aucun mal, je souhaite seulement vous aider.&quot; 
+
+//Elle se retourne sitôt le message transmis et s&#39;attèle de nouveau à [[réparer votre vaisseau.-&gt;Noah vous aide à réparer votre vaisseau]]//</tw-passagedata><tw-passagedata pid="18" name="Que fais-tu sur cette route ?" tags="" position="1270,1766" size="100,100">//Vous enregistrez votre question à l&#39;aide du micro interne de votre combinaison, et posez la paume de votre main sur le côté du casque de votre interlocutrice.
+
+Après avoir écouté, l&#39;inconnue fait de même et approche la main de votre visage. Sa voix assurée et légèrement éraillée résonne à travers la paroi de votre casque.//
+
+&quot;Je m&#39;appelle Noah, je suis partie de Laïnoba pour te rejoindre et te [[transmettre un message-&gt;Elle n&#39;est pas de l&#39;Association]] de la part de l&#39;Association en urgence. Ce que j&#39;ai à te dire est de la plus haute importance.&quot;
+(set: $learnedNoahsName to &quot;true&quot;)</tw-passagedata><tw-passagedata pid="19" name="As-tu besoin de quoi que ce soit en retour ?" tags="" position="1389,1769" size="100,100">//Vous activez le micro interne de votre derma et enregistrez votre question. Vous approchez la main du casque de votre interlocutrice, et la posez délicatement sur le côté droit de ce dernier.
+
+Après avoir écouté, l&#39;inconnue fait de même et approche la main de votre visage. Sa voix assurée et légèrement éraillée résonne à travers la paroi de votre casque. //
+
+&quot;Je m&#39;apelle Noah. Rassure-toi, je n&#39;ai besoin de rien en retour de mon aide. Je cherchais à rattraper ton Yak pour te parler de la mission qui t’as été confiée par l’Association. Je pense que tu devrais écouter [[ceci.-&gt;But réel du voyage]]&quot;
+(set: $learnedNoahsName to &quot;true&quot;)</tw-passagedata><tw-passagedata pid="20" name="But réel du voyage" tags="" position="1235,1952" size="100,100">//Entre ses doigts, un ruban ocre frétille violemment au gré du vent. Une mémoire ! En dehors de sa gangue de protection !
+
+Le ruban brille de superbes reflets. C&#39;est la première fois que vous en [[voyez un sans coque autour-&gt;Comment cette mémoire est-elle arrivée en la possession de Noah ?]] , mais vous savez qu&#39;[[ils sont extrêmement fragiles et sensibles lorsqu&#39;ils ne sont pas protégés.-&gt;Prendre la mémoire]]//</tw-passagedata><tw-passagedata pid="21" name="Comment cette mémoire est-elle arrivée en la possession de Noah ?" tags="" position="1244,2154" size="100,100">//Vous appuyez sur le bouton à votre poignet et commencez à enregistrer une question, mais à peine baissé les yeux, un immense nuage de poussière vous aveugle.
+
+Vous regardez autour de vous, et n&#39;apercevez que les petites particules de réosthèse brûlée que le glider de Noah a laissées en suspension dans les airs en redémarrant. Sur votre Yak, la bande colorée du ruban se débat, coincée dans un interstice de la coque.
+
+Vous vous empressez de le saisir et de [[remonter dans le véhicule-&gt;Le vaisseau repart]], encore confus de cette interaction aussi étrange qu&#39;inattendue.//</tw-passagedata><tw-passagedata pid="22" name="Prendre la mémoire" tags="" position="1396,2070" size="100,100">//Vous saisissez le ruban, et sitôt qu&#39;il est en votre possession, Noah fonce vers son glider et redémarre immédiatement. Vous n&#39;avez que le temps d&#39;être aveuglé par les réacteurs avant de vous rendre compte de ce qu&#39;il s&#39;est passé.
+
+Vous regardez le bandeau de mémoire se plaquer contre les doigts de votre main au gré du vent, encore confuse de cette interaction aussi étrange qu&#39;inattendue. Les petites particules de réosthèse brûlée que le glider (if: $learnedNoahsName is &quot;true&quot;)[de Noah] a laissées en suspension s&#39;agitent encore dans les airs lorsque vous [[remontez dans votre véhicule.-&gt;Le vaisseau repart]]// </tw-passagedata><tw-passagedata pid="23" name="Noah nie" tags="" position="1048,2140" size="100,100">//La réponse se fait désirer, mais bientôt résonne dans votre combinaison une voix abîmée.//
+
+&quot;Non, je cherchais effectivement à rattraper ton Yak pour te parler de la mission qui t’as été confiée par l’Association, mais je t&#39;assure n&#39;avoir rien fait pour te nuire. 
+
+La raison pour laquelle je cherchais à te rattraper est [[ceci.-&gt;But réel du voyage]]&quot;</tw-passagedata><tw-passagedata pid="24" name="Noah avoue" tags="" position="1040,1931" size="100,100">//Pendant les réparations, il ne vous a pas échappé que certaines pièces avaient été dévissées intentionnellement. La mécanique des Yaks est extrêmement robuste est ne se dérègle théoriquement jamais.
+
+La réponse se fait désirer, mais bientôt résonne dans votre combinaison la voix abîmée de votre soi-disante sauveuse.//
+
+&quot;Tu as raison, et je m&#39;excuse d&#39;avoir agit ainsi. J&#39;ai trafiqué le cœur de ton vaisseau avant ton départ pour Jah&#39;Nah. Je t&#39;assure que je ne l&#39;ai pas fait pour te nuire, je voulais simplement m&#39;assurer que je pourrai te parler à l&#39;extérieur de Laïnoba à l&#39;abri de tout regards indiscrets.
+
+Je cherchais à rattraper ton Yak pour te parler de la mission qui t’as été confiée par l’Association. Je pense que tu devrais écouter [[ceci.-&gt;But réel du voyage]]&quot;</tw-passagedata><tw-passagedata pid="25" name="Le vaisseau repart" tags="" position="1622,2281" size="100,100">//Vous enlevez votre derma et redémarrez votre Yak, qui se soulève du sol lentement. Le ruban de la mémoire (if: $learnedNoahsName is &quot;true&quot;)[que Noah vous a confié](if: $learnedNoahsName is &quot;false&quot;)[qui vous a été confié] repose sur le devant du poste de pilotage. 
+
+Vous vous en saisissez et bravez les interdits protocolaires en retirant la mémoire de votre vaisseau de son emplacement pour y étirer à la place la bande que l&#39;on vient de vous confier. Vous repliez les broches autour d&#39;elle, et fermez le capot en espérant que personne ne se rendra jamais compte de ce que vous avez fait.
+
+Vous [[écoutez-&gt;voix fantomatique]] dans le silence assourdissant de la cabine la voix fantômatique qui s&#39;échappe du haut parleur. Vous savez qu&#39;il est impossible d&#39;enregistrer par dessus une mémoire qui ne vous appartient pas.//
+</tw-passagedata><tw-passagedata pid="26" name="Pousser" tags="" position="122,1123" size="100,100">//Vous poussez fermement sur la poignée (if: $aIsTwisted is &quot;true&quot;)[, que vous enfoncez sans effort  dans son emplacement. [[Les réparations ont l&#39;air terminées ici-&gt;Sortir du vaisseau]]. (set: $aIsRepaired to &quot;true&quot;)(set: $repairedSomething to &quot;true&quot;)](if: $aIsTwisted is &quot;false&quot;)[mais sentez que quelque chose bloque. Peut-être la pièce est-elle simplement capricieuse et faut-il [[forcer son enclenchement.-&gt;Forcer]] Peut-être vaut-il mieux aussi arrêter et [[regarder si il y a quelque chose d&#39;autre à faire-&gt;Inspecter A]] avant de forcer davantage.]//</tw-passagedata><tw-passagedata pid="27" name="Tourner" tags="" position="17,967" size="100,100">//Vous tournez la poignée sur elle-même, et un petit claquement se fait entendre. La pompe est bien en position, et [[vous pouvez désormais pousser dessus-&gt;Pousser]] sans risques.(set: $aIsTwisted  to &quot;true&quot;)//</tw-passagedata><tw-passagedata pid="28" name="Brancher" tags="" position="373,1253" size="100,100">//Le système de refroidissement est désormais de nouveau opérationnel. Vous vous assurez de bien resserrer la base du tuyau, et [[regardez le reste des éléments du moteur.-&gt;Sortir du vaisseau]]
+(set: $bIsBranched to &quot;true&quot;)//</tw-passagedata><tw-passagedata pid="29" name="Inspecter B en détail" tags="" position="524,1173" size="100,100">//Il n&#39;y avait effectivement aucun problème, le système est bien branché et vous êtes soulagé de ne pas avoir à le reconnecter. Vous [[regardez le reste des éléments du moteur.-&gt;Sortir du vaisseau]](set: $lookedAtBInDetails to &quot;true&quot;)//</tw-passagedata><tw-passagedata pid="30" name="Tirer doucement" tags="" position="738,1132" size="100,100">//(if: $aIsRepaired is &quot;true&quot;)[ (if: $bIsBranched is &quot;true&quot;)[ Vous resserrez les sangles d&#39;un geste ferme mais maîtrisé. Tout a désormais l&#39;air d&#39;être en ordre dans le moteur du véhicule. Vous retournez à l&#39;intérieur du vaisseau et poussez le levier de mise en marche des moteurs.
+
+La lourde carlingue du Yak décolle et flotte lentement à quelques centimètres du sol. Vous pouvez enfin [[repartir.-&gt;Le moteur est réparé]] ] (if: $bIsBranched is &quot;false&quot;)[ Vous resserrez les sangles d&#39;un geste ferme mais maîtrisé. La système de refroidissement est désormais bien maintenu en place, mais [[le souffle de vapeur-&gt;Sortir du vaisseau]] continue de jaillir sans interruption du système de refroidissement.(set: $repairedSomething to &quot;true&quot;)(set: $cIsRepaired to &quot;true&quot;)] ](if: $aIsRepaired is &quot;false&quot;)[ Vous vous apprêtez à resserrer les sangles mais arrêtez votre geste : la [[pompe à réosthèse-&gt;Sortir du vaisseau]] est en travers de la course des attaches de maintien. ]//</tw-passagedata><tw-passagedata pid="31" name="Tirer très fort" tags="" position="603,1017" size="100,100">//Vous saisissez les sangles d&#39;attanche et tirez dessus de toutes vos forces. Dans l&#39;effort, votre combinaison accroche le câble du système de refroidissement et le débranche complètement. 
+
+Le câble pendouille désormais au milieu du moteur, et un [[souffle de vapeur-&gt;Sortir du vaisseau]] s&#39;échappe maintenant du connecteur nu.//
+(set: $bIsBrokenAtLeastOnce to &quot;true&quot;)
+(set: $bIsBranched to &quot;false&quot;)</tw-passagedata><tw-passagedata pid="32" name="Le moteur est réparé" tags="" position="637,1393" size="100,100">//(if: $bIsBrokenAtLeastOnce is &quot;false&quot;)[ Vous prenez place sur le siège conducteur et retirez enfin votre Derma. Une goutte de sueur perle sur votre front alors que vous poussez un long soupir. Vous ne redémarrez pas immédiatement et marquez une pause.
+
+Les systèmes du Yak ne sont pas censés dysfonctionner ainsi, il est tellement rare d&#39;avoir un problème avec ces véhicules que l&#39;on entend parler des rares soucis les concernant comme des légendes urbaines au sein de l&#39;Association.
+
+En réparant le moteur, vous vous êtes bien rendu compte que ce n&#39;était pas un accident. Vous [[posez la main sur le levier de contrôle des moteurs-&gt;Découverte du sabotage]] en étant persuadé que l&#39;on a saboté votre Yak avant votre départ de Laïnoba.](if: $bIsBrokenAtLeastOnce is &quot;true&quot;)[ Le Yak glisse au dessus des rochers qui jonchent le sol d&#39;Aïch, le paysage monotone défile, ne vous offrant que de tristes rochers à voir. Parfois, une ruine brise l&#39;uniformité de l&#39;horizon. Vous préférez en rester loin.
+
+Alors que votre esprit commence à divaguer, votre [[passager vous interpelle.-&gt;Remonter dans le Yak]] ]//</tw-passagedata><tw-passagedata pid="33" name="Découverte du sabotage" tags="" position="175,1584" size="100,100">//Vous poussez le levier des gazs, cran par cran. Le triste paysage d&#39;Aïch recommence à défiler au travers des fenêtres du Yak, dansant à l&#39;horizon sous la chaleur de plomb. 
+
+Votre regard effectue des allers-retours rapides entre le [[tableau de bord-&gt;Le vaisseau repart - Se concentrer sur la route]] et les rocs ponctuant votre route. 
+
+Quelques ruines sont semées ci-et-là. Vous préférez en restez éloigné, quitte à dévier légèrement de votre trajectoire.// </tw-passagedata><tw-passagedata pid="34" name="Remonter dans le Yak" tags="" position="398,1588" size="100,100">&quot;Qu&#39;est ce qu&#39;il s&#39;est passé Jeraï ?&quot;
+
+//La voix est rauque, marquée par le temps et pourtant son intonation vous rassénère. Il ne vous en veux pas.
+
+Vous lui expliquez que bien que ça ne vous soit jamais arrivé, une secousse a probablement desserré une des pièces du cœur du Yak.// 
+
+&quot;Ah… C&#39;est étrange, les produits de l&#39;Usine sont pourtant presque infaillibles.&quot;
+
+//Vous acquiescez en silence et hésitez à lui poser des questions sur son temps passé à l&#39;Usine. Vous vous ravisez et vous [[reconcentrez sur la route-&gt;Le vaisseau repart - Se concentrer sur la route]]. Peut-être Ben préfère-t-il se replonger dans ses souvenirs seul.//</tw-passagedata><tw-passagedata pid="35" name="Le vaisseau repart - Se concentrer sur la route" tags="" position="252,1810" size="100,100">//Votre regard est attiré par une diode s&#39;étant subitement allumée sur le tableau de bord du véhicule. Vous la tournez d&#39;un rapide pincement, et s&#39;ouvre un panneau contenant une multitude de petites diodes de la même couleur.
+
+Vous [[consultez le panneau-&gt;Consulter le radar acoustique]] qui vient de s&#39;ouvrir.
+(if: $enteredFocusRoadNod is &quot;false&quot;)[ (set: $enteredFocusRoadNod to &quot;true&quot;)]
+(if: $enteredFocusRoadNod is &quot;true&quot;)[ (if: $focusedOnRoadOneTime is &quot;false&quot;)[ (set: $focusedOnRoadOneTime to &quot;true&quot;) ] (if: $focusedOnRoadOneTime is &quot;true&quot;)[ (set: $focusedOnRoadTwoTimes  to &quot;true&quot;) ] ]//</tw-passagedata><tw-passagedata pid="36" name="Consulter le radar acoustique" tags="" position="162,1999" size="100,100">//Vous avez l&#39;impression que l&#39;une des diodes tend légèrement vers le jaune, mais ne parvenez pas à distinguer clairement. Vous vous 
+[[rapprochez du tableau de bord-&gt;Observer plus précisément]] et scrutez le panneau avec attention.//</tw-passagedata><tw-passagedata pid="37" name="Observer plus précisément" tags="" position="227,2171" size="100,100">//La lumière de la diode devient de plus en plus intense. Soudain elle s&#39;éteint, et s&#39;allume la diode du dessus, qui de même s&#39;éteint très rapidement. La lumière se déplace vers le centre du panneau extrêmement rapidement.
+
+Un [[véhicule s&#39;approche de vous-&gt;Noah nous barre la route]] à très grande vitesse.//</tw-passagedata><tw-passagedata pid="38" name="Noah nous barre la route" tags="" position="421,2226" size="100,100">//Vous levez les yeux du panneau de contrôle et voyez le véhicule étranger se trouvant déjà devant vous. C&#39;est un petit glider, un véhicule extrêmement rapide. 
+
+S&#39;agirait-il d&#39;un membre de l&#39;Association ? Il ralentit progressivement et vous barre la route, vous forçant à vous arrêter. 
+
+Vous coupez le moteur en vous excusant auprès de Ben et enfilez de nouveau votre Derma, dont l&#39;extérieur est encore brûlante. Sur le pas du sas, vous  dites à Ben que vous [[sortez voir-&gt;On sort du vaisseau pour discuter avec Noah]] ce que veut cet inconnu et qu&#39;il n&#39;y a pas lieu de s&#39;inquiéter.
+
+Il se retourne dans son lit, l&#39;air mécontent mais sans aucune colère apparente. Il y aurait pourtant de quoi, le pèlerinage est la consécration de toute une vie et le voici interrompu à nouveau par un imprévu.//</tw-passagedata><tw-passagedata pid="39" name="On sort du vaisseau pour discuter avec Noah" tags="" position="765,2128" size="100,100">//Vous plissez les yeux en observant l&#39;inconnue. Vous n&#39;arrivez à discerner que les contours de son visage : tracé au couteau, les cheveux courts et frisés retombant en une mèche sur le côté gauche. 
+
+Au fur et à mesure qu&#39;elle se rapproche de vous, vous arrivez à estimer son âge à une quinzaine d&#39;années de plus que vous. La visière de sa combinaison est couverte de petites éraflures ça-et-là.
+
+Vous activez le micro interne de votre derma et enregistrez votre question. Vous approchez la main du casque de votre interlocutrice, et la posez sur le côté droit de ce dernier.
+
+(if: $bIsBrokenAtLeastOnce is &quot;true&quot;)[ Vous la [[soupconnez d&#39;être à l&#39;origine de votre panne.-&gt;Noah nie]] ] (if: $bIsBrokenAtLeastOnce is &quot;false&quot;)[ Vous la [[soupconnez clairement-&gt;Noah avoue]] d&#39;être à l&#39;origine de votre panne. ]//</tw-passagedata><tw-passagedata pid="40" name="voix fantomatique" tags="" position="1623,2430" size="100,100">&quot;…Les pèl-rin-ges ne s--t pas qu&#39;-- simple derni-- h-mmage. Ce ne s--t que des FOUTAISES ! JA-AI- vous -- -&#39;obligerez à al-er dans ce Lac qu- ne donne que la m--- ! J&#39;ai donn-- ma VIE à l&#39;Usine ! Elle n&#39;aura pas ma mort ! 
+-----------------
+Vous êtes d-- na--- de p--ser qu&#39;elle est notre seul phare. NE M- --CHEZ PAS ! NE ME TOUCHEZ PAS !
+-----------------&quot;
+
+//Le bruit du vent se fait soudainement entendre au travers du haut-parleur, distordu et assourdissant.
+
+Vous [[regardez la bande continuer de tourner dans le vide-&gt;Fin]]//</tw-passagedata><tw-passagedata pid="41" name="Fin" tags="" position="1792,2434" size="100,100">Laïnoba
+
+Un jeu de :
+Pierre Billaud
+Hichame Oukdim
+Léo Mirland
+
+[[Retour au menu principal-&gt;Jeraï dans son vaisseau avec Ben]]
+
+(set: $bIsBrokenAtLeastOnce to &quot;false&quot;)
+(set: $bIsBranched to &quot;true&quot;)
+(set: $aIsTwisted to &quot;false&quot;)
+(set: $aIsRepaired to &quot;false&quot;)
+(set: $enteredFocusRoadNod to &quot;false&quot;)
+(set: $focusedOnRoadOneTime to &quot;false&quot;)
+(set: $focusedOnRoadTwoTimes to &quot;false&quot;)
+(set: $aIsPushedAtLeastOnce to &quot;false&quot;)</tw-passagedata><tw-passagedata pid="42" name="Forcer" tags="" position="270,1112" size="100,100">//[Vous poussez fermement sur la poignée à nouveau et voyez soudain jaillir un souffle de vapeur provenant de derrière la pompe. Vous avez probablement débranché quelque chose, mais [[quoi ?-&gt;Sortir du vaisseau]]]//
+(set: $bIsBranched to &quot;false&quot;)
+(set: $bIsBrokenAtLeastOnce to &quot;true&quot;)</tw-passagedata></tw-storydata>
+    </div>
+    <script>
+      Twison.convert();
+    </script>
+  </body>
+</html>

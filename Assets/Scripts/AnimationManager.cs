@@ -12,8 +12,24 @@ public class AnimationManager : MonoBehaviour
 
     bool _yakRepairedAlone;
 
-    // NEW
-    const string YAK_STOPPED_WITH_SMOKE = "sprites_yak_stopped_with_smoke";
+
+    // ANIMATION NAME
+    const string SORTIR_DU_YAK = "Sortir du vaisseau";
+    const string ALLUMER_BEACON = "Allumer un beacon";
+    const string AIDE_PROVIDENTIELLE = "Noah arrive en aide providentielle";
+    const string NOAH_REPARE_YAK = "Noah vous aide à réparer votre vaisseau";
+    const string BUT_VOYAGE = "But réel du voyage";
+    const string YAK_REPART = "Le vaisseau repart";
+    const string QUESTION_NOAH = "Comment cette mémoire est-elle arrivée en la possession de Noah ?";
+
+    const string TIRER_DOUCEMENT = "Tirer doucement";
+    const string NOAH_RADAR = "Observer plus précisément";
+    const string NOAH_STOP = "Noah nous barre la route";
+    const string JERAI_SORT_YAK = "On sort du vaisseau pour discuter avec Noah";
+    const string PRENDRE_MEMOIRE = "Prendre la mémoire";
+    const string MEFIANCE_NOAH = "Méfiance envers Noah";
+
+    // ANIMATIONS
     const string YAK_STOPPED_JERAI_APPEARS = "sprites_yak_stopped_jerai_appears";
     const string YAK_STOPPED_JERAI_BEACON = "sprites_jerai_alerts_beacon_start";
     const string YAK_REPAIRED_GOBACK = "sprites_jerai_goback_start";
@@ -46,24 +62,28 @@ public class AnimationManager : MonoBehaviour
     {
         if (_clickableText != null && _clickableText.currentNode != null)
         {
-            switch (_clickableText.currentNode.pid)
+            switch (_clickableText.currentNode.name)
             {
-                case 3: // Sortir du vaisseau. Jerai repare le vaisseau
+                case SORTIR_DU_YAK: // Sortir du vaisseau. Jerai repare le vaisseau
                     ChangeAnimationState(YAK_STOPPED_JERAI_APPEARS);
                     break;
-                case 32: //Le vaisseau repart. Jerai monte dans le vaisseau. Before 27
-                    _yakRepairedAlone = true;
-                    ChangeAnimationState(YAK_REPAIRED_GOBACK);
+                case TIRER_DOUCEMENT: //Le vaisseau repart. Jerai monte dans le vaisseau. Before 27
+                    bool repairedYak = _clickableText.currentNode.text.Contains("repartir");
+                    if (repairedYak)
+                    {
+                        _yakRepairedAlone = true;
+                        ChangeAnimationState(YAK_REPAIRED_GOBACK);
+                    }
                     break;
-                case 7: //Allumer un beacon. Jerai allume un beacon
+                case ALLUMER_BEACON: //Allumer un beacon. Jerai allume un beacon
                     _yakRepairedAlone = false;
                     ChangeAnimationState(YAK_STOPPED_JERAI_BEACON);
                     break;
-                case 10: // Noah arrive après appel à l'aide
+                case AIDE_PROVIDENTIELLE: // Noah arrive après appel à l'aide
                     ChangeAnimationState(NOAH_ARRIVES_REPAIR);
                     break;
-                case 24: // Noah fuit après avoir donné la cassette et réparé le yak
-                case 23: // Noah fuit après avoir donné la cassette et réparé le yak
+                case QUESTION_NOAH:
+                case PRENDRE_MEMOIRE: // Noah fuit après avoir donné la cassette et réparé le yak
                     if (_yakRepairedAlone)
                     {
                         ChangeAnimationState(YAK_REPAIRED_NOAH_LEAVES);
@@ -73,7 +93,7 @@ public class AnimationManager : MonoBehaviour
                         ChangeAnimationState(NOAH_REPAIRED_YAK_AND_LEAVE);
                     }
                     break;
-                case 27: // Jerai retourne dans son yak après avoir reçu la cassette et Noah a réparé le yak
+                case YAK_REPART: // Jerai retourne dans son yak après avoir reçu la cassette et Noah a réparé le yak
                     if (_yakRepairedAlone)
                     {
                         ChangeAnimationState(YAK_REPAIRED_TRAVEL_TO_JAHNAH);
@@ -83,19 +103,23 @@ public class AnimationManager : MonoBehaviour
                         ChangeAnimationState(NOAH_REPAIRED_TRAVEL_TO_JAHNAH);
                     }
                     break;
-                case 43: // Noah approche le yak en glider
+                case NOAH_RADAR: // Noah approche le yak en glider
                     ChangeAnimationState(YAK_REPAIRED_NOAH_CHASE);
                     break;
-                case 44: // Jerai Stop le yak avant de descendre parler à Noah
+                case NOAH_STOP: // Jerai Stop le yak avant de descendre parler à Noah
                     ChangeAnimationState(YAK_REPAIRED_JERAI_STOPS_YAK);
                     break;
-                case 47: // Jerai sort du yak après que Noah l'arrete
+                case JERAI_SORT_YAK: // Jerai sort du yak après que Noah l'arrete
                     ChangeAnimationState(YAK_REPAIRED_JERAI_MEET_NOAH);
                     break;
-                case 14: // Noah aide Jerai à réparer le Yak
-                    break;
-                case 18: // Moteur en cours de réparation par Noah
+                case NOAH_REPARE_YAK: // Moteur en cours de réparation par Noah
                     ChangeAnimationState(NOAH_REPAIR_YAK);
+                    break;
+                case MEFIANCE_NOAH:
+                    if (_yakRepairedAlone == false)
+                    {
+                        ChangeAnimationState(NOAH_REPAIR_YAK);
+                    }
                     break;
             }
         }

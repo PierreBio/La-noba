@@ -38,4 +38,14 @@ public class CursorScript : MonoBehaviour
                 break;
         }
     }
+
+    public void setCursorArrow()
+    {
+        setCursor(CursorType.ARROW);
+    }
+
+    public void setCursorHover()
+    {
+        setCursor(CursorType.HOVER);
+    }
 }
